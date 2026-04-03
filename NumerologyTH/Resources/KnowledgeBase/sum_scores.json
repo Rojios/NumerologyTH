@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "version": "1.0",
+    "source": "Applied Numerology Analyst SKILL.md",
+    "description": "Sum scoring for full 10-digit phone number sum (Mode A Step 3). Sum all 10 digits, reduce until 2-digit or single-digit.",
+    "max_score": 200,
+    "neutral_note": "All sums not listed in premium/good/penalty are neutral (50 pts)"
+  },
+  "sums": {
+    "41": { "category": "premium", "score": 200, "meaning": "สติปัญญาไหวพริบ คู่บุญบารมี สำเร็จมั่นคง" },
+    "42": { "category": "premium", "score": 200, "meaning": "มหามงคล โรแมนติก มีเสน่ห์ หาเงินเก่ง มิตรสหายมาก" },
+    "45": { "category": "premium", "score": 200, "meaning": "ปัญญาและโชคลาภ ชีวิตราบรื่น ผู้ใหญ่เมตตา ก้าวหน้าตลอด" },
+    "50": { "category": "premium", "score": 200, "meaning": "ปัญญาและความสามารถ ดีเด่นงานต่างประเทศ มีญาณพิเศษ" },
+    "51": { "category": "premium", "score": 200, "meaning": "เสน่ห์และความสมบูรณ์ เมตตามหานิยม สติปัญญาแตกฉาน" },
+    "54": { "category": "premium", "score": 200, "meaning": "ปัญญาและโชคลาภ ชีวิตราบรื่น ผู้ใหญ่เมตตา ก้าวหน้าตลอด" },
+    "55": { "category": "premium", "score": 200, "meaning": "สุขสมหวัง สมบูรณ์พูนผล จิตใจเมตตา มีเสน่ห์ ยุติธรรม" },
+    "56": { "category": "premium", "score": 200, "meaning": "คู่ทรัพย์คู่โชคคู่ปัญญา ศิลป์และปัญญา สำเร็จรอบด้าน" },
+    "59": { "category": "premium", "score": 200, "meaning": "ขนบธรรมเนียม โชคลาภ ความสำเร็จรุ่งเรือง สิ่งศักดิ์สิทธิ์คุ้มครอง" },
+    "63": { "category": "premium", "score": 200, "meaning": "ความรักความอบอุ่น คู่ทรัพย์คู่โชค การงานความรักดีมาก" },
+    "65": { "category": "premium", "score": 200, "meaning": "คู่ทรัพย์คู่โชคคู่ปัญญา ศิลป์และปัญญา สำเร็จรอบด้าน" },
+    "14": { "category": "good", "score": 150, "meaning": "สติปัญญาไหวพริบ คู่บุญบารมี สำเร็จมั่นคง" },
+    "15": { "category": "good", "score": 150, "meaning": "เสน่ห์และความสมบูรณ์ เมตตามหานิยม สติปัญญาแตกฉาน" },
+    "19": { "category": "good", "score": 150, "meaning": "สำเร็จจากผู้อุปถัมภ์ ดวงดีมาก" },
+    "24": { "category": "good", "score": 150, "meaning": "มหามงคล โรแมนติก มีเสน่ห์ หาเงินเก่ง มิตรสหายมาก" },
+    "36": { "category": "good", "score": 150, "meaning": "ความรักความอบอุ่น คู่ทรัพย์คู่โชค การงานความรักดีมาก" },
+    "44": { "category": "good", "score": 150, "meaning": "ส่งเสริมความสำเร็จทุกด้าน ผู้ใหญ่เกื้อหนุน" },
+    "79": { "category": "good", "score": 150, "meaning": "ทรัพย์และสุขภาพ ฐานะมั่นคง ได้มรดก สุขภาพดี" },
+    "90": { "category": "good", "score": 150, "meaning": "สิ่งศักดิ์สิทธิ์คุ้มครอง แคล้วคลาด ปลอดภัย ก้าวหน้า" },
+    "91": { "category": "good", "score": 150, "meaning": "สำเร็จจากผู้อุปถัมภ์ ดวงดีมาก" },
+    "97": { "category": "good", "score": 150, "meaning": "ความรุ่งโรจน์ สำเร็จร่ำรวย เคารพนับถือ" },
+    "99": { "category": "good", "score": 150, "meaning": "หยั่งรู้ มีญาณพิเศษ พลังจิต พระคุ้มครอง เจริญรุ่งเรือง" },
+    "13": { "category": "penalty", "score": -100, "meaning": "เปลี่ยนแปลงฉับพลัน ระวังอุบัติเหตุ ครอบครัวมีปัญหา" },
+    "37": { "category": "penalty", "score": -100, "meaning": "ความวิบัติ ขัดแย้ง อุบัติเหตุ ชีวิตขึ้นๆ ลงๆ" },
+    "67": { "category": "penalty", "score": -100, "meaning": "ความผิดหวัง ทุกข์เศร้า ครอบครัวร้าวฉาน ตกต่ำบั้นปลาย" },
+    "70": { "category": "penalty", "score": -100, "meaning": "เคราะห์กรรม เลขร้ายมาก ระวังความคิดและการกดดัน" },
+    "73": { "category": "penalty", "score": -100, "meaning": "ดาวบาปเคราะห์ร้ายแรง ระวังฉับพลัน ล้มละลาย อุบัติเหตุ" },
+    "84": { "category": "penalty", "score": -100, "meaning": "เลขร้าย มักประสบชะตากรรมไม่ดี คดีความ อุบัติเหตุ" }
+  }
+}

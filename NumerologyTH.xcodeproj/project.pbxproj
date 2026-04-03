@@ -1,0 +1,569 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0AEA207583BFFF71F2CE6A49 /* QuotaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D046AA928EA76B45BFC9F6 /* QuotaManager.swift */; };
+		1855A35C4BB29E01CE3EE79A /* PlateAnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2B0A7410B7A173033EA3DD /* PlateAnalysisTests.swift */; };
+		2083403F894E57F3840DC01D /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632964AF026F00C479A6A586 /* HistoryViewModel.swift */; };
+		26D5B67B01898815BDCA8135 /* AnalysisEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98D0125391BAF6A144000D /* AnalysisEngine.swift */; };
+		2994C2B31401B39C088983A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1CB9FA454DD1AE3E08114 /* ContentView.swift */; };
+		2A951DF742A959E278B51323 /* PairRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0B2DB4E300B57F43377D9D /* PairRowView.swift */; };
+		323ADF57C888C508A3F79F45 /* PhoneAnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8642090B96DD30D4FF8E6C1A /* PhoneAnalysisTests.swift */; };
+		4163A0834E9625522D5C6458 /* ModeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A219A3B5008D6C71D62961 /* ModeCardView.swift */; };
+		41CA3493782668A598C78AA3 /* PlateAnalysisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E5023ECB8302FC94A56CEE /* PlateAnalysisViewModel.swift */; };
+		436AB846258F28AFE0B0620F /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2991E5429C4F279F8A79680 /* HistoryManager.swift */; };
+		4EC356FE58FD7CF81C2DDA5E /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D4707F46521D933D104F3 /* StoreKitManager.swift */; };
+		50879729CCD9CCE9E570BBE3 /* NumerologyTHApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D10DF7CD080DEC221B9611 /* NumerologyTHApp.swift */; };
+		5D6FF4A160CC403F0B4AFE4E /* PlateInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFF12E3CB2A18D7D0A4600A /* PlateInputView.swift */; };
+		63E8EF15DC26DC7EA9878A4F /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EDFAC2723502388EF007E2 /* Color+Theme.swift */; };
+		776E34FB14B5C9359242656C /* PhoneAnalysisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473742DCE17A5076C8EB8831 /* PhoneAnalysisViewModel.swift */; };
+		822E9B52B4CD437300B8C598 /* String+Thai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6C51FA97E919772481D04 /* String+Thai.swift */; };
+		92E77DA90CE5D31FA1467D75 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D73622AC554B083DA67A4 /* HistoryView.swift */; };
+		97F5BA951EC78E1DC6CB64D4 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E93C471299B480F0B7F915 /* PaywallView.swift */; };
+		A263687FE80CDD9CC92A0AB8 /* NameAnalysisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6686955C8FD9214AFFB94 /* NameAnalysisViewModel.swift */; };
+		A5B75077839298A01C21B61D /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D924533C44812897DBF9B581 /* ShareManager.swift */; };
+		A9B2D99435C6379191E72540 /* GradeTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE1BC9823898F248443DC7 /* GradeTagView.swift */; };
+		ABE5EA6A0481F79E375FBB0E /* NameAnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB2C61945C6416595778F76 /* NameAnalysisTests.swift */; };
+		B2E312B45FFF3AE3C753F4D0 /* PurchaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F5D0CE85A365F8EDBDD347 /* PurchaseViewModel.swift */; };
+		C4D315C45B7970492C2A4AEC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5BFE72A3FD144EC5545050 /* HomeView.swift */; };
+		C8D81E92E41D335608FAF1FB /* AnalysisSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5F9F1F23136AE22E09C82 /* AnalysisSession.swift */; };
+		DBDB0A729160546FE7400307 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C442DACE1C3485DF5BA36CD8 /* ResultView.swift */; };
+		DDCC730D2F2F777F2AC79539 /* ScoreGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8874053CAC96D3E690AF869 /* ScoreGaugeView.swift */; };
+		EC6EA6A47AE12DA9F2300C46 /* KnowledgeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F57E4E595C1A906C4ED993 /* KnowledgeBase.swift */; };
+		F4D70BA4BDF8F77881F8A070 /* NameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C594C4EF58D075872C010E /* NameInputView.swift */; };
+		FBA37569071F7805EA90DA17 /* PhoneInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1515C076507CB3CBDE3C82 /* PhoneInputView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		86F4AD8425092C37907F3D6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 673C325F59F110751325F8D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 479EA340973A66DEEEF4C7F3;
+			remoteInfo = NumerologyTH;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		473742DCE17A5076C8EB8831 /* PhoneAnalysisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAnalysisViewModel.swift; sourceTree = "<group>"; };
+		47EC01A7154B4604D7B057BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4FFE1BC9823898F248443DC7 /* GradeTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeTagView.swift; sourceTree = "<group>"; };
+		50C594C4EF58D075872C010E /* NameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputView.swift; sourceTree = "<group>"; };
+		54D10DF7CD080DEC221B9611 /* NumerologyTHApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumerologyTHApp.swift; sourceTree = "<group>"; };
+		60A6C51FA97E919772481D04 /* String+Thai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Thai.swift"; sourceTree = "<group>"; };
+		632964AF026F00C479A6A586 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		69F57E4E595C1A906C4ED993 /* KnowledgeBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeBase.swift; sourceTree = "<group>"; };
+		6C0B2DB4E300B57F43377D9D /* PairRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairRowView.swift; sourceTree = "<group>"; };
+		6C10173BC3687B08B5B96767 /* NumerologyTH.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NumerologyTH.entitlements; sourceTree = "<group>"; };
+		77D046AA928EA76B45BFC9F6 /* QuotaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaManager.swift; sourceTree = "<group>"; };
+		825D73622AC554B083DA67A4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		82F5D0CE85A365F8EDBDD347 /* PurchaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewModel.swift; sourceTree = "<group>"; };
+		836D4707F46521D933D104F3 /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
+		85E5023ECB8302FC94A56CEE /* PlateAnalysisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateAnalysisViewModel.swift; sourceTree = "<group>"; };
+		8642090B96DD30D4FF8E6C1A /* PhoneAnalysisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAnalysisTests.swift; sourceTree = "<group>"; };
+		99EDFAC2723502388EF007E2 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
+		9D7AC9254813C39D96050F68 /* NumerologyTHTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = NumerologyTHTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F98D0125391BAF6A144000D /* AnalysisEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisEngine.swift; sourceTree = "<group>"; };
+		A6A219A3B5008D6C71D62961 /* ModeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeCardView.swift; sourceTree = "<group>"; };
+		AA2B0A7410B7A173033EA3DD /* PlateAnalysisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateAnalysisTests.swift; sourceTree = "<group>"; };
+		ABCBD75525E0301DE51ED566 /* NumerologyTH.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = NumerologyTH.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACFF12E3CB2A18D7D0A4600A /* PlateInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateInputView.swift; sourceTree = "<group>"; };
+		C3E93C471299B480F0B7F915 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		C442DACE1C3485DF5BA36CD8 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		CC1515C076507CB3CBDE3C82 /* PhoneInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneInputView.swift; sourceTree = "<group>"; };
+		D0F6686955C8FD9214AFFB94 /* NameAnalysisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAnalysisViewModel.swift; sourceTree = "<group>"; };
+		D924533C44812897DBF9B581 /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
+		DA5BFE72A3FD144EC5545050 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DEB2C61945C6416595778F76 /* NameAnalysisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAnalysisTests.swift; sourceTree = "<group>"; };
+		E2991E5429C4F279F8A79680 /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
+		E6D5F9F1F23136AE22E09C82 /* AnalysisSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisSession.swift; sourceTree = "<group>"; };
+		EEA1CB9FA454DD1AE3E08114 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F8874053CAC96D3E690AF869 /* ScoreGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreGaugeView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1A0D5A25CF9B573996B8B244 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				632964AF026F00C479A6A586 /* HistoryViewModel.swift */,
+				D0F6686955C8FD9214AFFB94 /* NameAnalysisViewModel.swift */,
+				473742DCE17A5076C8EB8831 /* PhoneAnalysisViewModel.swift */,
+				85E5023ECB8302FC94A56CEE /* PlateAnalysisViewModel.swift */,
+				82F5D0CE85A365F8EDBDD347 /* PurchaseViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2054A840479DC290C5C49246 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4FFE1BC9823898F248443DC7 /* GradeTagView.swift */,
+				A6A219A3B5008D6C71D62961 /* ModeCardView.swift */,
+				6C0B2DB4E300B57F43377D9D /* PairRowView.swift */,
+				F8874053CAC96D3E690AF869 /* ScoreGaugeView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		31400EBA49E4F6E299A6FC1F /* NumerologyTH */ = {
+			isa = PBXGroup;
+			children = (
+				47EC01A7154B4604D7B057BD /* Info.plist */,
+				6C10173BC3687B08B5B96767 /* NumerologyTH.entitlements */,
+				4EEB57F19454B1B0FEC7EF19 /* App */,
+				7A5DA55235F6D8563680685A /* Extensions */,
+				3A598A1EE8BAF8A172F9FFA0 /* Models */,
+				62C416C89461D688477739A7 /* Resources */,
+				D6090010F58401DE7FE9C918 /* Services */,
+				1A0D5A25CF9B573996B8B244 /* ViewModels */,
+				433E494E0DBAC2172D0D88EC /* Views */,
+			);
+			path = NumerologyTH;
+			sourceTree = "<group>";
+		};
+		3A598A1EE8BAF8A172F9FFA0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E6D5F9F1F23136AE22E09C82 /* AnalysisSession.swift */,
+				69F57E4E595C1A906C4ED993 /* KnowledgeBase.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		433E494E0DBAC2172D0D88EC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				825D73622AC554B083DA67A4 /* HistoryView.swift */,
+				DA5BFE72A3FD144EC5545050 /* HomeView.swift */,
+				50C594C4EF58D075872C010E /* NameInputView.swift */,
+				C3E93C471299B480F0B7F915 /* PaywallView.swift */,
+				CC1515C076507CB3CBDE3C82 /* PhoneInputView.swift */,
+				ACFF12E3CB2A18D7D0A4600A /* PlateInputView.swift */,
+				C442DACE1C3485DF5BA36CD8 /* ResultView.swift */,
+				2054A840479DC290C5C49246 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4EEB57F19454B1B0FEC7EF19 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EEA1CB9FA454DD1AE3E08114 /* ContentView.swift */,
+				54D10DF7CD080DEC221B9611 /* NumerologyTHApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5E2A343A98051745E4A019CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ABCBD75525E0301DE51ED566 /* NumerologyTH.app */,
+				9D7AC9254813C39D96050F68 /* NumerologyTHTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62C416C89461D688477739A7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7A5DA55235F6D8563680685A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				99EDFAC2723502388EF007E2 /* Color+Theme.swift */,
+				60A6C51FA97E919772481D04 /* String+Thai.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A05342EE273B0AFB67A585CD /* NumerologyTHTests */ = {
+			isa = PBXGroup;
+			children = (
+				DEB2C61945C6416595778F76 /* NameAnalysisTests.swift */,
+				8642090B96DD30D4FF8E6C1A /* PhoneAnalysisTests.swift */,
+				AA2B0A7410B7A173033EA3DD /* PlateAnalysisTests.swift */,
+			);
+			path = NumerologyTHTests;
+			sourceTree = "<group>";
+		};
+		BA09CB4B1CB943B0A6FC3DB8 = {
+			isa = PBXGroup;
+			children = (
+				31400EBA49E4F6E299A6FC1F /* NumerologyTH */,
+				A05342EE273B0AFB67A585CD /* NumerologyTHTests */,
+				5E2A343A98051745E4A019CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D6090010F58401DE7FE9C918 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9F98D0125391BAF6A144000D /* AnalysisEngine.swift */,
+				E2991E5429C4F279F8A79680 /* HistoryManager.swift */,
+				77D046AA928EA76B45BFC9F6 /* QuotaManager.swift */,
+				D924533C44812897DBF9B581 /* ShareManager.swift */,
+				836D4707F46521D933D104F3 /* StoreKitManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		479EA340973A66DEEEF4C7F3 /* NumerologyTH */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45884778EB7E9A19124B5C3A /* Build configuration list for PBXNativeTarget "NumerologyTH" */;
+			buildPhases = (
+				69CCF0C528B37BE43F9899EC /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NumerologyTH;
+			packageProductDependencies = (
+			);
+			productName = NumerologyTH;
+			productReference = ABCBD75525E0301DE51ED566 /* NumerologyTH.app */;
+			productType = "com.apple.product-type.application";
+		};
+		558CD3DBCC74069EA1D86C5E /* NumerologyTHTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E22F7CD71C0C551DC793BA3E /* Build configuration list for PBXNativeTarget "NumerologyTHTests" */;
+			buildPhases = (
+				5ED44F97020CD236AAFB7A51 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF8AD56AB2C8C8B8CBDAB68B /* PBXTargetDependency */,
+			);
+			name = NumerologyTHTests;
+			packageProductDependencies = (
+			);
+			productName = NumerologyTHTests;
+			productReference = 9D7AC9254813C39D96050F68 /* NumerologyTHTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		673C325F59F110751325F8D6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = B156FCEC7339766B1EE39145 /* Build configuration list for PBXProject "NumerologyTH" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = BA09CB4B1CB943B0A6FC3DB8;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5E2A343A98051745E4A019CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				479EA340973A66DEEEF4C7F3 /* NumerologyTH */,
+				558CD3DBCC74069EA1D86C5E /* NumerologyTHTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5ED44F97020CD236AAFB7A51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABE5EA6A0481F79E375FBB0E /* NameAnalysisTests.swift in Sources */,
+				323ADF57C888C508A3F79F45 /* PhoneAnalysisTests.swift in Sources */,
+				1855A35C4BB29E01CE3EE79A /* PlateAnalysisTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69CCF0C528B37BE43F9899EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26D5B67B01898815BDCA8135 /* AnalysisEngine.swift in Sources */,
+				C8D81E92E41D335608FAF1FB /* AnalysisSession.swift in Sources */,
+				63E8EF15DC26DC7EA9878A4F /* Color+Theme.swift in Sources */,
+				2994C2B31401B39C088983A0 /* ContentView.swift in Sources */,
+				A9B2D99435C6379191E72540 /* GradeTagView.swift in Sources */,
+				436AB846258F28AFE0B0620F /* HistoryManager.swift in Sources */,
+				92E77DA90CE5D31FA1467D75 /* HistoryView.swift in Sources */,
+				2083403F894E57F3840DC01D /* HistoryViewModel.swift in Sources */,
+				C4D315C45B7970492C2A4AEC /* HomeView.swift in Sources */,
+				EC6EA6A47AE12DA9F2300C46 /* KnowledgeBase.swift in Sources */,
+				4163A0834E9625522D5C6458 /* ModeCardView.swift in Sources */,
+				A263687FE80CDD9CC92A0AB8 /* NameAnalysisViewModel.swift in Sources */,
+				F4D70BA4BDF8F77881F8A070 /* NameInputView.swift in Sources */,
+				50879729CCD9CCE9E570BBE3 /* NumerologyTHApp.swift in Sources */,
+				2A951DF742A959E278B51323 /* PairRowView.swift in Sources */,
+				97F5BA951EC78E1DC6CB64D4 /* PaywallView.swift in Sources */,
+				776E34FB14B5C9359242656C /* PhoneAnalysisViewModel.swift in Sources */,
+				FBA37569071F7805EA90DA17 /* PhoneInputView.swift in Sources */,
+				41CA3493782668A598C78AA3 /* PlateAnalysisViewModel.swift in Sources */,
+				5D6FF4A160CC403F0B4AFE4E /* PlateInputView.swift in Sources */,
+				B2E312B45FFF3AE3C753F4D0 /* PurchaseViewModel.swift in Sources */,
+				0AEA207583BFFF71F2CE6A49 /* QuotaManager.swift in Sources */,
+				DBDB0A729160546FE7400307 /* ResultView.swift in Sources */,
+				DDCC730D2F2F777F2AC79539 /* ScoreGaugeView.swift in Sources */,
+				A5B75077839298A01C21B61D /* ShareManager.swift in Sources */,
+				4EC356FE58FD7CF81C2DDA5E /* StoreKitManager.swift in Sources */,
+				822E9B52B4CD437300B8C598 /* String+Thai.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FF8AD56AB2C8C8B8CBDAB68B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 479EA340973A66DEEEF4C7F3 /* NumerologyTH */;
+			targetProxy = 86F4AD8425092C37907F3D6C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00201BB043C430AD2878F5D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rojios.NumerologyTHTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NumerologyTH.app/NumerologyTH";
+			};
+			name = Release;
+		};
+		0F957E970F9AB49780D0F679 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NumerologyTH/NumerologyTH.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = NumerologyTH/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rojios.numerologyth;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2262EEE9EC1879FE6565A3B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rojios.NumerologyTHTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NumerologyTH.app/NumerologyTH";
+			};
+			name = Debug;
+		};
+		88754746FAADE13180B11959 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = NumerologyTH/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		B6FEB9E8D07948DBB0F16E15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = NumerologyTH/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		C756319684F27A667E467EB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NumerologyTH/NumerologyTH.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = NumerologyTH/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rojios.numerologyth;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		45884778EB7E9A19124B5C3A /* Build configuration list for PBXNativeTarget "NumerologyTH" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C756319684F27A667E467EB7 /* Debug */,
+				0F957E970F9AB49780D0F679 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B156FCEC7339766B1EE39145 /* Build configuration list for PBXProject "NumerologyTH" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88754746FAADE13180B11959 /* Debug */,
+				B6FEB9E8D07948DBB0F16E15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E22F7CD71C0C551DC793BA3E /* Build configuration list for PBXNativeTarget "NumerologyTHTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2262EEE9EC1879FE6565A3B4 /* Debug */,
+				00201BB043C430AD2878F5D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 673C325F59F110751325F8D6 /* Project object */;
+}

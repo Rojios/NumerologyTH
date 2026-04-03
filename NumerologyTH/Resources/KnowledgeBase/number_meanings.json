@@ -1,0 +1,709 @@
+{
+  "meta": {
+    "version": "1.0",
+    "source": "Applied Numerology Analyst SKILL.md — Knowledge Base",
+    "description": "Meanings for numbers 1-100, including single-digit planetary associations and two-digit pair meanings."
+  },
+  "meanings": {
+    "1": {
+      "planet": "อาทิตย์",
+      "meaning_th": "ความเชื่อมั่น ผู้นำ มุมานะ ชอบผจญภัย",
+      "meaning_en": "Confidence, leadership, perseverance, adventurous",
+      "level": "base",
+      "is_auspicious": true
+    },
+    "2": {
+      "planet": "จันทร์",
+      "meaning_th": "จินตนาการ ช่างฝัน อารมณ์ศิลปิน มองโลกแง่ดี",
+      "meaning_en": "Imagination, dreamy, artistic temperament, optimistic",
+      "level": "base",
+      "is_auspicious": true
+    },
+    "3": {
+      "planet": "อังคาร",
+      "meaning_th": "กล้าหาญ รักอิสระ พูดตรงไปตรงมา รักความยุติธรรม",
+      "meaning_en": "Brave, freedom-loving, straightforward, justice-oriented",
+      "level": "base",
+      "is_auspicious": true
+    },
+    "4": {
+      "planet": "พุธ",
+      "meaning_th": "สติปัญญา ฉลาด ไหวพริบดี รู้ทันคน",
+      "meaning_en": "Intelligence, clever, quick-witted, perceptive",
+      "level": "base",
+      "is_auspicious": true
+    },
+    "5": {
+      "planet": "พฤหัส",
+      "meaning_th": "ปัญญาทางธรรม น่าเชื่อถือ คุณธรรม จิตใจเมตตา",
+      "meaning_en": "Spiritual wisdom, trustworthy, moral, compassionate",
+      "level": "base",
+      "is_auspicious": true
+    },
+    "6": {
+      "planet": "ศุกร์",
+      "meaning_th": "ศิลปะ ความสุขสบาย มีเสน่ห์ ร่ำรวย",
+      "meaning_en": "Art, comfort, charming, wealthy",
+      "level": "base",
+      "is_auspicious": true
+    },
+    "7": {
+      "planet": "เสาร์",
+      "meaning_th": "ทุกข์โศก ตัวของตัวเอง นักคิดนักเขียน แก้ปัญหาเก่ง",
+      "meaning_en": "Sorrow, independent, thinker/writer, good problem solver",
+      "level": "base",
+      "is_auspicious": false
+    },
+    "8": {
+      "planet": "ราหู",
+      "meaning_th": "ลุ่มหลง มาดขรึม ต้องการความรัก ระวังสุขภาพ",
+      "meaning_en": "Obsessive, mysterious demeanor, needs love, health caution",
+      "level": "base",
+      "is_auspicious": false
+    },
+    "9": {
+      "planet": "เกตุ",
+      "meaning_th": "ความลึกลับ ตัดสินใจด้วยอารมณ์ ปิดทองหลังพระ",
+      "meaning_en": "Mysterious, emotional decisions, unsung hero",
+      "level": "base",
+      "is_auspicious": false
+    },
+    "10": {
+      "planet": null,
+      "meaning_th": "อุปสรรค กล้าได้กล้าเสีย มีศัตรู มีโรคเรื้อรัง",
+      "meaning_en": "Obstacles, risk-taker, has enemies, chronic illness",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "11": {
+      "planet": null,
+      "meaning_th": "ขัดแย้ง หลงตัวเอง ดื้อรั้น ระวังถูกทรยศ",
+      "meaning_en": "Conflict, narcissistic, stubborn, beware of betrayal",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "12": {
+      "planet": null,
+      "meaning_th": "2 บุคลิก หูเบา เชื่อคนง่าย เกิดอุบัติเหตุง่าย",
+      "meaning_en": "Dual personality, gullible, accident-prone",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "13": {
+      "planet": null,
+      "meaning_th": "เปลี่ยนแปลงฉับพลัน ระวังอุบัติเหตุ ครอบครัวมีปัญหา",
+      "meaning_en": "Sudden change, accident risk, family problems",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "14": {
+      "planet": null,
+      "meaning_th": "สติปัญญาไหวพริบ คู่บุญบารมี สำเร็จมั่นคง",
+      "meaning_en": "Intelligence, merit partner, stable success",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "15": {
+      "planet": null,
+      "meaning_th": "เสน่ห์และความสมบูรณ์ เมตตามหานิยม สติปัญญาแตกฉาน",
+      "meaning_en": "Charm and completeness, great compassion, brilliant intellect",
+      "level": "s_grade",
+      "is_auspicious": true
+    },
+    "16": {
+      "planet": null,
+      "meaning_th": "ต้องฝ่าฟัน มีอุปสรรค อาภัพรัก ไม่เหมาะกับผู้หญิง",
+      "meaning_en": "Must struggle, obstacles, unlucky in love, not suitable for women",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "17": {
+      "planet": null,
+      "meaning_th": "ความไม่แน่นอน หูเบา ดื้อรั้น ผู้ใหญ่กดดัน",
+      "meaning_en": "Uncertainty, gullible, stubborn, pressure from elders",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "18": {
+      "planet": null,
+      "meaning_th": "การเปลี่ยนแปลง โยกย้ายบ่อย ระวังถูกหลอก",
+      "meaning_en": "Change, frequent relocation, beware of deception",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "19": {
+      "planet": null,
+      "meaning_th": "สำเร็จจากผู้อุปถัมภ์ ดวงดีมาก (ดีสำหรับชาย)",
+      "meaning_en": "Success from patron, very lucky (good for males)",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "20": {
+      "planet": null,
+      "meaning_th": "สำเร็จต้องอาศัยผู้อื่น ไม่ชอบอยู่นิ่ง มักมีปัญหาคู่",
+      "meaning_en": "Success needs others, restless, relationship problems",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "21": {
+      "planet": null,
+      "meaning_th": "พลิกผัน มีเสน่ห์ เด็ดเดี่ยว ชีวิตไม่แน่นอน",
+      "meaning_en": "Unpredictable, charming, decisive, uncertain life",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "22": {
+      "planet": null,
+      "meaning_th": "เพ้อฝัน อ่อนไหว หูเบา มักถูกหลอก",
+      "meaning_en": "Dreamy, sensitive, gullible, often deceived",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "23": {
+      "planet": null,
+      "meaning_th": "เสน่ห์เมตตามหานิยม ชายเจ้าชู้ หญิงมีผู้ใหญ่สนับสนุน",
+      "meaning_en": "Charm and compassion, males may be womanizers, females have elder support",
+      "level": "good",
+      "is_auspicious": true
+    },
+    "24": {
+      "planet": null,
+      "meaning_th": "มหามงคล โรแมนติก มีเสน่ห์ หาเงินเก่ง มิตรสหายมาก",
+      "meaning_en": "Highly auspicious, romantic, charming, good at earning, many friends",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "25": {
+      "planet": null,
+      "meaning_th": "ดีและร้ายปะปน ผันผวนรุนแรง มีอุปสรรคมาก",
+      "meaning_en": "Mixed good and bad, volatile, many obstacles",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "26": {
+      "planet": null,
+      "meaning_th": "ความสำเร็จไม่ยั่งยืน ระวังผิดศีลธรรมโลกีย์",
+      "meaning_en": "Unsustainable success, beware of moral transgressions",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "27": {
+      "planet": null,
+      "meaning_th": "ความมุ่งมั่น สำเร็จงดงาม แต่กดดันสูง อมทุกข์",
+      "meaning_en": "Determination, beautiful success but high pressure, inner suffering",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "28": {
+      "planet": null,
+      "meaning_th": "ความแปรปรวน เบื่อง่าย ทุกข์ใจ พลัดพราก",
+      "meaning_en": "Instability, easily bored, heartache, separation",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "29": {
+      "planet": null,
+      "meaning_th": "ความรุนแรง ชีวิตมักหักกลาง ระวังอุบัติเหตุและศัตรู",
+      "meaning_en": "Violence, life often breaks midway, accidents and enemies",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "30": {
+      "planet": null,
+      "meaning_th": "อุบัติเหตุ มีอุปสรรค ชอบสันโดษ เงียบขรึม",
+      "meaning_en": "Accidents, obstacles, solitary, quiet",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "31": {
+      "planet": null,
+      "meaning_th": "โชคชะตาไม่แน่นอน ลำบากก่อนสำเร็จ ระวังอุบัติเหตุ",
+      "meaning_en": "Uncertain fate, hardship before success, accident risk",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "32": {
+      "planet": null,
+      "meaning_th": "เจ้าชู้มีเสน่ห์ ต้นร้ายปลายดี มีคนอุปถัมภ์",
+      "meaning_en": "Charming flirt, bad start good end, has patrons",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "33": {
+      "planet": null,
+      "meaning_th": "ความฉุนเฉียว รุนแรง ระวังอันตรายจากความเร็ว",
+      "meaning_en": "Irritable, violent, speed danger",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "34": {
+      "planet": null,
+      "meaning_th": "รอบรู้ครุ่นคิด สติปัญญาดี แต่เหน็ดเหนื่อย ระวังอุบัติเหตุรุนแรง",
+      "meaning_en": "Knowledgeable, intelligent but exhausting, severe accident risk",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "35": {
+      "planet": null,
+      "meaning_th": "คุณและโทษ บั้นปลายสำเร็จ ระวังหลงผิดและโดนหลอก",
+      "meaning_en": "Pros and cons, eventual success, beware of deception",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "36": {
+      "planet": null,
+      "meaning_th": "ความรักความอบอุ่น คู่ทรัพย์คู่โชค การงานความรักดีมาก",
+      "meaning_en": "Love and warmth, wealth and fortune pair, great career and love",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "37": {
+      "planet": null,
+      "meaning_th": "ความวิบัติ ขัดแย้ง อุบัติเหตุ ชีวิตขึ้นๆ ลงๆ",
+      "meaning_en": "Calamity, conflict, accidents, ups and downs",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "38": {
+      "planet": null,
+      "meaning_th": "โมหะจริต หมกมุ่นอบายมุข ไสยศาสตร์ ใจร้อน",
+      "meaning_en": "Delusional, addicted to vices, superstitious, hot-tempered",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "39": {
+      "planet": null,
+      "meaning_th": "ความกดดัน พบเรื่องยุ่งยาก แต่มีมิตรสหายเกื้อกูล",
+      "meaning_en": "Pressure, difficulties, but supported by friends",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "40": {
+      "planet": null,
+      "meaning_th": "อำนาจมหัศจรรย์ ชอบค้นคว้า ชอบเดินทาง ดวงดี",
+      "meaning_en": "Marvelous power, loves research, loves travel, good fortune",
+      "level": "good",
+      "is_auspicious": true
+    },
+    "41": {
+      "planet": null,
+      "meaning_th": "สติปัญญาไหวพริบ คู่บุญบารมี สำเร็จมั่นคง",
+      "meaning_en": "Intelligence, merit partner, stable success",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "42": {
+      "planet": null,
+      "meaning_th": "มหามงคล โรแมนติก มีเสน่ห์ หาเงินเก่ง มิตรสหายมาก",
+      "meaning_en": "Highly auspicious, romantic, charming, good at earning, many friends",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "43": {
+      "planet": null,
+      "meaning_th": "วิปริต มีศัตรูกลั่นแกล้ง ทุกข์ผิดหวัง",
+      "meaning_en": "Perverse, bullied by enemies, suffering and disappointment",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "44": {
+      "planet": null,
+      "meaning_th": "ส่งเสริมความสำเร็จทุกด้าน ผู้ใหญ่เกื้อหนุน อย่าหลงระเริง",
+      "meaning_en": "Promotes all-around success, elder support, don't get carried away",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "45": {
+      "planet": null,
+      "meaning_th": "ปัญญาและโชคลาภ ชีวิตราบรื่น ผู้ใหญ่เมตตา ก้าวหน้าตลอด",
+      "meaning_en": "Wisdom and fortune, smooth life, elder compassion, constant progress",
+      "level": "s_grade",
+      "is_auspicious": true
+    },
+    "46": {
+      "planet": null,
+      "meaning_th": "มีโชค สุขสำเร็จ เพื่อนมาก แต่ใจอ่อน",
+      "meaning_en": "Lucky, happy success, many friends, but soft-hearted",
+      "level": "good",
+      "is_auspicious": true
+    },
+    "47": {
+      "planet": null,
+      "meaning_th": "ความเพียร เหนื่อยก่อนสำเร็จ ดื้อรั้น ใจอ่อน",
+      "meaning_en": "Perseverance, tired before success, stubborn, soft-hearted",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "48": {
+      "planet": null,
+      "meaning_th": "การหลง ถูกชักจูงง่าย ระวังอุบัติเหตุและโรคภัย",
+      "meaning_en": "Infatuation, easily influenced, accidents and illness risk",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "49": {
+      "planet": null,
+      "meaning_th": "ความยุ่งยาก อับโชค มีอุปสรรค อำนาจมืดคุกคาม",
+      "meaning_en": "Trouble, unlucky, obstacles, dark forces threatening",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "50": {
+      "planet": null,
+      "meaning_th": "ปัญญาและความสามารถ ดีเด่นงานต่างประเทศ มีญาณพิเศษ",
+      "meaning_en": "Wisdom and ability, excellent for international work, psychic ability",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "51": {
+      "planet": null,
+      "meaning_th": "เสน่ห์และความสมบูรณ์ เมตตามหานิยม สติปัญญาแตกฉาน",
+      "meaning_en": "Charm and completeness, great compassion, brilliant intellect",
+      "level": "s_grade",
+      "is_auspicious": true
+    },
+    "52": {
+      "planet": null,
+      "meaning_th": "สนับสนุนค้ำจุน ชายได้ดีเพราะสตรี หญิงมีอุปสรรค",
+      "meaning_en": "Support, males succeed through women, females face obstacles",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "53": {
+      "planet": null,
+      "meaning_th": "การหักเห ดีร้ายปะปน ต้องรอบคอบ",
+      "meaning_en": "Refraction, mixed good and bad, must be careful",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "54": {
+      "planet": null,
+      "meaning_th": "ปัญญาและโชคลาภ ชีวิตราบรื่น ผู้ใหญ่เมตตา ก้าวหน้าตลอด",
+      "meaning_en": "Wisdom and fortune, smooth life, elder compassion, constant progress",
+      "level": "s_grade",
+      "is_auspicious": true
+    },
+    "55": {
+      "planet": null,
+      "meaning_th": "สุขสมหวัง สมบูรณ์พูนผล จิตใจเมตตา มีเสน่ห์ ยุติธรรม",
+      "meaning_en": "Happy fulfillment, abundance, compassionate, charming, fair",
+      "level": "s_grade",
+      "is_auspicious": true
+    },
+    "56": {
+      "planet": null,
+      "meaning_th": "คู่ทรัพย์คู่โชคคู่ปัญญา ศิลป์และปัญญา สำเร็จรอบด้าน",
+      "meaning_en": "Wealth-luck-wisdom pair, art and wisdom, all-around success",
+      "level": "s_grade",
+      "is_auspicious": true
+    },
+    "57": {
+      "planet": null,
+      "meaning_th": "มั่นใจสูง ดื้อรั้น มักล้มเลิกกลางคัน",
+      "meaning_en": "High confidence, stubborn, often quits midway",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "58": {
+      "planet": null,
+      "meaning_th": "ลุ่มหลงงมงาย หลงผิด เห็นกงจักรเป็นดอกบัว",
+      "meaning_en": "Superstitious, deluded, sees bad as good",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "59": {
+      "planet": null,
+      "meaning_th": "ขนบธรรมเนียม โชคลาภ ความสำเร็จรุ่งเรือง สิ่งศักดิ์สิทธิ์คุ้มครอง",
+      "meaning_en": "Tradition, fortune, prosperous success, sacred protection",
+      "level": "s_grade",
+      "is_auspicious": true
+    },
+    "60": {
+      "planet": null,
+      "meaning_th": "เพ้อฝัน รักสวยรักงาม ดีสำหรับหญิง ชายระวังเบี่ยงเบน",
+      "meaning_en": "Dreamy, beauty-loving, good for women, men beware of deviation",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "61": {
+      "planet": null,
+      "meaning_th": "บุคลิกซ้อน ขัดแย้งในตัวเอง บั้นปลายตกต่ำ",
+      "meaning_en": "Split personality, inner conflict, decline in later life",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "62": {
+      "planet": null,
+      "meaning_th": "เกื้อกูลและพลิกผัน หลงผิดง่ายแต่มีคนช่วย มีเสน่ห์",
+      "meaning_en": "Support and upheaval, easily misled but helped, charming",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "63": {
+      "planet": null,
+      "meaning_th": "ความรักความอบอุ่น คู่ทรัพย์คู่โชค การงานความรักดีมาก",
+      "meaning_en": "Love and warmth, wealth and fortune pair, great career and love",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "64": {
+      "planet": null,
+      "meaning_th": "อ่อนไหว รสนิยมสูง มีเสน่ห์ สำเร็จแต่ระวังถูกหลอก",
+      "meaning_en": "Sensitive, refined taste, charming, success but beware of deception",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "65": {
+      "planet": null,
+      "meaning_th": "คู่ทรัพย์คู่โชคคู่ปัญญา ศิลป์และปัญญา สำเร็จรอบด้าน",
+      "meaning_en": "Wealth-luck-wisdom pair, art and wisdom, all-around success",
+      "level": "s_grade",
+      "is_auspicious": true
+    },
+    "66": {
+      "planet": null,
+      "meaning_th": "อารมณ์และความรู้สึก ลุ่มหลงมัวเมา เลขอันตราย",
+      "meaning_en": "Emotions and feelings, intoxicated, dangerous number",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "67": {
+      "planet": null,
+      "meaning_th": "ความผิดหวัง ทุกข์เศร้า ครอบครัวร้าวฉาน ตกต่ำบั้นปลาย",
+      "meaning_en": "Disappointment, sorrow, family discord, decline in later life",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "68": {
+      "planet": null,
+      "meaning_th": "อบายมุข มัวเมา ขาดสติ ถูกหลอกง่าย",
+      "meaning_en": "Vices, intoxication, lacks mindfulness, easily deceived",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "69": {
+      "planet": null,
+      "meaning_th": "อ่อนไหว เพ้อฝัน รอดได้เพราะผู้ใหญ่ค้ำชู",
+      "meaning_en": "Sensitive, dreamy, saved by elder support",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "70": {
+      "planet": null,
+      "meaning_th": "เคราะห์กรรม เลขร้ายมาก ระวังความคิดและการกดดัน",
+      "meaning_en": "Karma, very bad number, beware of thoughts and pressure",
+      "level": "very_bad",
+      "is_auspicious": false
+    },
+    "71": {
+      "planet": null,
+      "meaning_th": "ถูกโจมตี ตกต่ำ ถูกใส่ร้าย ความรักไม่สมหวัง",
+      "meaning_en": "Attacked, decline, slandered, unlucky in love",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "72": {
+      "planet": null,
+      "meaning_th": "ชะตาแข็ง เจริญรุ่งเรืองแต่วุ่นวายเรื่องเพศตรงข้าม ระวังโรคภัย",
+      "meaning_en": "Strong fate, prosperous but troubled by opposite sex, health risk",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "73": {
+      "planet": null,
+      "meaning_th": "ดาวบาปเคราะห์ร้ายแรง ระวังฉับพลัน ล้มละลาย อุบัติเหตุ",
+      "meaning_en": "Severe karmic star, sudden danger, bankruptcy, accidents",
+      "level": "very_bad",
+      "is_auspicious": false
+    },
+    "74": {
+      "planet": null,
+      "meaning_th": "อารมณ์อ่อนไหว สำเร็จระดับหนึ่ง อย่าหูเบา",
+      "meaning_en": "Emotionally sensitive, some success, don't be gullible",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "75": {
+      "planet": null,
+      "meaning_th": "ต้นร้ายปลายดี ลำบากก่อนแล้วรุ่งโรจน์ ไม่เหมาะนักธุรกิจ",
+      "meaning_en": "Bad start good end, hardship then prosperity, not for businessmen",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "76": {
+      "planet": null,
+      "meaning_th": "ความยากลำบาก บ้านแตกสาแหรกขาด ร้างคู่",
+      "meaning_en": "Hardship, broken family, abandoned by partner",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "77": {
+      "planet": null,
+      "meaning_th": "กดดัน ทุกข์สองเท่า โชคร้าย แต่มีอำนาจบารมี",
+      "meaning_en": "Pressure, double suffering, bad luck, but has authority",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "78": {
+      "planet": null,
+      "meaning_th": "ความเดือดร้อน เจอเรื่องร้ายบ่อย ระวังคดีความ",
+      "meaning_en": "Trouble, frequent bad events, lawsuit risk",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "79": {
+      "planet": null,
+      "meaning_th": "ทรัพย์และสุขภาพ ฐานะมั่นคง ได้มรดก สุขภาพดี ลำบากก่อนได้ดี",
+      "meaning_en": "Wealth and health, stable status, inheritance, good health, hardship before success",
+      "level": "good",
+      "is_auspicious": true
+    },
+    "80": {
+      "planet": null,
+      "meaning_th": "อัปมงคล ถูกข่มเหง อำนาจมืดครอบงำ",
+      "meaning_en": "Inauspicious, oppressed, dark power dominance",
+      "level": "very_bad",
+      "is_auspicious": false
+    },
+    "81": {
+      "planet": null,
+      "meaning_th": "พลัดพราก อาภัพ กำพร้า โยกย้ายบ่อย แต่ชะตารุ่งเรือง",
+      "meaning_en": "Separation, unfortunate, orphaned, frequent moves, but fate prospers",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "82": {
+      "planet": null,
+      "meaning_th": "ไม่มั่นคง ว้าเหว่ มีโอกาสไร้คู่หรือได้พ่อหม้าย",
+      "meaning_en": "Unstable, lonely, may be partnerless",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "83": {
+      "planet": null,
+      "meaning_th": "ความผิดพลาด แตกหักเสียหาย ภัยจากคนพาล",
+      "meaning_en": "Mistakes, broken and damaged, danger from villains",
+      "level": "bad",
+      "is_auspicious": false
+    },
+    "84": {
+      "planet": null,
+      "meaning_th": "เลขร้าย มักประสบชะตากรรมไม่ดี คดีความ อุบัติเหตุ",
+      "meaning_en": "Bad number, bad fate, lawsuits, accidents",
+      "level": "very_bad",
+      "is_auspicious": false
+    },
+    "85": {
+      "planet": null,
+      "meaning_th": "ความหลงผิด ลืมตัว เอาแต่ใจ ขาดที่พึ่ง",
+      "meaning_en": "Delusion, forgetful, selfish, no support",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "86": {
+      "planet": null,
+      "meaning_th": "สำเร็จทางโลกแต่พ่ายแพ้ทางโลกีย์",
+      "meaning_en": "Worldly success but defeated by worldly pleasures",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "87": {
+      "planet": null,
+      "meaning_th": "รักลวง มีเสน่ห์แต่อ่อนไหว อมทุกข์ บั้นปลายตกต่ำ",
+      "meaning_en": "False love, charming but sensitive, inner suffering, decline",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "88": {
+      "planet": null,
+      "meaning_th": "สำเร็จรวดเร็วแต่แฝงความร้ายแรง ระวังเรื่องไม่คาดคิดฉับพลัน",
+      "meaning_en": "Quick success but hidden danger, beware of sudden unexpected events",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "89": {
+      "planet": null,
+      "meaning_th": "ความเชื่อ ฉลาด เข้าสังคมเก่ง แต่ระวังความลุ่มหลง",
+      "meaning_en": "Faith, clever, sociable, but beware of obsession",
+      "level": "neutral",
+      "is_auspicious": false
+    },
+    "90": {
+      "planet": null,
+      "meaning_th": "สิ่งศักดิ์สิทธิ์คุ้มครอง แคล้วคลาด ปลอดภัย ก้าวหน้า",
+      "meaning_en": "Sacred protection, narrow escapes, safe, progressive",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "91": {
+      "planet": null,
+      "meaning_th": "สำเร็จจากผู้อุปถัมภ์ ดวงดีมาก (ดีสำหรับชาย)",
+      "meaning_en": "Success from patron, very lucky (good for males)",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "92": {
+      "planet": null,
+      "meaning_th": "อนุรักษ์นิยม ชอบของเก่า ค้นคว้า อ่อนโยน เพื่อนมาก",
+      "meaning_en": "Conservative, antique lover, researcher, gentle, many friends",
+      "level": "good",
+      "is_auspicious": true
+    },
+    "93": {
+      "planet": null,
+      "meaning_th": "ความสำเร็จที่รุ่มร้อน แข็งกร้าว เอาแต่ใจ เกิดอุบัติเหตุบ่อย",
+      "meaning_en": "Hot success, aggressive, selfish, frequent accidents",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "94": {
+      "planet": null,
+      "meaning_th": "หลงงมงาย ชีวิตมีอุปสรรคมาก ต้องฝ่าฟันเสมอ",
+      "meaning_en": "Superstitious, many obstacles, constant struggle",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "95": {
+      "planet": null,
+      "meaning_th": "ขนบธรรมเนียม โชคลาภ ความสำเร็จรุ่งเรือง สิ่งศักดิ์สิทธิ์คุ้มครอง",
+      "meaning_en": "Tradition, fortune, prosperous success, sacred protection",
+      "level": "s_grade",
+      "is_auspicious": true
+    },
+    "96": {
+      "planet": null,
+      "meaning_th": "พลังที่อ่อนแอ ใจอ่อน ระวังคบคนผิด",
+      "meaning_en": "Weak energy, soft-hearted, beware of bad company",
+      "level": "caution",
+      "is_auspicious": false
+    },
+    "97": {
+      "planet": null,
+      "meaning_th": "ความรุ่งโรจน์ สำเร็จร่ำรวย เคารพนับถือ แต่ระวังอุบัติเหตุ",
+      "meaning_en": "Prosperity, wealthy success, respected, but accident risk",
+      "level": "auspicious",
+      "is_auspicious": true
+    },
+    "98": {
+      "planet": null,
+      "meaning_th": "ลาภลอย สำเร็จดี พวกพ้องมาก ระวังการคบคน",
+      "meaning_en": "Windfall, good success, many associates, beware of associations",
+      "level": "good",
+      "is_auspicious": true
+    },
+    "99": {
+      "planet": null,
+      "meaning_th": "หยั่งรู้ มีญาณพิเศษ พลังจิต พระคุ้มครอง เจริญรุ่งเรือง",
+      "meaning_en": "Intuitive, psychic, spiritual power, divine protection, prosperous",
+      "level": "s_grade",
+      "is_auspicious": true
+    },
+    "100": {
+      "planet": null,
+      "meaning_th": "สมดุลจักรวาล โชคดี รุ่งเรืองเฟื่องฟู สมบูรณ์ทุกอย่าง",
+      "meaning_en": "Universal balance, lucky, flourishing, complete in everything",
+      "level": "perfect",
+      "is_auspicious": true
+    }
+  }
+}

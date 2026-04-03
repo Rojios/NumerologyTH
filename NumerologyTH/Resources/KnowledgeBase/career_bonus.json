@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "version": "1.0",
+    "source": "Applied Numerology Analyst SKILL.md — Mode A Step 4",
+    "description": "Career bonus map for The Closer pair. If the last 2 digits match the user's career/field, +100 pts bonus.",
+    "bonus_points": 100,
+    "rule": "Must ask Boss's career before applying bonus. Never assume."
+  },
+  "bonuses": {
+    "50": {
+      "careers_th": ["นักบริหาร", "งานต่างประเทศ", "AI"],
+      "careers_en": ["Executive", "International", "AI"],
+      "description_th": "เหมาะกับนักบริหาร งานต่างประเทศ และสาย AI"
+    },
+    "45": {
+      "careers_th": ["นักคิด", "นักบริหาร", "การเงิน"],
+      "careers_en": ["Thinker", "Executive", "Finance"],
+      "description_th": "เหมาะกับนักคิด นักบริหาร และสายการเงิน"
+    },
+    "54": {
+      "careers_th": ["นักคิด", "นักบริหาร", "การเงิน"],
+      "careers_en": ["Thinker", "Executive", "Finance"],
+      "description_th": "เหมาะกับนักคิด นักบริหาร และสายการเงิน"
+    },
+    "55": {
+      "careers_th": ["สายเมตตา", "HR", "ที่ปรึกษา"],
+      "careers_en": ["Compassion", "HR", "Consultant"],
+      "description_th": "เหมาะกับสายเมตตา HR และที่ปรึกษา"
+    },
+    "56": {
+      "careers_th": ["สายศิลป์", "creative", "การตลาด"],
+      "careers_en": ["Art", "Creative", "Marketing"],
+      "description_th": "เหมาะกับสายศิลป์ creative และการตลาด"
+    },
+    "65": {
+      "careers_th": ["สายศิลป์", "creative", "การตลาด"],
+      "careers_en": ["Art", "Creative", "Marketing"],
+      "description_th": "เหมาะกับสายศิลป์ creative และการตลาด"
+    },
+    "99": {
+      "careers_th": ["สายจิตวิญญาณ", "โค้ช", "ผู้นำ"],
+      "careers_en": ["Spiritual", "Coach", "Leader"],
+      "description_th": "เหมาะกับสายจิตวิญญาณ โค้ช และผู้นำ"
+    }
+  }
+}
