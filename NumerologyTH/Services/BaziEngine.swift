@@ -2,21 +2,21 @@ import Foundation
 
 struct BaziResult {
     let birthDate: Date
+    let birthTime: Date?
     let dayElement: AnalysisEngine.ChineseElement
     let monthElement: AnalysisEngine.ChineseElement
     let yearElement: AnalysisEngine.ChineseElement
+    let hourElement: AnalysisEngine.ChineseElement?
     let dominantElement: AnalysisEngine.ChineseElement
     let counts: [(element: AnalysisEngine.ChineseElement, count: Int)]
     let description: String
+    let hasFourPillars: Bool
 }
 
 /// Lo Shu / ธาตุห้า — วิเคราะห์ธาตุประจำตัวจากวันเกิด
 enum BaziEngine {
 
     // MARK: - Heavenly Stems (天干) — 10 วงจร
-    // จับ → ดิน, อิ → ดิน, เปี่ย → ไม้, อึด → ไม้,
-    // มู่ → ไฟ, กี่ → ไฟ, เกง → ทอง, ซิน → ทอง,
-    // เยิ่น → น้ำ, กุ่ย → น้ำ
     private static let stemElements: [AnalysisEngine.ChineseElement] = [
         .wood, .wood,   // 甲乙
         .fire, .fire,   // 丙丁
@@ -26,63 +26,61 @@ enum BaziEngine {
     ]
 
     // MARK: - Earthly Branches (地支) — 12 วงจร
-    // ชวด=น้ำ, ฉลู=ดิน, ขาล=ไม้, เถาะ=ไม้,
-    // มะโรง=ดิน, มะเส็ง=ไฟ, มะเมีย=ไฟ, มะแม=ดิน,
-    // วอก=ทอง, ระกา=ทอง, จอ=ดิน, กุน=น้ำ
     private static let branchElements: [AnalysisEngine.ChineseElement] = [
         .water, .earth, .wood, .wood,
         .earth, .fire, .fire, .earth,
         .metal, .metal, .earth, .water
     ]
 
-    /// คำนวณ Stem index จากปี (จีน: 天干 = year % 10)
     private static func stemIndex(year: Int) -> Int {
-        // ปี ค.ศ. stem cycle: 4=甲(wood), 5=乙(wood), 6=丙(fire) ...
         return (year + 6) % 10
     }
 
-    /// คำนวณ Branch index จากปี (จีน: 地支 = year % 12)
-    private static func branchIndex(year: Int) -> Int {
-        // ปี ค.ศ. branch cycle: 4=子(rat/water)
-        return (year + 8) % 12
-    }
-
-    /// คำนวณธาตุจากวัน — ใช้ stem ของ day pillar
     private static func dayElement(from date: Date) -> AnalysisEngine.ChineseElement {
-        // Julian Day Number → Day Stem
         let calendar = Calendar(identifier: .gregorian)
         let comps = calendar.dateComponents([.year, .month, .day], from: date)
         let y = comps.year!, m = comps.month!, d = comps.day!
 
-        // JDN formula (สำหรับ Gregorian)
         let a = (14 - m) / 12
         let yAdj = y + 4800 - a
         let mAdj = m + 12 * a - 3
         let jdn = d + (153 * mAdj + 2) / 5 + 365 * yAdj + yAdj / 4 - yAdj / 100 + yAdj / 400 - 32045
 
-        // Day stem cycle: JDN mod 10 → stem index
-        // Day 0 (甲子) = JDN offset
         let dayStemIdx = (jdn + 9) % 10
         return stemElements[dayStemIdx]
     }
 
-    static func analyze(birthDate: Date) -> BaziResult {
+    /// Hour pillar: แปลงชั่วโมงเป็น Earthly Branch (2 ชม. = 1 ยาม)
+    /// 23-01=子(น้ำ), 01-03=丑(ดิน), 03-05=寅(ไม้), 05-07=卯(ไม้),
+    /// 07-09=辰(ดิน), 09-11=巳(ไฟ), 11-13=午(ไฟ), 13-15=未(ดิน),
+    /// 15-17=申(ทอง), 17-19=酉(ทอง), 19-21=戌(ดิน), 21-23=亥(น้ำ)
+    private static func hourElement(from time: Date) -> AnalysisEngine.ChineseElement {
+        let calendar = Calendar(identifier: .gregorian)
+        let hour = calendar.component(.hour, from: time)
+        // แปลงชั่วโมงเป็น branch index (0-11)
+        let branchIdx = ((hour + 1) % 24) / 2
+        return branchElements[branchIdx]
+    }
+
+    static func analyze(birthDate: Date, birthTime: Date? = nil) -> BaziResult {
         let calendar = Calendar(identifier: .gregorian)
         let comps = calendar.dateComponents([.year, .month, .day], from: birthDate)
         let year = comps.year!
+        let month = comps.month!
 
         // Year pillar
         let yearStem = stemIndex(year: year)
         let yearEl = stemElements[yearStem]
 
-        // Month pillar (simplified: ใช้ branch ของเดือน)
-        let month = comps.month!
-        // เดือน 1(ม.ค.)=寅(ขาล=ไม้), offset +2
+        // Month pillar
         let monthBranchIdx = (month + 1) % 12
         let monthEl = branchElements[monthBranchIdx]
 
         // Day pillar
         let dayEl = dayElement(from: birthDate)
+
+        // Hour pillar (optional)
+        let hourEl = birthTime.map { hourElement(from: $0) }
 
         // นับรวมธาตุ
         var map: [AnalysisEngine.ChineseElement: Int] = [:]
@@ -90,6 +88,9 @@ enum BaziEngine {
         map[yearEl, default: 0] += 1
         map[monthEl, default: 0] += 1
         map[dayEl, default: 0] += 1
+        if let hourEl {
+            map[hourEl, default: 0] += 1
+        }
 
         let sorted = map.sorted { $0.value > $1.value }
             .map { (element: $0.key, count: $0.value) }
@@ -99,12 +100,15 @@ enum BaziEngine {
 
         return BaziResult(
             birthDate: birthDate,
+            birthTime: birthTime,
             dayElement: dayEl,
             monthElement: monthEl,
             yearElement: yearEl,
+            hourElement: hourEl,
             dominantElement: dominant,
             counts: sorted,
-            description: desc
+            description: desc,
+            hasFourPillars: birthTime != nil
         )
     }
 

@@ -34,16 +34,26 @@ struct BaziResultView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
 
-                // 3 เสาธาตุ
+                // เสาธาตุ
                 VStack(spacing: 12) {
-                    Text("เสาธาตุทั้ง 3")
+                    Text(result.hasFourPillars ? "เสาธาตุทั้ง 4" : "เสาธาตุทั้ง 3")
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                    HStack(spacing: 16) {
+                    if !result.hasFourPillars {
+                        Text("ใส่เวลาเกิดเพื่อเพิ่มเสาที่ 4 (ยาม)")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+
+                    HStack(spacing: 12) {
                         pillarCard(title: "ปี", element: result.yearElement)
                         pillarCard(title: "เดือน", element: result.monthElement)
                         pillarCard(title: "วัน", element: result.dayElement)
+                        if let hourEl = result.hourElement {
+                            pillarCard(title: "ยาม", element: hourEl)
+                        }
                     }
                 }
                 .padding()
@@ -67,7 +77,7 @@ struct BaziResultView: View {
                             GeometryReader { geo in
                                 RoundedRectangle(cornerRadius: 4)
                                     .fill(elementColor(item.element))
-                                    .frame(width: geo.size.width * CGFloat(item.count) / 3.0)
+                                    .frame(width: geo.size.width * CGFloat(item.count) / CGFloat(result.hasFourPillars ? 4 : 3))
                             }
                             .frame(height: 20)
 
@@ -152,9 +162,11 @@ struct BaziResultView: View {
     NavigationStack {
         BaziResultView(result: BaziResult(
             birthDate: Date(),
+            birthTime: nil,
             dayElement: .fire,
             monthElement: .wood,
             yearElement: .water,
+            hourElement: nil,
             dominantElement: .fire,
             counts: [
                 (element: .fire, count: 2),
@@ -163,7 +175,8 @@ struct BaziResultView: View {
                 (element: .earth, count: 0),
                 (element: .metal, count: 0)
             ],
-            description: "คุณเป็นคนธาตุไฟ — กระตือรือร้น มีเสน่ห์"
+            description: "คุณเป็นคนธาตุไฟ — กระตือรือร้น มีเสน่ห์",
+            hasFourPillars: false
         ))
     }
 }

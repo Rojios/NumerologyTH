@@ -184,9 +184,9 @@ struct ResultView: View {
                         Image(systemName: "sparkles")
                             .font(.title3)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("เปิดรหัสธาตุประจำตัว")
+                            Text("ตรวจสอบความสมพงศ์ของดิถีธาตุประจำตัว")
                                 .font(.subheadline.bold())
-                            Text("ดูว่าหมายเลขนี้สมพงศ์กับธาตุของคุณไหม")
+                            Text("เปิดรหัสธาตุประจำตัว")
                                 .font(.caption)
                                 .opacity(0.85)
                         }

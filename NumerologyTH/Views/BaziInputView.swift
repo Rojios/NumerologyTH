@@ -2,6 +2,8 @@ import SwiftUI
 
 struct BaziInputView: View {
     @State private var birthDate = Date()
+    @State private var includeBirthTime = false
+    @State private var birthTime = Date()
     @State private var showResult = false
     @State private var baziResult: BaziResult?
 
@@ -40,8 +42,33 @@ struct BaziInputView: View {
                     .labelsHidden()
                     .environment(\.locale, Locale(identifier: "th_TH"))
 
+                    // เวลาเกิด (optional)
+                    VStack(spacing: 8) {
+                        Toggle(isOn: $includeBirthTime) {
+                            Text("ใส่เวลาเกิด")
+                                .font(.subheadline)
+                        }
+                        .tint(Color(red: 0.85, green: 0.55, blue: 0.40))
+
+                        if includeBirthTime {
+                            DatePicker(
+                                "เวลาเกิด",
+                                selection: $birthTime,
+                                displayedComponents: .hourAndMinute
+                            )
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                            .frame(height: 100)
+                        }
+
+                        Text("การใส่เวลาเกิดจะคำนวณจากรหัสธาตุ 4 เสาหลัก จะเพิ่มความแม่นยำของรหัสธาตุ")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+
                     Button {
-                        baziResult = BaziEngine.analyze(birthDate: birthDate)
+                        let time: Date? = includeBirthTime ? birthTime : nil
+                        baziResult = BaziEngine.analyze(birthDate: birthDate, birthTime: time)
                         showResult = true
                     } label: {
                         HStack {
