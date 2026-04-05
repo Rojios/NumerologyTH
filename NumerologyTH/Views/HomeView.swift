@@ -25,7 +25,7 @@ struct HomeView: View {
                             Image(systemName: "phone.fill")
                                 .font(.title2)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("ทำนายหมายเลขมือถือ")
+                                Text("เปิดความลับหมายเลขมือถือ")
                                     .font(.headline)
                                 Text("วิเคราะห์คู่เลข คะแนน 1,000")
                                     .font(.caption)
@@ -39,7 +39,7 @@ struct HomeView: View {
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(Color(red: 0.68, green: 0.82, blue: 0.96))
+                                .fill(Color(red: 1.0, green: 0.75, blue: 0.82))
                         )
                     }
                 }
