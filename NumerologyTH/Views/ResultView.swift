@@ -227,9 +227,15 @@ struct ResultView: View {
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color(red: 1.0, green: 0.97, blue: 0.92))
+                                .fill(pinkPastel)
                         )
                     }
+
+                    // แนะนำ
+                    Text("หมายเลขมงคลจะยิ่งส่งเสริมเมื่อมีรหัสธาตุชีวิตประจำตัวที่สมพงศ์กับรหัสธาตุเลขหมาย")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
 
                     // ลิงก์ตรวจสมพงศ์
                     NavigationLink {
@@ -238,8 +244,13 @@ struct ResultView: View {
                         HStack(spacing: 8) {
                             Image(systemName: "sparkles")
                                 .font(.title3)
-                            Text("เปิดรหัสธาตุประจำตัว เพื่อดูความสมพงศ์กับเลขหมาย")
-                                .font(.subheadline.bold())
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("เปิดรหัสธาตุประจำตัว")
+                                    .font(.subheadline.bold())
+                                Text("เพื่อดูความสมพงศ์กับเลขหมาย")
+                                    .font(.caption)
+                                    .opacity(0.85)
+                            }
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .font(.caption.bold())
