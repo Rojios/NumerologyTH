@@ -121,26 +121,25 @@ struct ResultView: View {
 
                 // รายละเอียดคู่เลข — ยุบ/ขยาย
                 VStack(spacing: 0) {
-                    Button {
+                    HStack {
+                        Text("รายละเอียดแต่ละคู่เลข")
+                            .font(.headline)
+                        Spacer()
+                        Image(systemName: showPairDetails ? "chevron.up" : "chevron.down")
+                            .font(.caption.bold())
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(purplePastel.opacity(0.5))
+                    )
+                    .contentShape(Rectangle())
+                    .onTapGesture {
                         withAnimation(.easeInOut(duration: 0.25)) {
                             showPairDetails.toggle()
                         }
-                    } label: {
-                        HStack {
-                            Text("รายละเอียดแต่ละคู่เลข")
-                                .font(.headline)
-                            Spacer()
-                            Image(systemName: showPairDetails ? "chevron.up" : "chevron.down")
-                                .font(.caption.bold())
-                                .foregroundStyle(.secondary)
-                        }
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(purplePastel.opacity(0.5))
-                        )
                     }
-                    .buttonStyle(.plain)
 
                     if showPairDetails {
                         VStack(spacing: 8) {
