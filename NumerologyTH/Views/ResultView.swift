@@ -114,6 +114,32 @@ struct ResultView: View {
                     RoundedRectangle(cornerRadius: 12)
                         .fill(.ultraThinMaterial)
                 )
+
+                // ลิงก์ไป Bazi — ใต้ตารางธาตุเด่น
+                NavigationLink {
+                    BaziInputView(phoneDominantElement: elements.dominant)
+                } label: {
+                    HStack(spacing: 8) {
+                        Image(systemName: "sparkles")
+                            .font(.title3)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("ตรวจสอบความสมพงศ์ของดิถีธาตุประจำตัว")
+                                .font(.subheadline.bold())
+                            Text("เปิดรหัสธาตุประจำตัว")
+                                .font(.caption)
+                                .opacity(0.85)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.caption.bold())
+                    }
+                    .foregroundStyle(.white)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
+                    )
+                }
             }
 
             // Meaning (for Mode B/D)
@@ -175,33 +201,6 @@ struct ResultView: View {
                 }
             }
 
-            // ลิงก์ไป Bazi
-            if mode == .phone {
-                NavigationLink {
-                    BaziInputView(phoneDominantElement: elements?.dominant)
-                } label: {
-                    HStack(spacing: 8) {
-                        Image(systemName: "sparkles")
-                            .font(.title3)
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("ตรวจสอบความสมพงศ์ของดิถีธาตุประจำตัว")
-                                .font(.subheadline.bold())
-                            Text("เปิดรหัสธาตุประจำตัว")
-                                .font(.caption)
-                                .opacity(0.85)
-                        }
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.caption.bold())
-                    }
-                    .foregroundStyle(.white)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
-                    )
-                }
-            }
         }
     }
 }

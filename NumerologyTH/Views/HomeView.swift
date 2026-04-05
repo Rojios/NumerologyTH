@@ -2,11 +2,9 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var navigateToPhone = false
-    @State private var navigateToBazi = false
 
     var body: some View {
         ZStack {
-            // Background เดียวกับ PhoneInputView
             GeometryReader { geo in
                 Image("HomeBG")
                     .resizable()
@@ -16,12 +14,10 @@ struct HomeView: View {
             }
             .ignoresSafeArea()
 
-            // 2 แถบเลือกด้านล่าง
             VStack {
                 Spacer()
 
                 VStack(spacing: 12) {
-                    // แถบ 1: ทำนายหมายเลขมือถือ
                     Button {
                         navigateToPhone = true
                     } label: {
@@ -43,33 +39,7 @@ struct HomeView: View {
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.appLavender)
-                        )
-                    }
-
-                    // แถบ 2: เปิดรหัสธาตุประจำตัว
-                    Button {
-                        navigateToBazi = true
-                    } label: {
-                        HStack(spacing: 12) {
-                            Image(systemName: "sparkles")
-                                .font(.title2)
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("เปิดรหัสธาตุประจำตัว")
-                                    .font(.headline)
-                                Text("วิเคราะห์ธาตุห้าจากวันเกิด")
-                                    .font(.caption)
-                                    .opacity(0.8)
-                            }
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .font(.caption.bold())
-                        }
-                        .foregroundStyle(.white)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
+                                .fill(Color(red: 0.68, green: 0.82, blue: 0.96))
                         )
                     }
                 }
@@ -85,9 +55,6 @@ struct HomeView: View {
         .navigationBarHidden(true)
         .navigationDestination(isPresented: $navigateToPhone) {
             PhoneInputView()
-        }
-        .navigationDestination(isPresented: $navigateToBazi) {
-            BaziInputView()
         }
     }
 }
