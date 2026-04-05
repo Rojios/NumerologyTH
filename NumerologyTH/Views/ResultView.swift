@@ -12,21 +12,6 @@ struct ResultView: View {
     let warnings: [String]
     var elements: AnalysisEngine.ElementResult?
 
-    @State private var showPaywall = false
-
-    @ViewBuilder
-    private func elementIcon(_ element: AnalysisEngine.ChineseElement, size: CGFloat) -> some View {
-        if let imgName = element.imageName {
-            Image(imgName)
-                .resizable()
-                .scaledToFit()
-                .frame(width: size, height: size)
-        } else {
-            Text(element.emoji)
-                .font(.system(size: size * 0.8))
-        }
-    }
-
     /// คำประเมินตามคะแนน
     private var verdict: (text: String, grade: String, color: Color) {
         switch totalScore {
@@ -47,21 +32,31 @@ struct ResultView: View {
         pairResults.dropFirst().sorted { $0.score > $1.score }
     }
 
+    /// ความหมายธาตุจาก KB
+    private func elementMeaning(for element: AnalysisEngine.ChineseElement) -> ElementMeaning? {
+        let key: String = switch element {
+        case .water: "water"
+        case .fire:  "fire"
+        case .wood:  "wood"
+        case .earth: "earth"
+        case .metal: "metal"
+        }
+        return KnowledgeBaseLoader.shared.elementMeanings[key]
+    }
+
     var body: some View {
         VStack(spacing: 16) {
-            // Score header
+            // MARK: - Score header
             VStack(spacing: 8) {
                 if mode == .phone {
                     ScoreGaugeView(score: totalScore, maxScore: 1000, grade: verdict.grade)
                 }
 
                 VStack(spacing: 2) {
-                    // คำประเมินตัวใหญ่
                     Text(verdict.text)
                         .font(.title2.bold())
                         .foregroundStyle(totalScore >= 400 ? .green : .red)
 
-                    // คะแนนตัวเล็ก
                     Text("\(totalScore)/1,000")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -74,75 +69,7 @@ struct ResultView: View {
                     .fill(.ultraThinMaterial)
             )
 
-            // ธาตุห้า
-            if let elements, mode == .phone {
-                VStack(spacing: 8) {
-                    HStack {
-                        Text("ธาตุเด่น")
-                            .font(.headline)
-                        Spacer()
-                        HStack(spacing: 6) {
-                            elementIcon(elements.dominant, size: 28)
-                            Text(elements.dominant.name)
-                                .font(.title3.bold())
-                        }
-                    }
-
-                    // แถบสัดส่วนธาตุ
-                    HStack(spacing: 4) {
-                        ForEach(elements.counts, id: \.element) { item in
-                            if item.count > 0 {
-                                VStack(spacing: 2) {
-                                    elementIcon(item.element, size: 24)
-                                    Text("\(item.count)")
-                                        .font(.caption2.bold())
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 6)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(item.element == elements.dominant
-                                              ? Color.appLavender.opacity(0.3)
-                                              : Color.gray.opacity(0.08))
-                                )
-                            }
-                        }
-                    }
-                }
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(.ultraThinMaterial)
-                )
-
-                // ลิงก์ไป Bazi — ใต้ตารางธาตุเด่น
-                NavigationLink {
-                    BaziInputView(phoneDominantElement: elements.dominant)
-                } label: {
-                    HStack(spacing: 8) {
-                        Image(systemName: "sparkles")
-                            .font(.title3)
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("ตรวจสอบความสมพงศ์ของดิถีธาตุประจำตัว")
-                                .font(.subheadline.bold())
-                            Text("เปิดรหัสธาตุประจำตัว")
-                                .font(.caption)
-                                .opacity(0.85)
-                        }
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.caption.bold())
-                    }
-                    .foregroundStyle(.white)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
-                    )
-                }
-            }
-
-            // Meaning (for Mode B/D)
+            // MARK: - Meaning (for Mode B/D)
             if let meaning, !meaning.isEmpty {
                 Text(meaning)
                     .font(.body)
@@ -154,7 +81,7 @@ struct ResultView: View {
                     )
             }
 
-            // Warnings
+            // MARK: - Warnings
             ForEach(warnings, id: \.self) { warning in
                 HStack {
                     Image(systemName: "exclamationmark.triangle.fill")
@@ -171,10 +98,10 @@ struct ResultView: View {
                 )
             }
 
-            // Pair results
+            // MARK: - Pair results
             if !pairResults.isEmpty && mode == .phone {
                 VStack(alignment: .leading, spacing: 8) {
-                    // ผลรวม (ตัวแรก) — พื้นชมพูพาสเทล
+                    // ผลรวม — พื้นชมพูพาสเทล
                     if let sumResult = pairResults.first, sumResult.pair.hasPrefix("ผลรวม") {
                         VStack(alignment: .leading, spacing: 6) {
                             Text("🔮 ความหมายของผู้ถือครองหมายเลขนี้")
@@ -194,13 +121,100 @@ struct ResultView: View {
                         .font(.headline)
                         .padding(.top, 4)
 
-                    // เรียงคะแนนสูงก่อน — พื้นม่วงพาสเทล
                     ForEach(Array(sortedPairs.enumerated()), id: \.offset) { _, pair in
                         PairRowView(pair: pair, isLocked: false, bgColor: purplePastel)
                     }
                 }
             }
 
+            // MARK: - ธาตุห้า (ท้ายสุด)
+            if let elements, mode == .phone {
+                VStack(alignment: .leading, spacing: 16) {
+
+                    // สรุป
+                    Text("หมายเลขที่ดีต้องมีรหัสธาตุที่ส่งเสริมกับรหัสธาตุประจำตัวของผู้ใช้")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    // ธาตุเด่น
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("หมายเลขนี้มีธาตุเด่นคือ ธาตุ\(elements.dominant.name)")
+                            .font(.headline)
+
+                        // ตารางสัดส่วนธาตุ
+                        VStack(spacing: 6) {
+                            ForEach(elements.counts, id: \.element) { item in
+                                if item.count > 0 {
+                                    HStack {
+                                        Text(item.element.name)
+                                            .font(.subheadline)
+                                            .frame(width: 36, alignment: .leading)
+
+                                        GeometryReader { geo in
+                                            RoundedRectangle(cornerRadius: 4)
+                                                .fill(item.element == elements.dominant
+                                                      ? Color.appLavender
+                                                      : Color.gray.opacity(0.3))
+                                                .frame(width: geo.size.width * CGFloat(item.count) / 10.0)
+                                        }
+                                        .frame(height: 16)
+
+                                        Text("\(item.count)")
+                                            .font(.caption.bold())
+                                            .frame(width: 20)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(.ultraThinMaterial)
+                    )
+
+                    // ความหมายธาตุ — บรรยายคนใช้มือถือนี้
+                    if let em = elementMeaning(for: elements.dominant) {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("คนที่ใช้หมายเลขธาตุ\(elements.dominant.name)")
+                                .font(.headline)
+
+                            Text(em.personality)
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .lineSpacing(4)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(red: 1.0, green: 0.97, blue: 0.92))
+                        )
+                    }
+
+                    // ลิงก์ตรวจสมพงศ์
+                    NavigationLink {
+                        BaziInputView(phoneDominantElement: elements.dominant)
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "sparkles")
+                                .font(.title3)
+                            Text("ดูว่าหมายเลขนี้เสริมรหัสธาตุประจำตัวไหม")
+                                .font(.subheadline.bold())
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption.bold())
+                        }
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
+                        )
+                    }
+                }
+            }
         }
     }
 }
