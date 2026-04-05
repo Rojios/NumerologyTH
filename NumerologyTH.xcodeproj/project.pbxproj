@@ -40,6 +40,7 @@
 		BA21BA21BA21BA21BA21BA21 /* BaziEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */; };
 		BA31BA31BA31BA31BA31BA31 /* BaziInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */; };
 		BA41BA41BA41BA41BA41BA41 /* BaziResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */; };
+		CP11CP11CP11CP11CP11CP11 /* CompatibilityPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CP12CP12CP12CP12CP12CP12 /* CompatibilityPreviewView.swift */; };
 		WX11WX11WX11WX11WX11WX11 /* WuXingCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = WX12WX12WX12WX12WX12WX12 /* WuXingCompatibility.swift */; };
 		ABAB1234ABAB1234ABAB1234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCD5678CDCD5678CDCD5678 /* Assets.xcassets */; };
 		A1A1A1A1A1A1A1A1A1A1A1A1 /* pair_grades.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */; };
@@ -98,6 +99,7 @@
 		BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziEngine.swift; sourceTree = "<group>"; };
 		BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziInputView.swift; sourceTree = "<group>"; };
 		BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziResultView.swift; sourceTree = "<group>"; };
+		CP12CP12CP12CP12CP12CP12 /* CompatibilityPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityPreviewView.swift; sourceTree = "<group>"; };
 		WX12WX12WX12WX12WX12WX12 /* WuXingCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WuXingCompatibility.swift; sourceTree = "<group>"; };
 		1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pair_grades.json; sourceTree = "<group>"; };
 		2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sum_scores.json; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */,
 				BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */,
+				CP12CP12CP12CP12CP12CP12 /* CompatibilityPreviewView.swift */,
 				825D73622AC554B083DA67A4 /* HistoryView.swift */,
 				DA5BFE72A3FD144EC5545050 /* HomeView.swift */,
 				50C594C4EF58D075872C010E /* NameInputView.swift */,
@@ -361,6 +364,7 @@
 				BA21BA21BA21BA21BA21BA21 /* BaziEngine.swift in Sources */,
 				BA31BA31BA31BA31BA31BA31 /* BaziInputView.swift in Sources */,
 				BA41BA41BA41BA41BA41BA41 /* BaziResultView.swift in Sources */,
+				CP11CP11CP11CP11CP11CP11 /* CompatibilityPreviewView.swift in Sources */,
 				63E8EF15DC26DC7EA9878A4F /* Color+Theme.swift in Sources */,
 				2994C2B31401B39C088983A0 /* ContentView.swift in Sources */,
 				A9B2D99435C6379191E72540 /* GradeTagView.swift in Sources */,
