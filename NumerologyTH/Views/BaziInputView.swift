@@ -5,7 +5,6 @@ struct BaziInputView: View {
     var phoneDominantElement: AnalysisEngine.ChineseElement?
 
     @State private var birthDate = Date()
-    @State private var includeBirthTime = false
     @State private var birthTime = Date()
     @State private var showResult = false
     @State private var baziResult: BaziResult?
@@ -45,33 +44,27 @@ struct BaziInputView: View {
                     .labelsHidden()
                     .environment(\.locale, Locale(identifier: "th_TH"))
 
-                    // เวลาเกิด (optional)
-                    VStack(spacing: 8) {
-                        Toggle(isOn: $includeBirthTime) {
-                            Text("ใส่เวลาเกิด")
-                                .font(.subheadline)
-                        }
-                        .tint(Color(red: 0.85, green: 0.55, blue: 0.40))
+                    // เวลาเกิด (บังคับ)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("เวลาเกิด")
+                            .font(.subheadline.bold())
 
-                        if includeBirthTime {
-                            DatePicker(
-                                "เวลาเกิด",
-                                selection: $birthTime,
-                                displayedComponents: .hourAndMinute
-                            )
-                            .datePickerStyle(.wheel)
-                            .labelsHidden()
-                            .frame(height: 100)
-                        }
+                        DatePicker(
+                            "เวลาเกิด",
+                            selection: $birthTime,
+                            displayedComponents: .hourAndMinute
+                        )
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                        .frame(height: 100)
 
-                        Text("การใส่เวลาเกิดจะคำนวณจากรหัสธาตุ 4 เสาหลัก จะเพิ่มความแม่นยำของรหัสธาตุ")
+                        Text("จำเป็นต้องรู้เวลาเกิดเพื่อความแม่นยำ ใช้คำนวณรหัสธาตุ 4 เสาหลัก")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
 
                     Button {
-                        let time: Date? = includeBirthTime ? birthTime : nil
-                        baziResult = BaziEngine.analyze(birthDate: birthDate, birthTime: time)
+                        baziResult = BaziEngine.analyze(birthDate: birthDate, birthTime: birthTime)
                         showResult = true
                     } label: {
                         HStack {
