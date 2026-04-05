@@ -220,7 +220,7 @@ struct ResultView: View {
 
                             Text(em.personality)
                                 .font(.subheadline)
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(.primary)
                                 .lineSpacing(4)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
@@ -232,7 +232,7 @@ struct ResultView: View {
                     }
 
                     // แนะนำ
-                    Text("หมายเลขมงคลจะยิ่งส่งเสริมเมื่อมีรหัสธาตุชีวิตประจำตัวที่สมพงศ์กับรหัสธาตุเลขหมาย")
+                    Text("หมายเลขมงคลจะยิ่งส่งเสริมเจ้าของ เมื่อมีรหัสธาตุชีวิตประจำตัวเจ้าของ และรหัสธาตุประจำเลขหมายที่สมพงศ์กัน")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -245,9 +245,9 @@ struct ResultView: View {
                             Image(systemName: "sparkles")
                                 .font(.title3)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("เปิดรหัสธาตุประจำตัว")
+                                Text("เปิดรหัสธาตุประจำตัวคุณ")
                                     .font(.subheadline.bold())
-                                Text("เพื่อดูความสมพงศ์กับเลขหมาย")
+                                Text("เพื่อดูความเข้ากันได้ระหว่างคุณกับเลขหมาย")
                                     .font(.caption)
                                     .opacity(0.85)
                             }
