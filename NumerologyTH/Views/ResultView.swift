@@ -175,23 +175,32 @@ struct ResultView: View {
                 }
             }
 
-            // เลี้ยงกาแฟ
-            Button {
-                showPaywall = true
-            } label: {
-                HStack {
-                    Text("☕")
-                    Text("เลี้ยงกาแฟ ฿99 — สนับสนุนผู้พัฒนา")
+            // ลิงก์ไป Bazi
+            if mode == .phone {
+                NavigationLink {
+                    BaziInputView()
+                } label: {
+                    HStack(spacing: 8) {
+                        Image(systemName: "sparkles")
+                            .font(.title3)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("เปิดรหัสธาตุประจำตัว")
+                                .font(.subheadline.bold())
+                            Text("ดูว่าหมายเลขนี้สมพงศ์กับธาตุของคุณไหม")
+                                .font(.caption)
+                                .opacity(0.85)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.caption.bold())
+                    }
+                    .foregroundStyle(.white)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
+                    )
                 }
-                .font(.subheadline.bold())
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.orange)
-                .foregroundStyle(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-            }
-            .sheet(isPresented: $showPaywall) {
-                PaywallView()
             }
         }
     }
