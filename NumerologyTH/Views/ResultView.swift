@@ -122,17 +122,18 @@ struct ResultView: View {
                 // รายละเอียดคู่เลข — ยุบ/ขยาย
                 VStack(spacing: 0) {
                     HStack {
-                        Text("รายละเอียดแต่ละคู่เลข")
-                            .font(.headline)
+                        Text("กดขยายเพื่อดูรายละเอียดความหมายแต่ละคู่เลข")
+                            .font(.subheadline.bold())
                         Spacer()
                         Image(systemName: showPairDetails ? "chevron.up" : "chevron.down")
                             .font(.caption.bold())
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.white.opacity(0.7))
                     }
+                    .foregroundStyle(.white)
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(purplePastel.opacity(0.5))
+                            .fill(Color(red: 0.65, green: 0.58, blue: 0.82))
                     )
                     .contentShape(Rectangle())
                     .onTapGesture {
