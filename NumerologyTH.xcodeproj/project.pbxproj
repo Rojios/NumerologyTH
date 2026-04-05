@@ -40,6 +40,7 @@
 		BA21BA21BA21BA21BA21BA21 /* BaziEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */; };
 		BA31BA31BA31BA31BA31BA31 /* BaziInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */; };
 		BA41BA41BA41BA41BA41BA41 /* BaziResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */; };
+		WX11WX11WX11WX11WX11WX11 /* WuXingCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = WX12WX12WX12WX12WX12WX12 /* WuXingCompatibility.swift */; };
 		ABAB1234ABAB1234ABAB1234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCD5678CDCD5678CDCD5678 /* Assets.xcassets */; };
 		A1A1A1A1A1A1A1A1A1A1A1A1 /* pair_grades.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */; };
 		B2B2B2B2B2B2B2B2B2B2B2B2 /* sum_scores.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */; };
@@ -96,6 +97,7 @@
 		BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziEngine.swift; sourceTree = "<group>"; };
 		BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziInputView.swift; sourceTree = "<group>"; };
 		BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziResultView.swift; sourceTree = "<group>"; };
+		WX12WX12WX12WX12WX12WX12 /* WuXingCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WuXingCompatibility.swift; sourceTree = "<group>"; };
 		1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pair_grades.json; sourceTree = "<group>"; };
 		2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sum_scores.json; sourceTree = "<group>"; };
 		3C3C3C3C3C3C3C3C3C3C3C3C /* thai_char_map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = thai_char_map.json; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				9F98D0125391BAF6A144000D /* AnalysisEngine.swift */,
 				BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */,
 				E2991E5429C4F279F8A79680 /* HistoryManager.swift */,
+				WX12WX12WX12WX12WX12WX12 /* WuXingCompatibility.swift */,
 				77D046AA928EA76B45BFC9F6 /* QuotaManager.swift */,
 				D924533C44812897DBF9B581 /* ShareManager.swift */,
 				836D4707F46521D933D104F3 /* StoreKitManager.swift */,
@@ -379,6 +382,7 @@
 				A5B75077839298A01C21B61D /* ShareManager.swift in Sources */,
 				4EC356FE58FD7CF81C2DDA5E /* StoreKitManager.swift in Sources */,
 				822E9B52B4CD437300B8C598 /* String+Thai.swift in Sources */,
+				WX11WX11WX11WX11WX11WX11 /* WuXingCompatibility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

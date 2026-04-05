@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct BaziInputView: View {
+    /// ธาตุเด่นจากเบอร์มือถือ (ส่งมาจาก ResultView, nil ถ้าเข้าจากหน้าแรก)
+    var phoneDominantElement: AnalysisEngine.ChineseElement?
+
     @State private var birthDate = Date()
     @State private var includeBirthTime = false
     @State private var birthTime = Date()
@@ -99,7 +102,7 @@ struct BaziInputView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(isPresented: $showResult) {
             if let result = baziResult {
-                BaziResultView(result: result)
+                BaziResultView(result: result, phoneDominantElement: phoneDominantElement)
             }
         }
     }

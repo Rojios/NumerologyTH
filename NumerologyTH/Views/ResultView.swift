@@ -178,7 +178,7 @@ struct ResultView: View {
             // ลิงก์ไป Bazi
             if mode == .phone {
                 NavigationLink {
-                    BaziInputView()
+                    BaziInputView(phoneDominantElement: elements?.dominant)
                 } label: {
                     HStack(spacing: 8) {
                         Image(systemName: "sparkles")

@@ -125,7 +125,7 @@ final class AnalysisEngine {
 
     // MARK: - Five Elements (ธาตุห้า)
 
-    enum ChineseElement: String, CaseIterable {
+    enum ChineseElement: String, CaseIterable, Codable, Hashable {
         case water = "น้ำ 💧"
         case earth = "ดิน 🌍"
         case wood = "ไม้ 🌿"
@@ -159,6 +159,52 @@ final class AnalysisEngine {
             case .wood: "ไม้"
             case .metal: "ทอง"
             case .fire: "ไฟ"
+            }
+        }
+
+        // MARK: Wu Xing Cycle — วงจรธาตุห้า
+
+        /// ธาตุที่ตัวนี้กำเนิด (ไม้→ไฟ→ดิน→ทอง→น้ำ→ไม้)
+        var generates: ChineseElement {
+            switch self {
+            case .wood:  .fire
+            case .fire:  .earth
+            case .earth: .metal
+            case .metal: .water
+            case .water: .wood
+            }
+        }
+
+        /// ธาตุที่กำเนิดตัวนี้
+        var generatedBy: ChineseElement {
+            switch self {
+            case .wood:  .water
+            case .fire:  .wood
+            case .earth: .fire
+            case .metal: .earth
+            case .water: .metal
+            }
+        }
+
+        /// ธาตุที่ตัวนี้ควบคุม (ไม้→ดิน→น้ำ→ไฟ→ทอง→ไม้)
+        var controls: ChineseElement {
+            switch self {
+            case .wood:  .earth
+            case .fire:  .metal
+            case .earth: .water
+            case .metal: .wood
+            case .water: .fire
+            }
+        }
+
+        /// ธาตุที่ควบคุมตัวนี้
+        var controlledBy: ChineseElement {
+            switch self {
+            case .wood:  .metal
+            case .fire:  .water
+            case .earth: .wood
+            case .metal: .fire
+            case .water: .earth
             }
         }
     }

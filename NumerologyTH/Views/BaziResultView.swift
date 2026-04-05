@@ -2,6 +2,16 @@ import SwiftUI
 
 struct BaziResultView: View {
     let result: BaziResult
+    var phoneDominantElement: AnalysisEngine.ChineseElement?
+
+    /// Compatibility result (คำนวณเมื่อมี phoneDominantElement)
+    private var compatibility: PhoneCompatibilityResult? {
+        guard let phoneEl = phoneDominantElement else { return nil }
+        return WuXingCompatibility.phoneVsPerson(
+            phoneDominant: phoneEl,
+            personElement: result.dominantElement
+        )
+    }
 
     private let dateFormatter: DateFormatter = {
         let f = DateFormatter()
@@ -109,6 +119,11 @@ struct BaziResultView: View {
                         .fill(.background)
                         .shadow(color: .black.opacity(0.06), radius: 8, y: 4)
                 )
+
+                // MARK: - Compatibility Section
+                if let compat = compatibility {
+                    compatibilitySection(compat)
+                }
             }
             .padding()
         }
@@ -127,6 +142,102 @@ struct BaziResultView: View {
         .navigationTitle("รหัสธาตุประจำตัว")
         .navigationBarTitleDisplayMode(.inline)
     }
+
+    // MARK: - Compatibility View
+
+    @ViewBuilder
+    private func compatibilitySection(_ compat: PhoneCompatibilityResult) -> some View {
+        VStack(spacing: 16) {
+            // Header
+            Text("ความสมพงศ์กับเบอร์มือถือ")
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+            // Score badge
+            VStack(spacing: 8) {
+                Text(compat.tier.emoji)
+                    .font(.system(size: 40))
+
+                Text("\(compat.score)/100")
+                    .font(.system(size: 36, weight: .bold))
+                    .foregroundStyle(tierColor(compat.tier))
+
+                Text(compat.tier.rawValue)
+                    .font(.headline)
+                    .foregroundStyle(tierColor(compat.tier))
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.white.opacity(0.8))
+            )
+
+            // ธาตุ vs ธาตุ
+            HStack(spacing: 20) {
+                VStack(spacing: 4) {
+                    Text("ธาตุประจำตัว")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text(compat.personElement.emoji)
+                        .font(.system(size: 32))
+                    Text(compat.personElement.name)
+                        .font(.subheadline.bold())
+                }
+
+                VStack(spacing: 4) {
+                    Text(compat.relationship.shortLabel)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                    Image(systemName: "arrow.left.arrow.right")
+                        .font(.title2)
+                        .foregroundStyle(tierColor(compat.tier))
+                }
+
+                VStack(spacing: 4) {
+                    Text("ธาตุเบอร์")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text(compat.phoneDominantElement.emoji)
+                        .font(.system(size: 32))
+                    Text(compat.phoneDominantElement.name)
+                        .font(.subheadline.bold())
+                }
+            }
+            .frame(maxWidth: .infinity)
+
+            // คำอธิบาย
+            Text(compat.summary)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .lineSpacing(4)
+
+            // คำแม่หมอเหมียว
+            VStack(alignment: .leading, spacing: 6) {
+                Text("แม่หมอเหมียวว่า...")
+                    .font(.caption.bold())
+                    .foregroundStyle(Color(red: 0.85, green: 0.55, blue: 0.40))
+
+                Text(compat.meowQuote)
+                    .font(.subheadline)
+                    .lineSpacing(4)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color(red: 1.0, green: 0.97, blue: 0.92))
+            )
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(.background)
+                .shadow(color: .black.opacity(0.08), radius: 10, y: 4)
+        )
+    }
+
+    // MARK: - Helpers
 
     private func pillarCard(title: String, element: AnalysisEngine.ChineseElement) -> some View {
         VStack(spacing: 8) {
@@ -156,27 +267,65 @@ struct BaziResultView: View {
         case .metal: .orange
         }
     }
+
+    private func tierColor(_ tier: CompatibilityTier) -> Color {
+        switch tier {
+        case .excellent: .green
+        case .good:      .yellow
+        case .neutral:   .blue
+        case .tense:     .orange
+        case .difficult: .red
+        }
+    }
 }
 
-#Preview {
+#Preview("With Phone") {
     NavigationStack {
-        BaziResultView(result: BaziResult(
-            birthDate: Date(),
-            birthTime: nil,
-            dayElement: .fire,
-            monthElement: .wood,
-            yearElement: .water,
-            hourElement: nil,
-            dominantElement: .fire,
-            counts: [
-                (element: .fire, count: 2),
-                (element: .water, count: 1),
-                (element: .wood, count: 1),
-                (element: .earth, count: 0),
-                (element: .metal, count: 0)
-            ],
-            description: "คุณเป็นคนธาตุไฟ — กระตือรือร้น มีเสน่ห์",
-            hasFourPillars: false
-        ))
+        BaziResultView(
+            result: BaziResult(
+                birthDate: Date(),
+                birthTime: nil,
+                dayElement: .fire,
+                monthElement: .wood,
+                yearElement: .water,
+                hourElement: nil,
+                dominantElement: .fire,
+                counts: [
+                    (element: .fire, count: 2),
+                    (element: .water, count: 1),
+                    (element: .wood, count: 1),
+                    (element: .earth, count: 0),
+                    (element: .metal, count: 0)
+                ],
+                description: "คุณเป็นคนธาตุไฟ — กระตือรือร้น มีเสน่ห์",
+                hasFourPillars: false
+            ),
+            phoneDominantElement: .wood
+        )
+    }
+}
+
+#Preview("No Phone") {
+    NavigationStack {
+        BaziResultView(
+            result: BaziResult(
+                birthDate: Date(),
+                birthTime: nil,
+                dayElement: .earth,
+                monthElement: .metal,
+                yearElement: .water,
+                hourElement: nil,
+                dominantElement: .earth,
+                counts: [
+                    (element: .earth, count: 1),
+                    (element: .metal, count: 1),
+                    (element: .water, count: 1),
+                    (element: .fire, count: 0),
+                    (element: .wood, count: 0)
+                ],
+                description: "คุณเป็นคนธาตุดิน — มั่นคง น่าเชื่อถือ",
+                hasFourPillars: false
+            )
+        )
     }
 }
