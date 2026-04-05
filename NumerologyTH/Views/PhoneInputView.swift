@@ -52,7 +52,7 @@ struct PhoneInputView: View {
                     } label: {
                         HStack {
                             Image(systemName: "sparkle.magnifyingglass")
-                            Text("ทำนาย")
+                            Text("เปิดความลับหมายเลข")
                         }
                         .font(.headline)
                         .frame(maxWidth: .infinity)
