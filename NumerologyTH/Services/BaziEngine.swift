@@ -8,7 +8,8 @@ struct BaziResult {
     let yearElement: AnalysisEngine.ChineseElement
     let hourElement: AnalysisEngine.ChineseElement?
     let dominantElement: AnalysisEngine.ChineseElement
-    let counts: [(element: AnalysisEngine.ChineseElement, count: Int)]
+    /// สัดส่วนธาตุถ่วงน้ำหนักตามเสา (percentage 0–100)
+    let percentages: [(element: AnalysisEngine.ChineseElement, percentage: Double)]
     let description: String
     let hasFourPillars: Bool
     let elementMeaning: ElementMeaning?
@@ -83,18 +84,25 @@ enum BaziEngine {
         // Hour pillar (optional)
         let hourEl = birthTime.map { hourElement(from: $0) }
 
-        // นับรวมธาตุ
-        var map: [AnalysisEngine.ChineseElement: Int] = [:]
-        for el in AnalysisEngine.ChineseElement.allCases { map[el] = 0 }
-        map[yearEl, default: 0] += 1
-        map[monthEl, default: 0] += 1
-        map[dayEl, default: 0] += 1
+        // น้ำหนักเสาตามหลัก Bazi (月令 สำคัญสุด)
+        // 4 เสา: ปี 10%, เดือน 40%, วัน 30%, ยาม 20%
+        // 3 เสา (ไม่มียาม): ปี 12.5%, เดือน 50%, วัน 37.5%
+        var weightMap: [AnalysisEngine.ChineseElement: Double] = [:]
+        for el in AnalysisEngine.ChineseElement.allCases { weightMap[el] = 0 }
+
         if let hourEl {
-            map[hourEl, default: 0] += 1
+            weightMap[yearEl,  default: 0] += 10
+            weightMap[monthEl, default: 0] += 40
+            weightMap[dayEl,   default: 0] += 30
+            weightMap[hourEl,  default: 0] += 20
+        } else {
+            weightMap[yearEl,  default: 0] += 12.5
+            weightMap[monthEl, default: 0] += 50
+            weightMap[dayEl,   default: 0] += 37.5
         }
 
-        let sorted = map.sorted { $0.value > $1.value }
-            .map { (element: $0.key, count: $0.value) }
+        let sorted = weightMap.sorted { $0.value > $1.value }
+            .map { (element: $0.key, percentage: $0.value) }
         let dominant = sorted.first?.element ?? .water
 
         // ดึงจาก KB
@@ -111,7 +119,7 @@ enum BaziEngine {
             yearElement: yearEl,
             hourElement: hourEl,
             dominantElement: dominant,
-            counts: sorted,
+            percentages: sorted,
             description: desc,
             hasFourPillars: birthTime != nil,
             elementMeaning: meaning
