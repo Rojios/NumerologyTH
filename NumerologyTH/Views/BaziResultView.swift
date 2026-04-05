@@ -24,25 +24,29 @@ struct BaziResultView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                // Header
+                // Header — ชมพูพาสเทล + ตัวอักษรขาว
                 VStack(spacing: 8) {
                     Text(result.dominantElement.emoji)
                         .font(.system(size: 60))
 
                     Text("ธาตุประจำตัวคุณ")
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.white.opacity(0.85))
 
                     Text(result.dominantElement.name)
                         .font(.largeTitle.bold())
-                        .foregroundStyle(elementColor(result.dominantElement))
-                }
-                .padding(.top, 8)
+                        .foregroundStyle(.white)
 
-                // วันเกิด
-                Text(dateFormatter.string(from: result.birthDate))
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    Text(dateFormatter.string(from: result.birthDate))
+                        .font(.caption)
+                        .foregroundStyle(.white.opacity(0.7))
+                }
+                .padding(.vertical, 20)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.appPastelPink)
+                )
 
                 // เสาธาตุ
                 VStack(spacing: 12) {
@@ -72,28 +76,35 @@ struct BaziResultView: View {
                         .fill(Color(red: 1.0, green: 0.95, blue: 0.90))
                 )
 
-                // สัดส่วนธาตุ
+                // สัดส่วนธาตุ (ถ่วงน้ำหนักตามเสา)
                 VStack(spacing: 12) {
                     Text("สัดส่วนธาตุ")
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                    ForEach(result.counts, id: \.element) { item in
-                        HStack {
-                            Text(item.element.emoji)
-                            Text(item.element.name)
-                                .frame(width: 40, alignment: .leading)
+                    Text("น้ำหนัก: เดือน 40% › วัน 30% › ยาม 20% › ปี 10%")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
-                            GeometryReader { geo in
-                                RoundedRectangle(cornerRadius: 4)
-                                    .fill(elementColor(item.element))
-                                    .frame(width: geo.size.width * CGFloat(item.count) / CGFloat(result.hasFourPillars ? 4 : 3))
+                    ForEach(result.percentages, id: \.element) { item in
+                        if item.percentage > 0 {
+                            HStack {
+                                Text(item.element.emoji)
+                                Text(item.element.name)
+                                    .frame(width: 40, alignment: .leading)
+
+                                GeometryReader { geo in
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .fill(elementColor(item.element))
+                                        .frame(width: geo.size.width * CGFloat(item.percentage) / 100)
+                                }
+                                .frame(height: 20)
+
+                                Text("\(Int(round(item.percentage)))%")
+                                    .font(.caption.bold())
+                                    .frame(width: 36, alignment: .trailing)
                             }
-                            .frame(height: 20)
-
-                            Text("\(item.count)")
-                                .font(.caption.bold())
-                                .frame(width: 20)
                         }
                     }
                 }
@@ -105,7 +116,7 @@ struct BaziResultView: View {
 
                 // คำอธิบาย
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("ลักษณะเด่นของคุณ")
+                    Text("อิทธิพลของพลังธาตุที่ส่งผลกับตัวคุณ")
                         .font(.headline)
 
                     Text(result.description)
@@ -428,12 +439,12 @@ struct FlowLayout: Layout {
                 yearElement: .water,
                 hourElement: nil,
                 dominantElement: .fire,
-                counts: [
-                    (element: .fire, count: 2),
-                    (element: .water, count: 1),
-                    (element: .wood, count: 1),
-                    (element: .earth, count: 0),
-                    (element: .metal, count: 0)
+                percentages: [
+                    (element: .fire, percentage: 50),
+                    (element: .water, percentage: 12.5),
+                    (element: .wood, percentage: 37.5),
+                    (element: .earth, percentage: 0),
+                    (element: .metal, percentage: 0)
                 ],
                 description: "คุณเป็นคนธาตุไฟ — กระตือรือร้น มีเสน่ห์",
                 hasFourPillars: false,
@@ -455,12 +466,12 @@ struct FlowLayout: Layout {
                 yearElement: .water,
                 hourElement: nil,
                 dominantElement: .earth,
-                counts: [
-                    (element: .earth, count: 1),
-                    (element: .metal, count: 1),
-                    (element: .water, count: 1),
-                    (element: .fire, count: 0),
-                    (element: .wood, count: 0)
+                percentages: [
+                    (element: .earth, percentage: 50),
+                    (element: .metal, percentage: 37.5),
+                    (element: .water, percentage: 12.5),
+                    (element: .fire, percentage: 0),
+                    (element: .wood, percentage: 0)
                 ],
                 description: "คุณเป็นคนธาตุดิน — มั่นคง น่าเชื่อถือ",
                 hasFourPillars: false,

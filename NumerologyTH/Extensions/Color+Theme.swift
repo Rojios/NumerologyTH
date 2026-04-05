@@ -22,4 +22,5 @@ extension Color {
     static let appLavender = Color(red: 0.78, green: 0.73, blue: 0.93)
     static let appLavenderLight = Color(red: 0.92, green: 0.89, blue: 0.98)
     static let appLavenderBg = Color(red: 0.96, green: 0.94, blue: 1.0)
+    static let appPastelPink = Color(red: 0.96, green: 0.76, blue: 0.82)
 }

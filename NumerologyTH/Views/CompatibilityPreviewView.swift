@@ -16,11 +16,11 @@ struct CompatibilityPreviewView: View {
             yearElement: .water,
             hourElement: .earth,
             dominantElement: .fire,
-            counts: [
-                (element: .fire, count: 2),
-                (element: .wood, count: 1),
-                (element: .water, count: 1),
-                (element: .earth, count: 1)
+            percentages: [
+                (element: .fire, percentage: 50),
+                (element: .wood, percentage: 20),
+                (element: .water, percentage: 10),
+                (element: .earth, percentage: 20)
             ],
             description: meaning?.personality ?? "ธาตุไฟ — กระตือรือร้น มีเสน่ห์ เป็นจุดสนใจ",
             hasFourPillars: true,
