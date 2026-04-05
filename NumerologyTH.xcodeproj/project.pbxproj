@@ -37,6 +37,9 @@
 		EC6EA6A47AE12DA9F2300C46 /* KnowledgeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F57E4E595C1A906C4ED993 /* KnowledgeBase.swift */; };
 		F4D70BA4BDF8F77881F8A070 /* NameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C594C4EF58D075872C010E /* NameInputView.swift */; };
 		FBA37569071F7805EA90DA17 /* PhoneInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1515C076507CB3CBDE3C82 /* PhoneInputView.swift */; };
+		BA21BA21BA21BA21BA21BA21 /* BaziEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */; };
+		BA31BA31BA31BA31BA31BA31 /* BaziInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */; };
+		BA41BA41BA41BA41BA41BA41 /* BaziResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */; };
 		ABAB1234ABAB1234ABAB1234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCD5678CDCD5678CDCD5678 /* Assets.xcassets */; };
 		A1A1A1A1A1A1A1A1A1A1A1A1 /* pair_grades.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */; };
 		B2B2B2B2B2B2B2B2B2B2B2B2 /* sum_scores.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */; };
@@ -90,6 +93,9 @@
 		E6D5F9F1F23136AE22E09C82 /* AnalysisSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisSession.swift; sourceTree = "<group>"; };
 		EEA1CB9FA454DD1AE3E08114 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F8874053CAC96D3E690AF869 /* ScoreGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreGaugeView.swift; sourceTree = "<group>"; };
+		BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziEngine.swift; sourceTree = "<group>"; };
+		BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziInputView.swift; sourceTree = "<group>"; };
+		BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziResultView.swift; sourceTree = "<group>"; };
 		1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pair_grades.json; sourceTree = "<group>"; };
 		2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sum_scores.json; sourceTree = "<group>"; };
 		3C3C3C3C3C3C3C3C3C3C3C3C /* thai_char_map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = thai_char_map.json; sourceTree = "<group>"; };
@@ -150,6 +156,8 @@
 		433E494E0DBAC2172D0D88EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */,
+				BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */,
 				825D73622AC554B083DA67A4 /* HistoryView.swift */,
 				DA5BFE72A3FD144EC5545050 /* HomeView.swift */,
 				50C594C4EF58D075872C010E /* NameInputView.swift */,
@@ -233,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				9F98D0125391BAF6A144000D /* AnalysisEngine.swift */,
+				BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */,
 				E2991E5429C4F279F8A79680 /* HistoryManager.swift */,
 				77D046AA928EA76B45BFC9F6 /* QuotaManager.swift */,
 				D924533C44812897DBF9B581 /* ShareManager.swift */,
@@ -342,6 +351,9 @@
 			files = (
 				26D5B67B01898815BDCA8135 /* AnalysisEngine.swift in Sources */,
 				C8D81E92E41D335608FAF1FB /* AnalysisSession.swift in Sources */,
+				BA21BA21BA21BA21BA21BA21 /* BaziEngine.swift in Sources */,
+				BA31BA31BA31BA31BA31BA31 /* BaziInputView.swift in Sources */,
+				BA41BA41BA41BA41BA41BA41 /* BaziResultView.swift in Sources */,
 				63E8EF15DC26DC7EA9878A4F /* Color+Theme.swift in Sources */,
 				2994C2B31401B39C088983A0 /* ContentView.swift in Sources */,
 				A9B2D99435C6379191E72540 /* GradeTagView.swift in Sources */,
@@ -467,7 +479,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 252T283JF9;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -489,7 +501,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = NumerologyTH/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -536,7 +548,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 252T283JF9;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -552,7 +564,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = NumerologyTH/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

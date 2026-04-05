@@ -1,63 +1,93 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(PurchaseViewModel.self) private var purchaseVM
+    @State private var navigateToPhone = false
+    @State private var navigateToBazi = false
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                // Header
-                VStack(spacing: 4) {
-                    Text("แม่หมอเหมียว")
-                        .font(.largeTitle.bold())
-                    Text("วิเคราะห์เลขศาสตร์ประยุกต์ไทย")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-
-                    // Status badge
-                    HStack(spacing: 6) {
-                        Image(systemName: purchaseVM.isUnlocked ? "checkmark.seal.fill" : "lock.fill")
-                        Text(purchaseVM.isUnlocked ? "ปลดล็อกแล้ว" : "ฟรี")
-                    }
-                    .font(.caption.bold())
-                    .foregroundStyle(purchaseVM.isUnlocked ? .green : .orange)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 4)
-                    .background(
-                        Capsule()
-                            .fill(purchaseVM.isUnlocked ? .green.opacity(0.1) : .orange.opacity(0.1))
-                    )
-                    .padding(.top, 4)
-                }
-                .padding(.top, 8)
-
-                // Mode cards
-                ForEach(AnalysisMode.allCases, id: \.self) { mode in
-                    NavigationLink {
-                        destinationView(for: mode)
-                    } label: {
-                        ModeCardView(mode: mode)
-                    }
-                    .buttonStyle(.plain)
-                }
-
-                // Disclaimer
-                Text("แอปนี้สร้างขึ้นเพื่อความบันเทิงเท่านั้น")
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-                    .padding(.top, 8)
+        ZStack {
+            // Background เดียวกับ PhoneInputView
+            GeometryReader { geo in
+                Image("HomeBG")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geo.size.width, height: geo.size.height)
+                    .clipped()
             }
-            .padding()
-        }
-        .navigationTitle("")
-    }
+            .ignoresSafeArea()
 
-    @ViewBuilder
-    private func destinationView(for mode: AnalysisMode) -> some View {
-        switch mode {
-        case .phone: PhoneInputView()
-        case .name: NameInputView()
-        case .plate: PlateInputView()
+            // 2 แถบเลือกด้านล่าง
+            VStack {
+                Spacer()
+
+                VStack(spacing: 12) {
+                    // แถบ 1: ทำนายหมายเลขมือถือ
+                    Button {
+                        navigateToPhone = true
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "phone.fill")
+                                .font(.title2)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("ทำนายหมายเลขมือถือ")
+                                    .font(.headline)
+                                Text("วิเคราะห์คู่เลข คะแนน 1,000")
+                                    .font(.caption)
+                                    .opacity(0.8)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption.bold())
+                        }
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.appLavender)
+                        )
+                    }
+
+                    // แถบ 2: เปิดรหัสธาตุประจำตัว
+                    Button {
+                        navigateToBazi = true
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "sparkles")
+                                .font(.title2)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("เปิดรหัสธาตุประจำตัว")
+                                    .font(.headline)
+                                Text("วิเคราะห์ธาตุห้าจากวันเกิด")
+                                    .font(.caption)
+                                    .opacity(0.8)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption.bold())
+                        }
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
+                        )
+                    }
+                }
+                .padding(.horizontal)
+
+                Text("โปรแกรมนี้มีวัตถุประสงค์เพื่อความบันเทิง")
+                    .font(.caption2)
+                    .foregroundStyle(.white.opacity(0.7))
+                    .padding(.top, 8)
+                    .padding(.bottom, 16)
+            }
+        }
+        .navigationBarHidden(true)
+        .navigationDestination(isPresented: $navigateToPhone) {
+            PhoneInputView()
+        }
+        .navigationDestination(isPresented: $navigateToBazi) {
+            BaziInputView()
         }
     }
 }
@@ -67,4 +97,5 @@ struct HomeView: View {
         HomeView()
     }
     .environment(PurchaseViewModel())
+    .modelContainer(for: AnalysisSession.self, inMemory: true)
 }

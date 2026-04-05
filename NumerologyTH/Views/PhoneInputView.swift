@@ -8,75 +8,76 @@ struct PhoneInputView: View {
     @State private var showResult = false
 
     var body: some View {
-        ZStack {
-            // Background image เต็มจอ
-            GeometryReader { geo in
-                Image("HomeBG")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: geo.size.width, height: geo.size.height)
-                    .clipped()
-            }
-            .ignoresSafeArea()
+        VStack(spacing: 24) {
+            Spacer()
 
-            // Input card ด้านล่าง
-            VStack {
-                Spacer()
+            // Icon
+            Image(systemName: "phone.fill")
+                .font(.system(size: 48))
+                .foregroundStyle(Color.appLavender)
 
-                VStack(spacing: 16) {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("กรอกเบอร์โทร 10 หลัก")
-                            .font(.headline)
-                        TextField("081-234-5678", text: $vm.phoneInput)
-                            .keyboardType(.phonePad)
-                            .textFieldStyle(.roundedBorder)
-                            .font(.title2.monospaced())
-                            .onChange(of: vm.phoneInput) { vm.validate() }
+            Text("กรอกเบอร์โทร 10 หลัก")
+                .font(.title2.bold())
 
-                        if let error = vm.errorMessage {
-                            Text(error)
-                                .font(.caption)
-                                .foregroundStyle(.red)
-                        }
-                    }
+            // Input field
+            VStack(spacing: 12) {
+                TextField("081-234-5678", text: $vm.phoneInput)
+                    .keyboardType(.phonePad)
+                    .textFieldStyle(.roundedBorder)
+                    .font(.title.monospaced())
+                    .multilineTextAlignment(.center)
+                    .onChange(of: vm.phoneInput) { vm.validate() }
 
-                    Button {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                        vm.analyze()
-                        if vm.hasResult {
-                            let session = vm.createSession()
-                            modelContext.insert(session)
-                            try? modelContext.save()
-                            showResult = true
-                        }
-                    } label: {
-                        HStack {
-                            Image(systemName: "sparkle.magnifyingglass")
-                            Text("ทำนาย")
-                        }
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(vm.isValid ? Color.appLavender : Color.gray.opacity(0.3))
-                        .foregroundStyle(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                    }
-                    .disabled(!vm.isValid)
+                if let error = vm.errorMessage {
+                    Text(error)
+                        .font(.caption)
+                        .foregroundStyle(.red)
                 }
-                .padding(20)
-                .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.ultraThinMaterial)
-                )
-                .padding()
-
-                Text("โปรแกรมนี้มีวัตถุประสงค์เพื่อความบันเทิง")
-                    .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.7))
-                    .padding(.bottom, 16)
             }
+            .padding(.horizontal)
+
+            // Button
+            Button {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                vm.analyze()
+                if vm.hasResult {
+                    let session = vm.createSession()
+                    modelContext.insert(session)
+                    try? modelContext.save()
+                    showResult = true
+                }
+            } label: {
+                HStack {
+                    Image(systemName: "sparkle.magnifyingglass")
+                    Text("ทำนาย")
+                }
+                .font(.headline)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(vm.isValid ? Color.appLavender : Color.gray.opacity(0.3))
+                .foregroundStyle(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+            .disabled(!vm.isValid)
+            .padding(.horizontal)
+
+            Spacer()
+
+            Text("โปรแกรมนี้มีวัตถุประสงค์เพื่อความบันเทิง")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+                .padding(.bottom, 16)
         }
-        .navigationBarHidden(true)
+        .background(
+            LinearGradient(
+                colors: [Color.appLavenderBg, .white],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+        )
+        .navigationTitle("ทำนายหมายเลขมือถือ")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(isPresented: $showResult) {
             PhoneResultPage(vm: vm)
         }
