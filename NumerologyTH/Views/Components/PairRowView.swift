@@ -3,33 +3,42 @@ import SwiftUI
 struct PairRowView: View {
     let pair: PairResult
     let isLocked: Bool
+    var bgColor: Color = Color.blue.opacity(0.03)
 
     var body: some View {
-        HStack(spacing: 12) {
-            Text(pair.pair)
-                .font(.title3.monospaced().bold())
-                .frame(width: 40)
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(spacing: 10) {
+                Text(pair.pair)
+                    .font(.title3.monospaced().bold())
+                    .frame(width: 40)
+
+                GradeTagView(grade: isLocked ? "*" : pair.grade, size: .small)
+
+                Spacer()
+
+                if !isLocked {
+                    Text("\(pair.score) pts")
+                        .font(.caption2.bold())
+                        .foregroundStyle(.secondary)
+                }
+            }
 
             if isLocked {
-                GradeTagView(grade: "*", size: .small)
                 Text("░░░░░░░░░░░░░░░░░░░░░")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             } else {
-                GradeTagView(grade: pair.grade, size: .small)
                 Text(pair.meaning)
-                    .font(.caption)
+                    .font(.subheadline)
                     .foregroundStyle(.primary)
-                    .lineLimit(2)
+                    .fixedSize(horizontal: false, vertical: true)
             }
-
-            Spacer()
         }
-        .padding(.vertical, 6)
+        .padding(.vertical, 10)
         .padding(.horizontal, 12)
         .background(
-            RoundedRectangle(cornerRadius: 8)
-                .fill(isLocked ? .gray.opacity(0.05) : .clear)
+            RoundedRectangle(cornerRadius: 10)
+                .fill(isLocked ? .gray.opacity(0.05) : bgColor)
         )
     }
 }

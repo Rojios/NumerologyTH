@@ -26,8 +26,16 @@ struct GradeTagView: View {
         Color.gradeColor(for: grade)
     }
 
+    private var displayText: String {
+        switch grade.uppercased() {
+        case "S": "👍👍👍 S"
+        case "A", "A+": "👍 \(grade)"
+        default: grade
+        }
+    }
+
     var body: some View {
-        Text(grade)
+        Text(displayText)
             .font(size.font)
             .foregroundStyle(color)
             .padding(size.padding)

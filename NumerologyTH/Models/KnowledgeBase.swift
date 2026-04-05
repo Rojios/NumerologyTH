@@ -10,18 +10,23 @@ struct PairGradeEntry: Codable {
 
 struct PairGradesKB: Codable {
     let pairs: [String: PairGradeEntry]
-    let defaultGrade: DefaultGrade
+    let meta: PairGradesMeta
 
-    enum CodingKeys: String, CodingKey {
-        case pairs
-        case defaultGrade = "default_grade"
+    struct PairGradesMeta: Codable {
+        let defaultGrade: DefaultGrade
+
+        enum CodingKeys: String, CodingKey {
+            case defaultGrade = "default_grade"
+        }
     }
 
     struct DefaultGrade: Codable {
         let grade: String
         let score: Double
-        let meaning: String
+        let note: String
     }
+
+    var defaultGrade: DefaultGrade { meta.defaultGrade }
 }
 
 // MARK: - Sum Scores
@@ -37,12 +42,18 @@ struct SumScoresKB: Codable {
     let meta: SumMeta
 
     struct SumMeta: Codable {
-        let neutralDefault: Int
         let maxScore: Int
+        let neutralDefault: Int
 
         enum CodingKeys: String, CodingKey {
-            case neutralDefault = "neutral_default"
             case maxScore = "max_score"
+            case neutralDefault
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            maxScore = (try? container.decode(Int.self, forKey: .maxScore)) ?? 200
+            neutralDefault = (try? container.decode(Int.self, forKey: .neutralDefault)) ?? 50
         }
     }
 }
@@ -50,19 +61,10 @@ struct SumScoresKB: Codable {
 // MARK: - Thai Character Map
 
 struct ThaiCharMapKB: Codable {
-    let consonants: [String: Int]
-    let vowels: [String: Int]
-    let toneMarks: [String: Int]
-    let special: [String: Int]
-
-    enum CodingKeys: String, CodingKey {
-        case consonants, vowels
-        case toneMarks = "tone_marks"
-        case special
-    }
+    let characters: [String: Int]
 
     func numberFor(_ char: String) -> Int? {
-        consonants[char] ?? vowels[char] ?? toneMarks[char] ?? special[char]
+        characters[char]
     }
 }
 
@@ -71,15 +73,13 @@ struct ThaiCharMapKB: Codable {
 struct NumberMeaning: Codable {
     let planet: String?
     let meaningTh: String
-    let meaningEn: String
-    let level: String?
+    let grade: String?
     let isAuspicious: Bool
 
     enum CodingKeys: String, CodingKey {
         case planet
         case meaningTh = "meaning_th"
-        case meaningEn = "meaning_en"
-        case level
+        case grade
         case isAuspicious = "is_auspicious"
     }
 }
@@ -91,14 +91,14 @@ struct NumberMeaningsKB: Codable {
 // MARK: - Career Bonus
 
 struct CareerBonusEntry: Codable {
-    let careers: [String]
     let careersTh: [String]
-    let bonusPoints: Int
+    let careersEn: [String]
+    let descriptionTh: String
 
     enum CodingKeys: String, CodingKey {
-        case careers
         case careersTh = "careers_th"
-        case bonusPoints = "bonus_points"
+        case careersEn = "careers_en"
+        case descriptionTh = "description_th"
     }
 }
 
@@ -118,7 +118,7 @@ final class KnowledgeBaseLoader {
     lazy var careerBonus: CareerBonusKB = load("career_bonus")
 
     private func load<T: Decodable>(_ name: String) -> T {
-        guard let url = Bundle.main.url(forResource: name, withExtension: "json", subdirectory: "KnowledgeBase"),
+        guard let url = Bundle.main.url(forResource: name, withExtension: "json"),
               let data = try? Data(contentsOf: url) else {
             fatalError("Missing KB file: \(name).json")
         }

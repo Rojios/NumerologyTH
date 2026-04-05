@@ -37,6 +37,12 @@
 		EC6EA6A47AE12DA9F2300C46 /* KnowledgeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F57E4E595C1A906C4ED993 /* KnowledgeBase.swift */; };
 		F4D70BA4BDF8F77881F8A070 /* NameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C594C4EF58D075872C010E /* NameInputView.swift */; };
 		FBA37569071F7805EA90DA17 /* PhoneInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1515C076507CB3CBDE3C82 /* PhoneInputView.swift */; };
+		ABAB1234ABAB1234ABAB1234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCD5678CDCD5678CDCD5678 /* Assets.xcassets */; };
+		A1A1A1A1A1A1A1A1A1A1A1A1 /* pair_grades.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */; };
+		B2B2B2B2B2B2B2B2B2B2B2B2 /* sum_scores.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */; };
+		C3C3C3C3C3C3C3C3C3C3C3C3 /* thai_char_map.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C3C3C3C3C3C3C3C3C3C3C3C /* thai_char_map.json */; };
+		D4D4D4D4D4D4D4D4D4D4D4D4 /* number_meanings.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */; };
+		E5E5E5E5E5E5E5E5E5E5E5E5 /* career_bonus.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,11 +73,11 @@
 		85E5023ECB8302FC94A56CEE /* PlateAnalysisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateAnalysisViewModel.swift; sourceTree = "<group>"; };
 		8642090B96DD30D4FF8E6C1A /* PhoneAnalysisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAnalysisTests.swift; sourceTree = "<group>"; };
 		99EDFAC2723502388EF007E2 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
-		9D7AC9254813C39D96050F68 /* NumerologyTHTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = NumerologyTHTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D7AC9254813C39D96050F68 /* NumerologyTHTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumerologyTHTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F98D0125391BAF6A144000D /* AnalysisEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisEngine.swift; sourceTree = "<group>"; };
 		A6A219A3B5008D6C71D62961 /* ModeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeCardView.swift; sourceTree = "<group>"; };
 		AA2B0A7410B7A173033EA3DD /* PlateAnalysisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateAnalysisTests.swift; sourceTree = "<group>"; };
-		ABCBD75525E0301DE51ED566 /* NumerologyTH.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = NumerologyTH.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABCBD75525E0301DE51ED566 /* NumerologyTH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumerologyTH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFF12E3CB2A18D7D0A4600A /* PlateInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateInputView.swift; sourceTree = "<group>"; };
 		C3E93C471299B480F0B7F915 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		C442DACE1C3485DF5BA36CD8 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
@@ -84,6 +90,12 @@
 		E6D5F9F1F23136AE22E09C82 /* AnalysisSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisSession.swift; sourceTree = "<group>"; };
 		EEA1CB9FA454DD1AE3E08114 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F8874053CAC96D3E690AF869 /* ScoreGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreGaugeView.swift; sourceTree = "<group>"; };
+		1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pair_grades.json; sourceTree = "<group>"; };
+		2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sum_scores.json; sourceTree = "<group>"; };
+		3C3C3C3C3C3C3C3C3C3C3C3C /* thai_char_map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = thai_char_map.json; sourceTree = "<group>"; };
+		4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = number_meanings.json; sourceTree = "<group>"; };
+		5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = career_bonus.json; sourceTree = "<group>"; };
+		CDCD5678CDCD5678CDCD5678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -171,8 +183,22 @@
 		62C416C89461D688477739A7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CDCD5678CDCD5678CDCD5678 /* Assets.xcassets */,
+				F6F6F6F6F6F6F6F6F6F6F6F6 /* KnowledgeBase */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F6F6F6F6F6F6F6F6F6F6F6F6 /* KnowledgeBase */ = {
+			isa = PBXGroup;
+			children = (
+				5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */,
+				4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */,
+				1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */,
+				2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */,
+				3C3C3C3C3C3C3C3C3C3C3C3C /* thai_char_map.json */,
+			);
+			path = KnowledgeBase;
 			sourceTree = "<group>";
 		};
 		7A5DA55235F6D8563680685A /* Extensions */ = {
@@ -223,6 +249,7 @@
 			buildConfigurationList = 45884778EB7E9A19124B5C3A /* Build configuration list for PBXNativeTarget "NumerologyTH" */;
 			buildPhases = (
 				69CCF0C528B37BE43F9899EC /* Sources */,
+				A7A7A7A7A7A7A7A7A7A7A7A7 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -260,9 +287,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1500;
-				TargetAttributes = {
-				};
+				LastUpgradeCheck = 2640;
 			};
 			buildConfigurationList = B156FCEC7339766B1EE39145 /* Build configuration list for PBXProject "NumerologyTH" */;
 			developmentRegion = en;
@@ -283,6 +308,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A7A7A7A7A7A7A7A7A7A7A7A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABAB1234ABAB1234ABAB1234 /* Assets.xcassets in Resources */,
+				A1A1A1A1A1A1A1A1A1A1A1A1 /* pair_grades.json in Resources */,
+				B2B2B2B2B2B2B2B2B2B2B2B2 /* sum_scores.json in Resources */,
+				C3C3C3C3C3C3C3C3C3C3C3C3 /* thai_char_map.json in Resources */,
+				D4D4D4D4D4D4D4D4D4D4D4D4 /* number_meanings.json in Resources */,
+				E5E5E5E5E5E5E5E5E5E5E5E5 /* career_bonus.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5ED44F97020CD236AAFB7A51 /* Sources */ = {
@@ -364,6 +405,8 @@
 				CODE_SIGN_ENTITLEMENTS = NumerologyTH/NumerologyTH.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NumerologyTH/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NumberologyTH;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -426,8 +469,10 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 252T283JF9;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -450,6 +495,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.9;
@@ -492,8 +538,10 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 252T283JF9;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -509,6 +557,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.9;
@@ -523,6 +572,8 @@
 				CODE_SIGN_ENTITLEMENTS = NumerologyTH/NumerologyTH.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NumerologyTH/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NumberologyTH;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -15,11 +15,11 @@ struct ModeCardView: View {
         HStack(spacing: 16) {
             Image(systemName: mode.icon)
                 .font(.title)
-                .foregroundStyle(.accent)
+                .foregroundStyle(Color.accentColor)
                 .frame(width: 50, height: 50)
                 .background(
                     Circle()
-                        .fill(.accent.opacity(0.1))
+                        .fill(Color.accentColor.opacity(0.1))
                 )
 
             VStack(alignment: .leading, spacing: 4) {

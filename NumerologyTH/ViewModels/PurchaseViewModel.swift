@@ -34,8 +34,8 @@ final class PurchaseViewModel {
             let result = try await product.purchase()
             switch result {
             case .success(let verification):
-                if case .verified = verification {
-                    await verification.payloadValue.finish()
+                if case .verified(let transaction) = verification {
+                    await transaction.finish()
                     isUnlocked = true
                 }
             case .userCancelled:

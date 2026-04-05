@@ -9,6 +9,7 @@ struct NumerologyTHApp: App {
         WindowGroup {
             ContentView()
                 .environment(purchaseVM)
+                .preferredColorScheme(.light)
         }
         .modelContainer(for: AnalysisSession.self)
     }

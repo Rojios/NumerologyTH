@@ -9,18 +9,24 @@ struct HistoryView: View {
     var body: some View {
         Group {
             if sessions.isEmpty {
-                ContentUnavailableView(
-                    "ยังไม่มีประวัติ",
-                    systemImage: "clock.arrow.circlepath",
-                    description: Text("ผลวิเคราะห์จะแสดงที่นี่")
-                )
+                VStack(spacing: 12) {
+                    Image(systemName: "clock.arrow.circlepath")
+                        .font(.system(size: 48))
+                        .foregroundStyle(.secondary)
+                    Text("ยังไม่มีประวัติ")
+                        .font(.headline)
+                    Text("ผลวิเคราะห์จะแสดงที่นี่")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 List {
                     ForEach(sessions) { session in
                         HStack {
                             Image(systemName: session.analysisMode.icon)
                                 .font(.title2)
-                                .foregroundStyle(.accent)
+                                .foregroundStyle(Color.accentColor)
                                 .frame(width: 40)
 
                             VStack(alignment: .leading, spacing: 2) {

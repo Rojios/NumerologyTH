@@ -8,7 +8,7 @@ struct HomeView: View {
             VStack(spacing: 16) {
                 // Header
                 VStack(spacing: 4) {
-                    Text("เลขศาสตร์ TH")
+                    Text("แม่หมอเหมียว")
                         .font(.largeTitle.bold())
                     Text("วิเคราะห์เลขศาสตร์ประยุกต์ไทย")
                         .font(.subheadline)

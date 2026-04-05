@@ -3,6 +3,7 @@ import SwiftUI
 struct ScoreGaugeView: View {
     let score: Int
     let maxScore: Int
+    let grade: String
 
     private var progress: Double {
         Double(score) / Double(maxScore)
@@ -27,6 +28,11 @@ struct ScoreGaugeView: View {
                 .stroke(color, style: StrokeStyle(lineWidth: 12, lineCap: .round))
                 .rotationEffect(.degrees(-90))
                 .animation(.easeOut(duration: 0.8), value: progress)
+
+            // Grade ตรงกลาง
+            Text(grade)
+                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .foregroundStyle(color)
         }
         .frame(width: 80, height: 80)
     }
@@ -34,8 +40,8 @@ struct ScoreGaugeView: View {
 
 #Preview {
     HStack(spacing: 20) {
-        ScoreGaugeView(score: 950, maxScore: 1000)
-        ScoreGaugeView(score: 742, maxScore: 1000)
-        ScoreGaugeView(score: 350, maxScore: 1000)
+        ScoreGaugeView(score: 950, maxScore: 1000, grade: "A+")
+        ScoreGaugeView(score: 742, maxScore: 1000, grade: "C")
+        ScoreGaugeView(score: 350, maxScore: 1000, grade: "E")
     }
 }

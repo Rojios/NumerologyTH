@@ -9,6 +9,7 @@ final class PhoneAnalysisViewModel {
     var grade: String = ""
     var pairResults: [PairResult] = []
     var warnings: [String] = []
+    var elements: AnalysisEngine.ElementResult?
     var hasResult: Bool = false
     var errorMessage: String?
 
@@ -27,6 +28,7 @@ final class PhoneAnalysisViewModel {
         grade = result.grade
         pairResults = result.pairs
         warnings = result.warnings
+        elements = result.elements
         hasResult = true
     }
 

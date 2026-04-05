@@ -34,7 +34,7 @@ final class AnalysisEngine {
             return PairScore(pair: pair, grade: entry.grade, score: entry.score, meaning: entry.meaning)
         }
         let d = kb.pairGrades.defaultGrade
-        return PairScore(pair: pair, grade: d.grade, score: d.score, meaning: d.meaning)
+        return PairScore(pair: pair, grade: d.grade, score: d.score, meaning: d.note)
     }
 
     func scoreSum(_ digits: String) -> (score: Int, meaning: String) {
@@ -51,7 +51,17 @@ final class AnalysisEngine {
         return scorePair(closer)
     }
 
-    func analyzePhone(_ input: String) -> (totalScore: Int, grade: String, pairs: [PairResult], warnings: [String])? {
+    /// Closer score capped per Skill spec: S=100, A=80, B=60, Penalty=0
+    private func closerScore(for grade: String) -> Int {
+        switch grade {
+        case "S": return 100
+        case "A": return 80
+        case "B": return 60
+        default: return 0  // Penalty → 0 (already counted in pairs)
+        }
+    }
+
+    func analyzePhone(_ input: String) -> (totalScore: Int, grade: String, pairs: [PairResult], warnings: [String], elements: ElementResult)? {
         guard let digits = Self.validatePhone(input) else { return nil }
 
         let pairStrings = Self.extractPairs(from: digits)
@@ -59,7 +69,7 @@ final class AnalysisEngine {
         var totalPositive: Double = 0
         var totalPenalty: Double = 0
 
-        // Score 6 pairs (max 700 pts)
+        // Step 2: Score 6 pairs (max 700 pts)
         for p in pairStrings {
             let ps = scorePair(p)
             pairResults.append(PairResult(pair: ps.pair, grade: ps.grade, score: Int(ps.score), meaning: ps.meaning))
@@ -70,21 +80,36 @@ final class AnalysisEngine {
             }
         }
 
-        // Sum score (max 200 pts)
-        let (sumScore, _) = scoreSum(digits)
-
-        // Closer score (max 100 pts)
-        let closerResult = scoreCloser(digits)
-
-        // Special bonuses
-        var specialBonus = 0
-        // Dragon sequence 789
-        if digits.contains("789") { specialBonus += 50 }
-        // Sum = 100
+        // Step 3: Sum score (max 200 pts)
         let digitSum = digits.compactMap(\.wholeNumberValue).reduce(0, +)
+        let reducedSum = Self.reduceSum(digitSum)
+        let sumKey = String(reducedSum)
+        let (sumScore, _) = scoreSum(digits)
+        let sumMeaning = kb.numberMeanings.meanings[sumKey]
+        let sumMeaningText = sumMeaning?.meaningTh ?? "พลังงานกลาง ไม่เด่นไม่ด้อย"
+
+        // ผลรวม as first display item
+        let sumResult = PairResult(
+            pair: "ผลรวม \(digitSum)→\(reducedSum)",
+            grade: sumMeaning?.isAuspicious == true ? "ดี" : "ระวัง",
+            score: sumScore,
+            meaning: sumMeaningText
+        )
+        pairResults.insert(sumResult, at: 0)
+
+        // Step 4: Closer score (max 100 pts) — last 2 digits, scored SEPARATELY from 6 pairs
+        let closerPair = scoreCloser(digits)
+        let closerPts = closerScore(for: closerPair.grade)
+
+        // Step 5: Special bonuses (max 100 pts)
+        var specialBonus = 0
+        if digits.contains("789") { specialBonus += 50 }
         if digitSum == 100 { specialBonus += 50 }
 
-        let rawScore = pairResults.map(\.score).reduce(0, +) + sumScore + Int(closerResult.score) + specialBonus
+        // Total = 6 pairs + Sum + ผลรวม(number meaning) + Closer + Bonus
+        let pairOnlyScore = pairResults.dropFirst().map(\.score).reduce(0, +)
+        let sumMeaningBonus = (sumMeaning?.isAuspicious == true) ? 50 : 0
+        let rawScore = pairOnlyScore + sumScore + sumMeaningBonus + closerPts + specialBonus
         let totalScore = max(0, min(1000, rawScore))
         let grade = Self.assignGrade(totalScore)
 
@@ -93,7 +118,84 @@ final class AnalysisEngine {
             warnings.append("ควรเปลี่ยนเบอร์ทันที — พลังงานลบสูงกว่า 30%")
         }
 
-        return (totalScore, grade, pairResults, warnings)
+        let elements = Self.analyzeElements(digits)
+
+        return (totalScore, grade, pairResults, warnings, elements)
+    }
+
+    // MARK: - Five Elements (ธาตุห้า)
+
+    enum ChineseElement: String, CaseIterable {
+        case water = "น้ำ 💧"
+        case earth = "ดิน 🌍"
+        case wood = "ไม้ 🌿"
+        case metal = "ทอง ⚡"
+        case fire = "ไฟ 🔥"
+
+        var emoji: String {
+            switch self {
+            case .water: "💧"
+            case .earth: "🌍"
+            case .wood: "🪵"
+            case .metal: "🪙"
+            case .fire: "🔥"
+            }
+        }
+
+        /// ชื่อรูปใน Assets (nil = ใช้ emoji แทน)
+        var imageName: String? {
+            switch self {
+            case .wood: "ElementWood"
+            case .earth: "ElementEarth"
+            case .metal: "ElementMetal"
+            default: nil
+            }
+        }
+
+        var name: String {
+            switch self {
+            case .water: "น้ำ"
+            case .earth: "ดิน"
+            case .wood: "ไม้"
+            case .metal: "ทอง"
+            case .fire: "ไฟ"
+            }
+        }
+    }
+
+    static func elementFor(_ digit: Int) -> ChineseElement {
+        switch digit {
+        case 1: return .water
+        case 2, 5, 8: return .earth
+        case 3, 4: return .wood
+        case 6, 7: return .metal
+        case 9: return .fire
+        case 0: return .water
+        default: return .water
+        }
+    }
+
+    struct ElementResult {
+        let dominant: ChineseElement
+        let counts: [(element: ChineseElement, count: Int)]
+    }
+
+    static func analyzeElements(_ digits: String) -> ElementResult {
+        var map: [ChineseElement: Int] = [:]
+        for el in ChineseElement.allCases { map[el] = 0 }
+
+        for ch in digits {
+            if let d = ch.wholeNumberValue {
+                let el = elementFor(d)
+                map[el, default: 0] += 1
+            }
+        }
+
+        let sorted = map.sorted { $0.value > $1.value }
+            .map { (element: $0.key, count: $0.value) }
+        let dominant = sorted.first?.element ?? .water
+
+        return ElementResult(dominant: dominant, counts: sorted)
     }
 
     static func assignGrade(_ score: Int) -> String {
