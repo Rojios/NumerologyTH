@@ -215,7 +215,7 @@ struct ResultView: View {
                     // ความหมายธาตุ
                     if let em = elementMeaning(for: elements.dominant) {
                         VStack(alignment: .leading, spacing: 6) {
-                            Text("อิทธิพลจากพลังรหัสธาตุประจำเลขหมาย")
+                            Text("✨ อิทธิพลจากพลังรหัสธาตุประจำเลขหมาย")
                                 .font(.headline)
 
                             Text(em.personality)
