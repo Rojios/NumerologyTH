@@ -23,6 +23,9 @@ build/
 Packages/
 Package.resolved
 
+# Claude Code
+.claude/
+
 # Misc
 .DS_Store
 *.swp

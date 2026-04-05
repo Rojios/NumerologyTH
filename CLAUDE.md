@@ -20,12 +20,18 @@
 - App Icon: แม่หมอเหมียว / Background: ภาพแม่หมอเหมียวเต็มจอ
 - Tag: `v1.0` @ `5de2b82`
 
-### v2.0 — Bazi Module (กำลังพัฒนา)
+### v2.0 — Bazi Module ✅
 - นำ v1.0 มาต่อยอด + เพิ่ม module "รหัสธาตุประจำตัว" (Bazi)
-- **หน้าแรก:** Background ภาพแมว + 2 แถบเลือกด้านล่าง:
-  1. ทำนายหมายเลขมือถือ (v1.0 flow)
-  2. เปิดรหัสธาตุประจำตัว (Bazi module ใหม่)
-- Version: `2.0` (build 2)
+- หน้าแรก: Background ภาพแมว + 2 แถบเลือก
+- UI ม่วง/ชมพูพาสเทล + ขยายคำอธิบายความสมพงศ์
+- Tag: `v2.0` @ `2afdea0`
+
+### v2.1 — เซียมซีดูดวง + Share ✅ (ปัจจุบัน)
+- เซียมซีดูดวง (FortuneStickView + FortuneMenuView)
+- เลขนำโชค (LuckyNumberView)
+- Share Feature (ShareHelper)
+- Background ใหม่
+- Tag: `v2.1` @ `7f97431`
 
 ### v3.0 — AI แม่หมอเหมียว (iOS)
 - Chat ถามดวง 3 คำถาม ฿88/เซสชัน
@@ -46,30 +52,41 @@ NumerologyTH/
 ├── App/                  — App entry + ContentView
 ├── Models/               — AnalysisSession, KnowledgeBase
 ├── Services/
-│   ├── AnalysisEngine.swift  — core logic: คู่เลข, ผลรวม, ธาตุห้า (Lo Shu)
+│   ├── AnalysisEngine.swift      — core logic: คู่เลข, ผลรวม, ธาตุห้า (Lo Shu)
+│   ├── BaziEngine.swift          — Bazi/ธาตุประจำตัว
+│   ├── WuXingCompatibility.swift — ความสมพงศ์ธาตุ
 │   ├── HistoryManager.swift
 │   ├── QuotaManager.swift
+│   ├── ShareHelper.swift         — share ผลลัพธ์
 │   ├── ShareManager.swift
 │   └── StoreKitManager.swift
 ├── ViewModels/           — Phone/Name/Plate/History/Purchase VMs
 ├── Views/
-│   ├── HomeView.swift        — หน้าแรก
-│   ├── PhoneInputView.swift  — input เบอร์โทร
-│   ├── ResultView.swift      — แสดงผลทำนาย
+│   ├── HomeView.swift              — หน้าแรก
+│   ├── PhoneInputView.swift        — input เบอร์โทร
+│   ├── ResultView.swift            — แสดงผลทำนาย
 │   ├── NameInputView.swift
 │   ├── PlateInputView.swift
+│   ├── BaziInputView.swift         — input ธาตุประจำตัว
+│   ├── BaziResultView.swift        — ผลลัพธ์ธาตุประจำตัว
+│   ├── CompatibilityPreviewView.swift
+│   ├── FortuneMenuView.swift       — เมนูเซียมซี
+│   ├── FortuneStickView.swift      — เซียมซีดูดวง
+│   ├── LuckyNumberView.swift       — เลขนำโชค
 │   ├── HistoryView.swift
 │   ├── PaywallView.swift
-│   └── Components/           — GradeTag, ModeCard, PairRow, ScoreGauge
+│   └── Components/                 — GradeTag, ModeCard, PairRow, ScoreGauge, ElementUnlockCard, PhoneResultCard
 ├── Extensions/           — Color+Theme, String+Thai
 └── Resources/
     ├── Assets.xcassets/  — AppIcon, HomeBG, Element images
-    └── KnowledgeBase/    — 5 JSON files
+    └── KnowledgeBase/    — 7 JSON files
         ├── pair_grades.json      — 100 คู่เลข + คำทำนาย
         ├── sum_scores.json       — คะแนนผลรวม
         ├── number_meanings.json  — ความหมายเลข 0-9
         ├── thai_char_map.json    — อักษรไทย → ตัวเลข
-        └── career_bonus.json     — โบนัสอาชีพ
+        ├── career_bonus.json     — โบนัสอาชีพ
+        ├── element_meanings.json — ความหมายธาตุ
+        └── fortune_sticks.json   — เซียมซี
 ```
 
 ## Scoring Logic (v1.0)
