@@ -58,9 +58,6 @@ struct BaziInputView: View {
                         .labelsHidden()
                         .frame(height: 100)
 
-                        Text("จำเป็นต้องรู้เวลาเกิดเพื่อความแม่นยำ ใช้คำนวณรหัสธาตุ 4 เสาหลัก")
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
                     }
 
                     Button {
@@ -78,6 +75,11 @@ struct BaziInputView: View {
                         .foregroundStyle(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
+
+                    Text("จำเป็นต้องรู้เวลาเกิดเพื่อความแม่นยำ ใช้คำนวณรหัสธาตุ 4 เสาหลัก")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
                 .padding(20)
                 .background(

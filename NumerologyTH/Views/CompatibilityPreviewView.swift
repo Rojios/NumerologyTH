@@ -83,26 +83,29 @@ struct CompatibilityPreviewView: View {
         )
 
         VStack(spacing: 20) {
-            // Header
+            // Header — ม่วงพาสเทล + อักษรดำ
             VStack(spacing: 8) {
                 Text(result.dominantElement.emoji)
                     .font(.system(size: 60))
                 Text("ธาตุประจำตัวคุณ")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.black.opacity(0.6))
                 Text(result.dominantElement.name)
                     .font(.largeTitle.bold())
-                    .foregroundStyle(elementColor(result.dominantElement))
+                    .foregroundStyle(.black)
                 Text("(ข้อมูลจำลอง)")
                     .font(.caption2)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.black.opacity(0.4))
+                Text("1 มกราคม 2533")
+                    .font(.caption)
+                    .foregroundStyle(.black.opacity(0.5))
             }
-            .padding(.top, 8)
-
-            // วันเกิด
-            Text("1 มกราคม 2533")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+            .padding(.vertical, 20)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.appLavenderLight)
+            )
 
             // เสาธาตุ
             VStack(spacing: 12) {
@@ -136,20 +139,24 @@ struct CompatibilityPreviewView: View {
             .padding()
             .background(RoundedRectangle(cornerRadius: 16).fill(Color.appLavenderLight))
 
-            // ลักษณะเด่น
+            // อิทธิพลธาตุ — ชมพูพาสเทล
             VStack(alignment: .leading, spacing: 8) {
-                Text("ลักษณะเด่นของคุณ")
-                    .font(.headline)
+                HStack(spacing: 6) {
+                    Image(systemName: "sparkles")
+                        .foregroundStyle(.purple)
+                    Text("อิทธิพลของพลังธาตุที่ส่งผลกับตัวคุณ")
+                        .font(.headline)
+                        .foregroundStyle(.black)
+                }
                 Text(result.description)
                     .font(.body)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.black.opacity(0.7))
                     .lineSpacing(4)
             }
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(.background)
-                    .shadow(color: .black.opacity(0.06), radius: 8, y: 4)
+                    .fill(Color.appPastelPink.opacity(0.5))
             )
 
             // จุดแข็ง + จุดอ่อน
@@ -217,11 +224,16 @@ struct CompatibilityPreviewView: View {
                 .background(RoundedRectangle(cornerRadius: 16).fill(Color(red: 1.0, green: 0.97, blue: 0.92)))
             }
 
-            // Compatibility
+            // Compatibility — ชมพูพาสเทล
             VStack(spacing: 16) {
-                Text("ความสมพงศ์กับเบอร์มือถือ")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack(spacing: 6) {
+                    Image(systemName: "heart.circle.fill")
+                        .foregroundStyle(.purple)
+                    Text("ความสมพงศ์กับเบอร์มือถือ")
+                        .font(.headline)
+                        .foregroundStyle(.black)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
 
                 VStack(spacing: 8) {
                     Text(compat.tier.emoji).font(.system(size: 40))
@@ -238,43 +250,47 @@ struct CompatibilityPreviewView: View {
 
                 HStack(spacing: 20) {
                     VStack(spacing: 4) {
-                        Text("ธาตุประจำตัว").font(.caption).foregroundStyle(.secondary)
-                        Text(compat.personElement.name).font(.headline)
+                        Text("ธาตุประจำตัว").font(.caption).foregroundStyle(.black.opacity(0.5))
+                        Text(compat.personElement.name).font(.headline).foregroundStyle(.black)
                     }
                     VStack(spacing: 4) {
-                        Text(compat.relationship.shortLabel).font(.caption2).foregroundStyle(.secondary)
+                        Text(compat.relationship.shortLabel).font(.caption2).foregroundStyle(.black.opacity(0.5))
                         Image(systemName: "arrow.left.arrow.right")
                             .font(.title2)
                             .foregroundStyle(tierColor(compat.tier))
                     }
                     VStack(spacing: 4) {
-                        Text("ธาตุเบอร์").font(.caption).foregroundStyle(.secondary)
-                        Text(compat.phoneDominantElement.name).font(.headline)
+                        Text("ธาตุเบอร์").font(.caption).foregroundStyle(.black.opacity(0.5))
+                        Text(compat.phoneDominantElement.name).font(.headline).foregroundStyle(.black)
                     }
                 }
 
                 Text(compat.summary)
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.black.opacity(0.7))
                     .lineSpacing(4)
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("แม่หมอเหมียวว่า...")
-                        .font(.caption.bold())
-                        .foregroundStyle(Color(red: 0.85, green: 0.55, blue: 0.40))
+                    HStack(spacing: 4) {
+                        Image(systemName: "cat.fill")
+                            .foregroundStyle(.purple)
+                        Text("แม่หมอเหมียวว่า...")
+                            .font(.caption.bold())
+                            .foregroundStyle(.purple)
+                    }
                     Text(compat.meowQuote)
                         .font(.subheadline)
+                        .foregroundStyle(.black.opacity(0.7))
                         .lineSpacing(4)
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(RoundedRectangle(cornerRadius: 12).fill(Color(red: 1.0, green: 0.97, blue: 0.92)))
+                .background(RoundedRectangle(cornerRadius: 12).fill(Color.appLavenderLight))
             }
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(.background)
-                    .shadow(color: .black.opacity(0.08), radius: 10, y: 4)
+                    .fill(Color.appPastelPink.opacity(0.4))
             )
         }
         .padding()
