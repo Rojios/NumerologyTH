@@ -49,6 +49,13 @@
 		D4D4D4D4D4D4D4D4D4D4D4D4 /* number_meanings.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */; };
 		E5E5E5E5E5E5E5E5E5E5E5E5 /* career_bonus.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */; };
 		EM11EM11EM11EM11EM11EM11 /* element_meanings.json in Resources */ = {isa = PBXBuildFile; fileRef = EM12EM12EM12EM12EM12EM12 /* element_meanings.json */; };
+		FM11FM11FM11FM11FM11FM11 /* FortuneMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FM12FM12FM12FM12FM12FM12 /* FortuneMenuView.swift */; };
+		FS11FS11FS11FS11FS11FS11 /* FortuneStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FS12FS12FS12FS12FS12FS12 /* FortuneStickView.swift */; };
+		LN11LN11LN11LN11LN11LN11 /* LuckyNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = LN12LN12LN12LN12LN12LN12 /* LuckyNumberView.swift */; };
+		FK11FK11FK11FK11FK11FK11 /* fortune_sticks.json in Resources */ = {isa = PBXBuildFile; fileRef = FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */; };
+		SH11SH11SH11SH11SH11SH11 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */; };
+		PC11PC11PC11PC11PC11PC11 /* PhoneResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = PC12PC12PC12PC12PC12PC12 /* PhoneResultCard.swift */; };
+		EU11EU11EU11EU11EU11EU11 /* ElementUnlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EU12EU12EU12EU12EU12EU12 /* ElementUnlockCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +114,13 @@
 		4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = number_meanings.json; sourceTree = "<group>"; };
 		5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = career_bonus.json; sourceTree = "<group>"; };
 		EM12EM12EM12EM12EM12EM12 /* element_meanings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = element_meanings.json; sourceTree = "<group>"; };
+		FM12FM12FM12FM12FM12FM12 /* FortuneMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneMenuView.swift; sourceTree = "<group>"; };
+		FS12FS12FS12FS12FS12FS12 /* FortuneStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneStickView.swift; sourceTree = "<group>"; };
+		LN12LN12LN12LN12LN12LN12 /* LuckyNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyNumberView.swift; sourceTree = "<group>"; };
+		FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortune_sticks.json; sourceTree = "<group>"; };
+		SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
+		PC12PC12PC12PC12PC12PC12 /* PhoneResultCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneResultCard.swift; sourceTree = "<group>"; };
+		EU12EU12EU12EU12EU12EU12 /* ElementUnlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementUnlockCard.swift; sourceTree = "<group>"; };
 		CDCD5678CDCD5678CDCD5678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +144,8 @@
 				A6A219A3B5008D6C71D62961 /* ModeCardView.swift */,
 				6C0B2DB4E300B57F43377D9D /* PairRowView.swift */,
 				F8874053CAC96D3E690AF869 /* ScoreGaugeView.swift */,
+				PC12PC12PC12PC12PC12PC12 /* PhoneResultCard.swift */,
+				EU12EU12EU12EU12EU12EU12 /* ElementUnlockCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -171,6 +187,9 @@
 				C3E93C471299B480F0B7F915 /* PaywallView.swift */,
 				CC1515C076507CB3CBDE3C82 /* PhoneInputView.swift */,
 				ACFF12E3CB2A18D7D0A4600A /* PlateInputView.swift */,
+				FM12FM12FM12FM12FM12FM12 /* FortuneMenuView.swift */,
+				FS12FS12FS12FS12FS12FS12 /* FortuneStickView.swift */,
+				LN12LN12LN12LN12LN12LN12 /* LuckyNumberView.swift */,
 				C442DACE1C3485DF5BA36CD8 /* ResultView.swift */,
 				2054A840479DC290C5C49246 /* Components */,
 			);
@@ -209,6 +228,7 @@
 			children = (
 				5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */,
 				EM12EM12EM12EM12EM12EM12 /* element_meanings.json */,
+				FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */,
 				4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */,
 				1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */,
 				2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */,
@@ -255,6 +275,7 @@
 				77D046AA928EA76B45BFC9F6 /* QuotaManager.swift */,
 				D924533C44812897DBF9B581 /* ShareManager.swift */,
 				836D4707F46521D933D104F3 /* StoreKitManager.swift */,
+				SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -339,6 +360,7 @@
 				D4D4D4D4D4D4D4D4D4D4D4D4 /* number_meanings.json in Resources */,
 				E5E5E5E5E5E5E5E5E5E5E5E5 /* career_bonus.json in Resources */,
 				EM11EM11EM11EM11EM11EM11 /* element_meanings.json in Resources */,
+				FK11FK11FK11FK11FK11FK11 /* fortune_sticks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +413,12 @@
 				4EC356FE58FD7CF81C2DDA5E /* StoreKitManager.swift in Sources */,
 				822E9B52B4CD437300B8C598 /* String+Thai.swift in Sources */,
 				WX11WX11WX11WX11WX11WX11 /* WuXingCompatibility.swift in Sources */,
+				FM11FM11FM11FM11FM11FM11 /* FortuneMenuView.swift in Sources */,
+				FS11FS11FS11FS11FS11FS11 /* FortuneStickView.swift in Sources */,
+				LN11LN11LN11LN11LN11LN11 /* LuckyNumberView.swift in Sources */,
+				SH11SH11SH11SH11SH11SH11 /* ShareHelper.swift in Sources */,
+				PC11PC11PC11PC11PC11PC11 /* PhoneResultCard.swift in Sources */,
+				EU11EU11EU11EU11EU11EU11 /* ElementUnlockCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

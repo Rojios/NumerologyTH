@@ -219,6 +219,22 @@ struct BaziResultView: View {
                     )
                 }
 
+                // MARK: - Share Button
+                Button {
+                    shareElement()
+                } label: {
+                    HStack {
+                        Image(systemName: "square.and.arrow.up")
+                        Text("แชร์ธาตุของฉัน")
+                    }
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.appPastelPink)
+                    .foregroundStyle(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+
                 // MARK: - Compatibility Section
                 if let compat = compatibility {
                     compatibilitySection(compat)
@@ -348,6 +364,36 @@ struct BaziResultView: View {
     }
 
     // MARK: - Helpers
+
+    private func shareElement() {
+        let birthText = dateFormatter.string(from: result.birthDate)
+
+        // ย่ออิทธิพลธาตุ 3-5 ประโยค
+        let fullDesc = result.elementMeaning?.personality ?? "ธาตุ\(result.dominantElement.name)"
+        let sentences = fullDesc.components(separatedBy: " ")
+        let shortDesc: String
+        if sentences.count > 3 {
+            // ตัดประมาณ 150 ตัวอักษร
+            shortDesc = String(fullDesc.prefix(200))
+        } else {
+            shortDesc = fullDesc
+        }
+
+        let card = ElementUnlockCard(
+            element: result.dominantElement,
+            birthDateText: birthText,
+            shortDescription: shortDesc
+        )
+        let image = ShareHelper.snapshot(card, size: CGSize(width: 390, height: 690))
+
+        let text = """
+        วันเกิด \(birthText)
+        รหัสธาตุประจำตัว: ธาตุ\(result.dominantElement.name) \(result.dominantElement.emoji)
+
+        🐱 พบความลับธาตุของคุณจาก "แม่หมอเหมียว" App Store
+        """
+        ShareHelper.share(image: image, text: text)
+    }
 
     private func pillarCard(title: String, element: AnalysisEngine.ChineseElement) -> some View {
         VStack(spacing: 8) {

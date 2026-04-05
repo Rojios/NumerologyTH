@@ -113,10 +113,7 @@ final class AnalysisEngine {
         let totalScore = max(0, min(1000, rawScore))
         let grade = Self.assignGrade(totalScore)
 
-        var warnings: [String] = []
-        if totalPositive > 0, totalPenalty / totalPositive > 0.3 {
-            warnings.append("ควรเปลี่ยนเบอร์ทันที — พลังงานลบสูงกว่า 30%")
-        }
+        let warnings: [String] = []
 
         let elements = Self.analyzeElements(digits)
 

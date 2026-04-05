@@ -278,7 +278,56 @@ struct ResultView: View {
                     }
                 }
             }
+
+            // ปุ่มแชร์ — ท้ายหน้า
+            if mode == .phone {
+                Button {
+                    shareResult()
+                } label: {
+                    HStack {
+                        Image(systemName: "square.and.arrow.up")
+                        Text("แชร์คำทำนายหมายเลขนี้ให้เพื่อน")
+                    }
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.appPastelPink)
+                    .foregroundStyle(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+                .padding(.top, 8)
+            }
         }
+    }
+
+    // MARK: - Share
+
+    private func shareResult() {
+        let verdict: String = switch totalScore {
+        case 900...: "หมายเลขมงคลสูงมาก"
+        case 800..<900: "หมายเลขมงคล"
+        case 600..<800: "หมายเลขนี้ดี"
+        case 400..<600: "หมายเลขทั่วไป"
+        default: "หมายเลขนี้เหนื่อย"
+        }
+        let meaning = pairResults.first?.meaning ?? ""
+
+        let card = PhoneResultCard(
+            maskedPhone: ShareHelper.maskedPhone(input),
+            score: totalScore,
+            grade: grade,
+            verdict: verdict,
+            meaning: meaning
+        )
+        let image = ShareHelper.snapshot(card, size: CGSize(width: 390, height: 690))
+
+        let text = """
+        เบอร์ \(ShareHelper.maskedPhone(input))
+        \(verdict) \(totalScore)/1000
+
+        🐱 ดูเบอร์คุณได้ที่ แม่หมอเหมียว.iPhone
+        """
+        ShareHelper.share(image: image, text: text)
     }
 }
 

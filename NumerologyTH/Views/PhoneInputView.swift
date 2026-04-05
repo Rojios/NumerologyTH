@@ -9,9 +9,8 @@ struct PhoneInputView: View {
 
     var body: some View {
         ZStack {
-            // Background เดียวกับหน้าแรก
             GeometryReader { geo in
-                Image("HomeBG")
+                Image("PhoneBG")
                     .resizable()
                     .scaledToFill()
                     .frame(width: geo.size.width, height: geo.size.height)
@@ -19,10 +18,8 @@ struct PhoneInputView: View {
             }
             .ignoresSafeArea()
 
-            // Input card ด้านล่าง
+            // Input card ด้านบน
             VStack {
-                Spacer()
-
                 VStack(spacing: 16) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("กรอกเบอร์โทร 10 หลัก")
@@ -66,9 +63,11 @@ struct PhoneInputView: View {
                 .padding(20)
                 .background(
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(.ultraThinMaterial)
+                        .fill(Color.appPastelPink.opacity(0.85))
                 )
                 .padding()
+
+                Spacer()
 
                 Text("โปรแกรมนี้มีวัตถุประสงค์เพื่อความบันเทิง")
                     .font(.caption2)
@@ -115,6 +114,43 @@ struct PhoneResultPage: View {
         )
         .navigationTitle("ผลทำนาย \(vm.phoneInput)")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    sharePhoneResult()
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
+            }
+        }
+    }
+
+    private func sharePhoneResult() {
+        let verdict: String = switch vm.totalScore {
+        case 900...: "หมายเลขมงคลสูงมาก"
+        case 800..<900: "หมายเลขมงคล"
+        case 600..<800: "หมายเลขนี้ดี"
+        case 400..<600: "หมายเลขทั่วไป"
+        default: "หมายเลขนี้เหนื่อย"
+        }
+        let meaning = vm.pairResults.first?.meaning ?? ""
+
+        let card = PhoneResultCard(
+            maskedPhone: ShareHelper.maskedPhone(vm.phoneInput),
+            score: vm.totalScore,
+            grade: vm.grade,
+            verdict: verdict,
+            meaning: meaning
+        )
+        let image = ShareHelper.snapshot(card, size: CGSize(width: 390, height: 690))
+
+        let text = """
+        เบอร์ \(ShareHelper.maskedPhone(vm.phoneInput))
+        \(verdict) \(vm.totalScore)/1000
+
+        🐱 ดูเบอร์คุณได้ที่ แม่หมอเหมียว.iPhone
+        """
+        ShareHelper.share(image: image, text: text)
     }
 }
 

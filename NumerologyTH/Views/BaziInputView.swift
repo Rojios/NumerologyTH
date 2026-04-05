@@ -43,6 +43,7 @@ struct BaziInputView: View {
                     .datePickerStyle(.wheel)
                     .labelsHidden()
                     .environment(\.locale, Locale(identifier: "th_TH"))
+                    .environment(\.calendar, Calendar(identifier: .buddhist))
 
                     // เวลาเกิด (บังคับ)
                     VStack(alignment: .leading, spacing: 8) {

@@ -124,6 +124,32 @@ struct ElementMeaning: Codable {
 
 typealias ElementMeaningsKB = [String: ElementMeaning]
 
+// MARK: - Fortune Sticks (เซียมซี)
+
+struct FortuneStick: Codable {
+    let id: Int
+    let name: String
+    let level: String
+    let overall: String
+    let work: String
+    let love: String
+    let money: String
+    let health: String
+}
+
+struct FortuneStickKB: Codable {
+    let meta: FortuneStickMeta
+    let sticks: [FortuneStick]
+
+    struct FortuneStickMeta: Codable {
+        let total: Int
+        let levels: [String]
+        let categories: [String]
+        let character: String
+        let version: String
+    }
+}
+
 // MARK: - KB Loader
 
 final class KnowledgeBaseLoader {
@@ -135,6 +161,7 @@ final class KnowledgeBaseLoader {
     lazy var numberMeanings: NumberMeaningsKB = load("number_meanings")
     lazy var careerBonus: CareerBonusKB = load("career_bonus")
     lazy var elementMeanings: ElementMeaningsKB = load("element_meanings")
+    lazy var fortuneSticks: FortuneStickKB = load("fortune_sticks")
 
     private func load<T: Decodable>(_ name: String) -> T {
         guard let url = Bundle.main.url(forResource: name, withExtension: "json"),

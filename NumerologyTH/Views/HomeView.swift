@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var navigateToPhone = false
+    @State private var navigateToFortune = false
 
     var body: some View {
         ZStack {
@@ -42,6 +43,32 @@ struct HomeView: View {
                                 .fill(Color(red: 1.0, green: 0.75, blue: 0.82))
                         )
                     }
+
+                    // เซียมซีประจำวัน
+                    Button {
+                        navigateToFortune = true
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "wand.and.stars")
+                                .font(.title2)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("เซียมซีดูดวงรายวัน")
+                                    .font(.headline)
+                                Text("เสี่ยงเซียมซี พร้อมคำทำนาย")
+                                    .font(.caption)
+                                    .opacity(0.8)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption.bold())
+                        }
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color(red: 1.0, green: 0.75, blue: 0.82))
+                        )
+                    }
                 }
                 .padding(.horizontal)
 
@@ -55,6 +82,9 @@ struct HomeView: View {
         .navigationBarHidden(true)
         .navigationDestination(isPresented: $navigateToPhone) {
             PhoneInputView()
+        }
+        .navigationDestination(isPresented: $navigateToFortune) {
+            FortuneMenuView()
         }
     }
 }
