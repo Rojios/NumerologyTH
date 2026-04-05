@@ -269,9 +269,9 @@ struct ResultView: View {
                     } label: {
                         HStack(spacing: 6) {
                             Image(systemName: "eye")
-                                .font(.caption)
-                            Text("ดูตัวอย่างความเข้ากันของธาตุแต่ละประเภทกับเลขหมายนี้")
-                                .font(.caption)
+                                .font(.subheadline)
+                            Text("ดูตัวอย่างคำทำนายจากการเปิดรหัสธาตุ")
+                                .font(.subheadline)
                         }
                         .foregroundStyle(Color(red: 0.85, green: 0.55, blue: 0.40))
                         .frame(maxWidth: .infinity)
