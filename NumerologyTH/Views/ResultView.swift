@@ -50,17 +50,6 @@ struct ResultView: View {
             // MARK: ส่วนที่ 1 — ความมงคลของเลขหมาย
             // ══════════════════════════════════════
 
-            if mode == .phone {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("ความมงคลของเลขหมาย")
-                        .font(.title3.bold())
-                    Text("ดูว่าหมายเลขนี้มีระดับความมงคลสูงขนาดไหน")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-
             // คะแนน + เกรด
             VStack(spacing: 8) {
                 if mode == .phone {
@@ -191,29 +180,28 @@ struct ResultView: View {
                     // ธาตุเด่น + ตาราง
                     VStack(alignment: .leading, spacing: 10) {
                         Text("หมายเลขนี้มีธาตุเด่นคือ ธาตุ\(elements.dominant.name)")
-                            .font(.headline)
+                            .font(.title2.bold())
 
-                        VStack(spacing: 6) {
+                        // ตารางแถวเดียว — ชื่อธาตุ + %
+                        let totalDigits = elements.counts.map(\.count).reduce(0, +)
+                        HStack(spacing: 4) {
                             ForEach(elements.counts, id: \.element) { item in
                                 if item.count > 0 {
-                                    HStack {
+                                    let pct = totalDigits > 0 ? Int(round(Double(item.count) / Double(totalDigits) * 100)) : 0
+                                    VStack(spacing: 2) {
                                         Text(item.element.name)
-                                            .font(.subheadline)
-                                            .frame(width: 36, alignment: .leading)
-
-                                        GeometryReader { geo in
-                                            RoundedRectangle(cornerRadius: 4)
-                                                .fill(item.element == elements.dominant
-                                                      ? Color.appLavender
-                                                      : Color.gray.opacity(0.3))
-                                                .frame(width: geo.size.width * CGFloat(item.count) / 10.0)
-                                        }
-                                        .frame(height: 16)
-
-                                        Text("\(item.count)")
                                             .font(.caption.bold())
-                                            .frame(width: 20)
+                                        Text("\(pct)%")
+                                            .font(.caption2)
                                     }
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 8)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(item.element == elements.dominant
+                                                  ? Color.appLavender.opacity(0.3)
+                                                  : Color.gray.opacity(0.08))
+                                    )
                                 }
                             }
                         }
