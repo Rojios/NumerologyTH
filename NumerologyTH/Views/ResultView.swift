@@ -215,7 +215,7 @@ struct ResultView: View {
                     // ความหมายธาตุ
                     if let em = elementMeaning(for: elements.dominant) {
                         VStack(alignment: .leading, spacing: 6) {
-                            Text("คนที่ใช้หมายเลขธาตุ\(elements.dominant.name)")
+                            Text("อิทธิพลจากพลังรหัสธาตุประจำเลขหมาย")
                                 .font(.headline)
 
                             Text(em.personality)
@@ -238,7 +238,7 @@ struct ResultView: View {
                         HStack(spacing: 8) {
                             Image(systemName: "sparkles")
                                 .font(.title3)
-                            Text("ดูว่าหมายเลขนี้เสริมรหัสธาตุประจำตัวไหม")
+                            Text("เปิดรหัสธาตุประจำตัว เพื่อดูความสมพงศ์กับเลขหมาย")
                                 .font(.subheadline.bold())
                             Spacer()
                             Image(systemName: "chevron.right")
