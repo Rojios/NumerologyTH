@@ -106,6 +106,24 @@ struct CareerBonusKB: Codable {
     let bonuses: [String: CareerBonusEntry]
 }
 
+// MARK: - Element Meanings
+
+struct ElementMeaning: Codable {
+    let name: String
+    let emoji: String
+    let personality: String
+    let strengths: [String]
+    let weaknesses: [String]
+    let careers: [String]
+    let luckyColor: String
+    let luckyDirection: String
+    let luckyNumber: String
+    let compatibleElements: [String]
+    let conflictElements: [String]
+}
+
+typealias ElementMeaningsKB = [String: ElementMeaning]
+
 // MARK: - KB Loader
 
 final class KnowledgeBaseLoader {
@@ -116,6 +134,7 @@ final class KnowledgeBaseLoader {
     lazy var thaiCharMap: ThaiCharMapKB = load("thai_char_map")
     lazy var numberMeanings: NumberMeaningsKB = load("number_meanings")
     lazy var careerBonus: CareerBonusKB = load("career_bonus")
+    lazy var elementMeanings: ElementMeaningsKB = load("element_meanings")
 
     private func load<T: Decodable>(_ name: String) -> T {
         guard let url = Bundle.main.url(forResource: name, withExtension: "json"),

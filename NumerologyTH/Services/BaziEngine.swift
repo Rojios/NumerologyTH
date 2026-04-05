@@ -11,6 +11,7 @@ struct BaziResult {
     let counts: [(element: AnalysisEngine.ChineseElement, count: Int)]
     let description: String
     let hasFourPillars: Bool
+    let elementMeaning: ElementMeaning?
 }
 
 /// Lo Shu / ธาตุห้า — วิเคราะห์ธาตุประจำตัวจากวันเกิด
@@ -96,7 +97,11 @@ enum BaziEngine {
             .map { (element: $0.key, count: $0.value) }
         let dominant = sorted.first?.element ?? .water
 
-        let desc = elementDescription(dominant)
+        // ดึงจาก KB
+        let kb = KnowledgeBaseLoader.shared.elementMeanings
+        let elementKey = elementKeyFor(dominant)
+        let meaning = kb[elementKey]
+        let desc = meaning?.personality ?? elementDescription(dominant)
 
         return BaziResult(
             birthDate: birthDate,
@@ -108,10 +113,23 @@ enum BaziEngine {
             dominantElement: dominant,
             counts: sorted,
             description: desc,
-            hasFourPillars: birthTime != nil
+            hasFourPillars: birthTime != nil,
+            elementMeaning: meaning
         )
     }
 
+    /// แปลง ChineseElement → JSON key
+    private static func elementKeyFor(_ element: AnalysisEngine.ChineseElement) -> String {
+        switch element {
+        case .water: "water"
+        case .fire:  "fire"
+        case .wood:  "wood"
+        case .earth: "earth"
+        case .metal: "metal"
+        }
+    }
+
+    /// Fallback เมื่อไม่มี KB
     private static func elementDescription(_ element: AnalysisEngine.ChineseElement) -> String {
         switch element {
         case .water:

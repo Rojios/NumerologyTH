@@ -47,6 +47,7 @@
 		C3C3C3C3C3C3C3C3C3C3C3C3 /* thai_char_map.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C3C3C3C3C3C3C3C3C3C3C3C /* thai_char_map.json */; };
 		D4D4D4D4D4D4D4D4D4D4D4D4 /* number_meanings.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */; };
 		E5E5E5E5E5E5E5E5E5E5E5E5 /* career_bonus.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */; };
+		EM11EM11EM11EM11EM11EM11 /* element_meanings.json in Resources */ = {isa = PBXBuildFile; fileRef = EM12EM12EM12EM12EM12EM12 /* element_meanings.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		3C3C3C3C3C3C3C3C3C3C3C3C /* thai_char_map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = thai_char_map.json; sourceTree = "<group>"; };
 		4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = number_meanings.json; sourceTree = "<group>"; };
 		5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = career_bonus.json; sourceTree = "<group>"; };
+		EM12EM12EM12EM12EM12EM12 /* element_meanings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = element_meanings.json; sourceTree = "<group>"; };
 		CDCD5678CDCD5678CDCD5678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */,
+				EM12EM12EM12EM12EM12EM12 /* element_meanings.json */,
 				4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */,
 				1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */,
 				2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */,
@@ -332,6 +335,7 @@
 				C3C3C3C3C3C3C3C3C3C3C3C3 /* thai_char_map.json in Resources */,
 				D4D4D4D4D4D4D4D4D4D4D4D4 /* number_meanings.json in Resources */,
 				E5E5E5E5E5E5E5E5E5E5E5E5 /* career_bonus.json in Resources */,
+				EM11EM11EM11EM11EM11EM11 /* element_meanings.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
