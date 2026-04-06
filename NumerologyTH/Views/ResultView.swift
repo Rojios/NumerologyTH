@@ -12,7 +12,7 @@ struct ResultView: View {
     let warnings: [String]
     var elements: AnalysisEngine.ElementResult?
 
-    @State private var showPairDetails = false
+    @State private var showPairDetails = true
 
     /// คำประเมินตามคะแนน
     private var verdict: (text: String, grade: String, color: Color) {
@@ -122,7 +122,7 @@ struct ResultView: View {
                 // รายละเอียดคู่เลข — ยุบ/ขยาย
                 VStack(spacing: 0) {
                     HStack {
-                        Text("กดขยายเพื่อดูรายละเอียดความหมายแต่ละคู่เลข")
+                        Text("ดูความหมายคู่เลข")
                             .font(.subheadline.bold())
                         Spacer()
                         Image(systemName: showPairDetails ? "chevron.up" : "chevron.down")
@@ -237,8 +237,8 @@ struct ResultView: View {
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
 
-                    if let baziResult = BaziStore.shared.loadResult() {
-                        // เคยเปิดธาตุแล้ว → แสดง compatibility inline เลย
+                    if purchaseVM.isUnlocked, let baziResult = BaziStore.shared.loadResult() {
+                        // unlock แล้ว + เคยเปิดธาตุแล้ว → แสดง compatibility inline
                         let compat = WuXingCompatibility.phoneVsPerson(
                             phoneDominant: elements.dominant,
                             personElement: baziResult.dominantElement
@@ -278,7 +278,7 @@ struct ResultView: View {
                             HStack(spacing: 6) {
                                 Image(systemName: "eye")
                                     .font(.subheadline)
-                                Text("ดูตัวอย่างคำทำนายจากการเปิดรหัสธาตุ")
+                                Text("ดูตัวอย่างความลับที่ซ่อนอยู่ในรหัสธาตุ")
                                     .font(.subheadline)
                             }
                             .foregroundStyle(Color(red: 0.85, green: 0.55, blue: 0.40))

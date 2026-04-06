@@ -26,6 +26,15 @@ final class PurchaseViewModel {
     }
 
     func purchase() async {
+        // StoreKit product ยังโหลดไม่ได้ (เช่น ยังไม่ได้ตั้ง StoreKit Config / ยังไม่มี Dev Account)
+        // → debug unlock ระหว่างพัฒนา
+        #if DEBUG
+        if product == nil {
+            isUnlocked = true
+            return
+        }
+        #endif
+
         guard let product else { return }
         isLoading = true
         defer { isLoading = false }

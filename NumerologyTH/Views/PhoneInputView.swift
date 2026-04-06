@@ -115,6 +115,11 @@ struct PhoneResultPage: View {
         )
         .navigationTitle("ผลทำนาย \(vm.phoneInput)")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            if let elements = vm.elements {
+                PhoneStore.shared.save(phone: vm.phoneInput, dominant: elements.dominant)
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {

@@ -6,9 +6,10 @@ struct BaziResultView: View {
     @State private var navigateToPhone = false
     @Environment(NavigationRouter.self) private var router
 
-    /// Compatibility result (คำนวณเมื่อมี phoneDominantElement)
+    /// Compatibility result — ใช้ phoneDominantElement ที่ส่งมา หรือดึงจาก PhoneStore
     private var compatibility: PhoneCompatibilityResult? {
-        guard let phoneEl = phoneDominantElement else { return nil }
+        let phoneEl = phoneDominantElement ?? PhoneStore.shared.loadDominantElement()
+        guard let phoneEl else { return nil }
         return WuXingCompatibility.phoneVsPerson(
             phoneDominant: phoneEl,
             personElement: result.dominantElement
@@ -191,19 +192,18 @@ struct BaziResultView: View {
                 // MARK: - Annual Forecast Section
                 annualForecastSection()
 
-                // MARK: - Cross-link ไปทำนายมือถือ (เมื่อเข้าจากหน้าแรก)
-                if phoneDominantElement == nil {
+                // MARK: - Cross-link ไปทำนายมือถือ (เมื่อยังไม่มีข้อมูลเบอร์)
+                if compatibility == nil {
                     Button {
                         navigateToPhone = true
                     } label: {
                         HStack(spacing: 10) {
                             Image(systemName: "phone.fill")
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("รหัสธาตุของหมายเลขมือถือ")
+                                Text("รหัสธาตุของคุณคือ \(result.dominantElement.name)")
                                     .font(.headline)
-                                Text("ดูความสมพงศ์ระหว่างเบอร์กับธาตุของคุณ")
-                                    .font(.caption)
-                                    .opacity(0.8)
+                                Text("ดูความสมพงศ์ของหมายเลขมือถือได้ทันที")
+                                    .font(.headline)
                             }
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -279,36 +279,40 @@ struct BaziResultView: View {
         let currentYear = Calendar(identifier: .gregorian).component(.year, from: Date())
         let animalName = BaziEngine.yearAnimalName(year: currentYear)
 
+        let thaiYear = currentYear + 543
+
         VStack(alignment: .leading, spacing: 12) {
             // Header
             HStack(spacing: 6) {
-                Image(systemName: "calendar.badge.clock")
-                    .foregroundStyle(.purple)
-                Text("อิทธิพลของปีชงนักษัตร และพลังของรหัสธาตุที่มีผลกับคุณ")
+                Text("🐴")
+                Text(yearElement.emoji)
+                Text("ปี\(animalName)\(yearElement.name) \(String(thaiYear))")
                     .font(.headline)
             }
 
             // Sub-header: ปีนี้
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 10) {
                 HStack(spacing: 4) {
-                    Text("🔥")
-                    Text("ธาตุปีนี้: \(yearElement.name)")
+                    Text(yearElement.emoji)
+                    Text("รหัสธาตุประจำปี : \(yearElement.name)")
                         .font(.subheadline.bold())
-                    Text("⭐")
-                    Text("นักษัตร: ปี\(animalName)")
+                }
+
+                HStack(spacing: 4) {
+                    Text("🐴")
+                    Text("ปีนักษัตร : \(animalName)")
                         .font(.subheadline)
                 }
 
                 HStack(spacing: 4) {
-                    Text("🐯")
-                    Text("ปีนักษัตร:")
-                        .font(.subheadline)
                     if isClash {
-                        Text("⚠️ ชงกับปีเกิดของคุณ")
+                        Text("⚠️")
+                        Text("ปีชงนักษัตร : ชงกับปีเกิดของคุณ")
                             .font(.subheadline.bold())
                             .foregroundStyle(.red)
                     } else {
-                        Text("✅ ไม่ชง ปีเอื้ออำนวย")
+                        Text("✅")
+                        Text("ปีชงนักษัตร : ไม่ชง")
                             .font(.subheadline)
                             .foregroundStyle(.green)
                     }

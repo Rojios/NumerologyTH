@@ -292,8 +292,73 @@ struct CompatibilityPreviewView: View {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(Color.appPastelPink.opacity(0.4))
             )
+            // Annual Forecast — ดวงรายปี
+            mockAnnualForecast(result: result)
         }
         .padding()
+    }
+
+    // MARK: - Annual Forecast (mock)
+
+    @ViewBuilder
+    private func mockAnnualForecast(result: BaziResult) -> some View {
+        let yearElement = BaziEngine.currentYearStemElement()
+        let currentYear = Calendar(identifier: .gregorian).component(.year, from: Date())
+        let thaiYear = currentYear + 543
+        let animalName = BaziEngine.yearAnimalName(year: currentYear)
+        // ใช้ isClash = false เพื่อแสดงตัวอย่างที่ดูดี
+        let forecast = AnnualForecastKB.forecast(
+            dayMasterElement: result.dominantElement,
+            yearElement: yearElement,
+            isClash: false
+        )
+
+        VStack(alignment: .leading, spacing: 12) {
+            // Header
+            HStack(spacing: 6) {
+                Text("🐴")
+                Text(yearElement.emoji)
+                Text("ปี\(animalName)\(yearElement.name) \(String(thaiYear))")
+                    .font(.headline)
+            }
+
+            // กรอบขาว
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(spacing: 4) {
+                    Text(yearElement.emoji)
+                    Text("รหัสธาตุประจำปี : \(yearElement.name)")
+                        .font(.subheadline.bold())
+                }
+                HStack(spacing: 4) {
+                    Text("🐴")
+                    Text("ปีนักษัตร : \(animalName)")
+                        .font(.subheadline)
+                }
+                HStack(spacing: 4) {
+                    Text("✅")
+                    Text("ปีชงนักษัตร : ไม่ชง")
+                        .font(.subheadline)
+                        .foregroundStyle(.green)
+                }
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.white.opacity(0.8))
+            )
+
+            // บทความ
+            Text(forecast)
+                .font(.subheadline)
+                .foregroundStyle(.black.opacity(0.7))
+                .lineSpacing(5)
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.appPastelPink.opacity(0.5))
+        )
     }
 
     // MARK: - Helpers

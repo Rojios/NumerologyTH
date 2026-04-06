@@ -61,6 +61,7 @@
 		SN11SN11SN11SN11SN11SN11 /* SlotNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SN12SN12SN12SN12SN12SN12 /* SlotNumberView.swift */; };
 		BS11BS11BS11BS11BS11BS11 /* BaziStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */; };
 		AF11AF11AF11AF11AF11AF11 /* AnnualForecastKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AF12AF12AF12AF12AF12 /* AnnualForecastKB.swift */; };
+		PS11PS11PS11PS11PS11PS11 /* PhoneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = PS12PS12PS12PS12PS12PS12 /* PhoneStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziEngine.swift; sourceTree = "<group>"; };
 		BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziStore.swift; sourceTree = "<group>"; };
 		AF12AF12AF12AF12AF12AF12 /* AnnualForecastKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualForecastKB.swift; sourceTree = "<group>"; };
+		PS12PS12PS12PS12PS12PS12 /* PhoneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneStore.swift; sourceTree = "<group>"; };
 		BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziInputView.swift; sourceTree = "<group>"; };
 		BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziResultView.swift; sourceTree = "<group>"; };
 		CP12CP12CP12CP12CP12CP12 /* CompatibilityPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityPreviewView.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				9F98D0125391BAF6A144000D /* AnalysisEngine.swift */,
 				BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */,
 				BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */,
+				PS12PS12PS12PS12PS12PS12 /* PhoneStore.swift */,
 				E2991E5429C4F279F8A79680 /* HistoryManager.swift */,
 				WX12WX12WX12WX12WX12WX12 /* WuXingCompatibility.swift */,
 				77D046AA928EA76B45BFC9F6 /* QuotaManager.swift */,
@@ -401,6 +404,7 @@
 				C8D81E92E41D335608FAF1FB /* AnalysisSession.swift in Sources */,
 				BA21BA21BA21BA21BA21BA21 /* BaziEngine.swift in Sources */,
 				BS11BS11BS11BS11BS11BS11 /* BaziStore.swift in Sources */,
+				PS11PS11PS11PS11PS11PS11 /* PhoneStore.swift in Sources */,
 				BA31BA31BA31BA31BA31BA31 /* BaziInputView.swift in Sources */,
 				BA41BA41BA41BA41BA41BA41 /* BaziResultView.swift in Sources */,
 				CP11CP11CP11CP11CP11CP11 /* CompatibilityPreviewView.swift in Sources */,

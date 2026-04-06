@@ -29,11 +29,12 @@ struct PaywallView: View {
 
                 // Features
                 VStack(alignment: .leading, spacing: 14) {
-                    featureItem("sparkles", "วิเคราะห์ธาตุ 4 เสาหลัก (ปี/เดือน/วัน/ยาม)")
-                    featureItem("arrow.triangle.2.circlepath", "เปลี่ยนวันเกิดได้ไม่จำกัด")
-                    featureItem("person.2.fill", "ดูดวงให้เพื่อน/ครอบครัว")
-                    featureItem("wand.and.stars", "ความสมพงศ์ธาตุ กับเบอร์มือถือ")
+                    featureItem("flame.fill", "วิเคราะห์ด้วยศาสตร์จีนดั้งเดิม 5 ธาตุ 4 เสา")
+                    featureItem("person.fill", "เปิดรหัสธาตุประจำตัว ไม่จำกัด")
+                    featureItem("phone.fill", "เปิดรหัสธาตุเบอร์มือถือ ไม่จำกัด")
+                    featureItem("wand.and.stars", "ความสมพงศ์รหัสธาตุ กับเบอร์มือถือ")
                     featureItem("calendar", "ดวงรายปี + ปีชงนักษัตร")
+                    featureItem("person.2.fill", "ดูดวงให้เพื่อน/ครอบครัว")
                 }
                 .padding()
                 .background(
@@ -65,7 +66,7 @@ struct PaywallView: View {
                     .background(Color(red: 0.85, green: 0.55, blue: 0.40))
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
-                    .disabled(purchaseVM.isLoading || purchaseVM.product == nil)
+                    .disabled(purchaseVM.isLoading)
 
                     Button("กู้คืนการซื้อ") {
                         Task { await purchaseVM.restore() }

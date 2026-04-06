@@ -82,10 +82,19 @@ struct BaziInputView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
 
-                    Text("จำเป็นต้องรู้เวลาเกิดเพื่อความแม่นยำ ใช้คำนวณรหัสธาตุ 4 เสาหลัก")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .center)
+                    // ลิงก์ตัวอย่างบทวิเคราะห์
+                    NavigationLink {
+                        CompatibilityPreviewView(phoneDominantElement: .fire)
+                    } label: {
+                        HStack(spacing: 6) {
+                            Image(systemName: "eye")
+                                .font(.subheadline)
+                            Text("ดูตัวอย่างความลับที่ซ่อนในรหัสธาตุ")
+                                .font(.subheadline)
+                        }
+                        .foregroundStyle(.black)
+                        .frame(maxWidth: .infinity)
+                    }
 
                     if BaziStore.shared.hasSavedResult {
                         Button(role: .destructive) {
