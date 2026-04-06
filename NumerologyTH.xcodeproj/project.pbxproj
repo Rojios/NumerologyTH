@@ -60,6 +60,7 @@
 		EU11EU11EU11EU11EU11EU11 /* ElementUnlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EU12EU12EU12EU12EU12EU12 /* ElementUnlockCard.swift */; };
 		SN11SN11SN11SN11SN11SN11 /* SlotNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SN12SN12SN12SN12SN12SN12 /* SlotNumberView.swift */; };
 		BS11BS11BS11BS11BS11BS11 /* BaziStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */; };
+		AF11AF11AF11AF11AF11AF11 /* AnnualForecastKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AF12AF12AF12AF12AF12 /* AnnualForecastKB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		F8874053CAC96D3E690AF869 /* ScoreGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreGaugeView.swift; sourceTree = "<group>"; };
 		BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziEngine.swift; sourceTree = "<group>"; };
 		BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziStore.swift; sourceTree = "<group>"; };
+		AF12AF12AF12AF12AF12AF12 /* AnnualForecastKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualForecastKB.swift; sourceTree = "<group>"; };
 		BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziInputView.swift; sourceTree = "<group>"; };
 		BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziResultView.swift; sourceTree = "<group>"; };
 		CP12CP12CP12CP12CP12CP12 /* CompatibilityPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityPreviewView.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				836D4707F46521D933D104F3 /* StoreKitManager.swift */,
 				SD12SD12SD12SD12SD12SD12 /* ShakeDetector.swift */,
 				SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */,
+			AF12AF12AF12AF12AF12AF12 /* AnnualForecastKB.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				PC11PC11PC11PC11PC11PC11 /* PhoneResultCard.swift in Sources */,
 				EU11EU11EU11EU11EU11EU11 /* ElementUnlockCard.swift in Sources */,
 				SN11SN11SN11SN11SN11SN11 /* SlotNumberView.swift in Sources */,
+				AF11AF11AF11AF11AF11AF11 /* AnnualForecastKB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

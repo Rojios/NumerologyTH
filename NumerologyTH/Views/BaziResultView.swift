@@ -188,6 +188,9 @@ struct BaziResultView: View {
                     compatibilitySection(compat)
                 }
 
+                // MARK: - Annual Forecast Section
+                annualForecastSection()
+
                 // MARK: - Cross-link ไปทำนายมือถือ (เมื่อเข้าจากหน้าแรก)
                 if phoneDominantElement == nil {
                     Button {
@@ -196,7 +199,7 @@ struct BaziResultView: View {
                         HStack(spacing: 10) {
                             Image(systemName: "phone.fill")
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("เปิดรหัสธาตุของหมายเลขมือถือ")
+                                Text("รหัสธาตุของหมายเลขมือถือ")
                                     .font(.headline)
                                 Text("ดูความสมพงศ์ระหว่างเบอร์กับธาตุของคุณ")
                                     .font(.caption)
@@ -259,6 +262,76 @@ struct BaziResultView: View {
         .navigationDestination(isPresented: $navigateToPhone) {
             PhoneInputView()
         }
+    }
+
+    // MARK: - Annual Forecast
+
+    @ViewBuilder
+    private func annualForecastSection() -> some View {
+        let yearElement = BaziEngine.currentYearStemElement()
+        let isClash = BaziEngine.isNaksatClash(userBirthDate: result.birthDate)
+        let forecast = AnnualForecastKB.forecast(
+            dayMasterElement: result.dominantElement,
+            yearElement: yearElement,
+            isClash: isClash
+        )
+
+        let currentYear = Calendar(identifier: .gregorian).component(.year, from: Date())
+        let animalName = BaziEngine.yearAnimalName(year: currentYear)
+
+        VStack(alignment: .leading, spacing: 12) {
+            // Header
+            HStack(spacing: 6) {
+                Image(systemName: "calendar.badge.clock")
+                    .foregroundStyle(.purple)
+                Text("อิทธิพลของปีชงนักษัตร และพลังของรหัสธาตุที่มีผลกับคุณ")
+                    .font(.headline)
+            }
+
+            // Sub-header: ปีนี้
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(spacing: 4) {
+                    Text("🔥")
+                    Text("ธาตุปีนี้: \(yearElement.name)")
+                        .font(.subheadline.bold())
+                    Text("⭐")
+                    Text("นักษัตร: ปี\(animalName)")
+                        .font(.subheadline)
+                }
+
+                HStack(spacing: 4) {
+                    Text("🐯")
+                    Text("ปีนักษัตร:")
+                        .font(.subheadline)
+                    if isClash {
+                        Text("⚠️ ชงกับปีเกิดของคุณ")
+                            .font(.subheadline.bold())
+                            .foregroundStyle(.red)
+                    } else {
+                        Text("✅ ไม่ชง ปีเอื้ออำนวย")
+                            .font(.subheadline)
+                            .foregroundStyle(.green)
+                    }
+                }
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.white.opacity(0.8))
+            )
+
+            // บทความ
+            Text(forecast)
+                .font(.subheadline)
+                .foregroundStyle(.black.opacity(0.7))
+                .lineSpacing(5)
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.appPastelPink.opacity(0.5))
+        )
     }
 
     // MARK: - Compatibility View

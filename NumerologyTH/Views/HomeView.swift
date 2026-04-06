@@ -54,9 +54,9 @@ struct HomeView: View {
                             Image(systemName: "flame.fill")
                                 .font(.title2)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("เปิดรหัสธาตุประจำตัว")
+                                Text("เปิดรหัสธาตุและปีชงนักษัตร")
                                     .font(.headline)
-                                Text("วิเคราะห์ธาตุดิน น้ำ ไม้ ไฟ ทอง")
+                                Text("วิเคราะห์อิทธิพลของรหัสธาตุและผลจากปีชงนักษัตร")
                                     .font(.caption)
                                     .opacity(0.8)
                             }
@@ -70,6 +70,20 @@ struct HomeView: View {
                             RoundedRectangle(cornerRadius: 16)
                                 .fill(Color(red: 1.0, green: 0.75, blue: 0.82))
                         )
+                    }
+
+                    // ลิงก์ตัวอย่างบทวิเคราะห์
+                    NavigationLink {
+                        CompatibilityPreviewView(phoneDominantElement: .fire)
+                    } label: {
+                        HStack(spacing: 6) {
+                            Image(systemName: "eye")
+                                .font(.subheadline)
+                            Text("ตัวอย่างบทวิเคราะห์อิทธิพลจากรหัสธาตุและผลจากปีชงนักษัตร")
+                                .font(.caption)
+                        }
+                        .foregroundStyle(Color(red: 0.85, green: 0.55, blue: 0.40))
+                        .frame(maxWidth: .infinity)
                     }
 
                     // เซียมซีประจำวัน

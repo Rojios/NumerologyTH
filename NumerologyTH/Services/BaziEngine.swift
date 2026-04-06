@@ -179,4 +179,42 @@ enum BaziEngine {
             return "คุณเป็นคนธาตุทอง — เด็ดเดี่ยว มีระเบียบ เป็นคนตรงไปตรงมา ยุติธรรม เหมาะกับงานที่ต้องใช้ความแม่นยำ กฎหมาย การเงิน ธาตุทองส่งเสริมให้มีความมุ่งมั่นไม่ย่อท้อ"
         }
     }
+
+    // MARK: - Year Pillar Helpers (for Annual Forecast)
+
+    /// ธาตุ Heavenly Stem ของปีปัจจุบัน
+    static func currentYearStemElement() -> AnalysisEngine.ChineseElement {
+        let year = Calendar(identifier: .gregorian).component(.year, from: Date())
+        let stemIdx = stemIndex(year: year)
+        return stemElements[stemIdx]
+    }
+
+    /// Earthly Branch index ของปี (0=子, 1=丑, ..., 11=亥)
+    static func yearBranchIndex(year: Int) -> Int {
+        return (year + 8) % 12
+    }
+
+    /// ตรวจนักษัตรชง (Earthly Branch clash)
+    /// คู่ชง 6 คู่: 子午, 丑未, 寅申, 卯酉, 辰戌, 巳亥
+    static func isNaksatClash(userBirthDate: Date) -> Bool {
+        let cal = Calendar(identifier: .gregorian)
+        let userYear = cal.component(.year, from: userBirthDate)
+        let currentYear = cal.component(.year, from: Date())
+
+        let userBranch = yearBranchIndex(year: userYear)
+        let currentBranch = yearBranchIndex(year: currentYear)
+
+        // ชง = ห่างกัน 6 ตำแหน่งพอดี
+        return abs(userBranch - currentBranch) == 6
+    }
+
+    /// ชื่อนักษัตรไทย 12 ราศี
+    static let thaiAnimals = ["ชวด", "ฉลู", "ขาล", "เถาะ", "มะโรง", "มะเส็ง",
+                               "มะเมีย", "มะแม", "วอก", "ระกา", "จอ", "กุน"]
+
+    /// ชื่อนักษัตรของปี
+    static func yearAnimalName(year: Int) -> String {
+        let branchIdx = yearBranchIndex(year: year)
+        return thaiAnimals[branchIdx]
+    }
 }
