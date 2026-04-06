@@ -26,19 +26,44 @@
 - UI ม่วง/ชมพูพาสเทล + ขยายคำอธิบายความสมพงศ์
 - Tag: `v2.0` @ `2afdea0`
 
-### v2.1 — เซียมซีดูดวง + Share ✅ (ปัจจุบัน)
+### v2.1 — เซียมซีดูดวง + Share ✅
 - เซียมซีดูดวง (FortuneStickView + FortuneMenuView)
 - เลขนำโชค (LuckyNumberView)
 - Share Feature (ShareHelper)
 - Background ใหม่
 - Tag: `v2.1` @ `7f97431`
 
+### v2.3 — เขย่าเซียมซี + Cross-link ✅
+- เขย่า iPhone สุ่มเซียมซี (ShakeDetector + haptic feedback)
+- ตัวเลข slot machine วิ่งทีละหลัก (SlotNumberView)
+- หน้าแรกเพิ่มปุ่มที่ 3 "เปิดรหัสธาตุประจำตัว"
+- BaziResultView → ปุ่มลิงค์ไปทำนายมือถือ (เมื่อเข้าจากหน้าแรก)
+- ResultView → ถ้าเคยเปิดธาตุแล้ว ดูความสมพงศ์ตรง (BaziStore)
+- BaziStore: เก็บ birthDate/birthTime ใน UserDefaults
+- ปุ่มล้างประวัติรหัสธาตุใน BaziInputView
+- Tag: `v2.3` @ `f6454e7`
+
+### v2.5 — แก้ Bazi Engine ✅
+- Month/Hour pillar ใช้ Heavenly Stem ถูกต้อง (五虎遁/五鼠遁)
+- เจ้าชะตา (日主) = Day Stem ตามหลัก Bazi ดั้งเดิม
+- แก้ Yin-Yang pairing ใช้ %5 (甲己/乙庚/丙辛/丁壬/戊癸)
+- ตัดตาราง "สัดส่วนธาตุ" ที่ไม่รวม hidden stems ออก
+- เพิ่ม BaziEngineTests (14 tests) verify ตรง sinsae.net
+- Tag: `v2.5` @ `3334776`
+
+### v2.6 — Compatibility inline + UI ✅ (ปัจจุบัน)
+- ResultView: แสดงความสมพงศ์ธาตุ inline ทันทีถ้าเคยเปิดธาตุแล้ว
+- Share Card: เพิ่ม "แม่หมอเหมียว" บนสุด + ลบประโยคปิดล่าง
+- ปุ่ม Home (house.fill) ที่หน้าผลมือถือ + หน้ารหัสธาตุ
+- NavigationRouter: popToRoot กลับหน้าแรกจากทุกหน้า
+- Tag: `v2.6` @ `8b6b5fb`
+
 ### v3.0 — AI แม่หมอเหมียว (iOS)
 - Chat ถามดวง 3 คำถาม ฿88/เซสชัน
 - ปุ่มแชร์ผลลัพธ์ — ช่วยไวรัล
 
 ### Phase ถัดไป
-- PWA — เว็บ version ให้ Android ใช้ได้
+- Android version: `github.com/Rojios/NumerologyTH-Android` (Kotlin / Jetpack Compose)
 
 ### หมายเหตุ
 - ทุก version สร้างบน iOS ก่อน
@@ -53,8 +78,10 @@ NumerologyTH/
 ├── Models/               — AnalysisSession, KnowledgeBase
 ├── Services/
 │   ├── AnalysisEngine.swift      — core logic: คู่เลข, ผลรวม, ธาตุห้า (Lo Shu)
-│   ├── BaziEngine.swift          — Bazi/ธาตุประจำตัว
+│   ├── BaziEngine.swift          — Bazi/ธาตุประจำตัว (五虎遁/五鼠遁/Day Master)
+│   ├── BaziStore.swift           — persistence วันเกิด/เวลาเกิด (UserDefaults)
 │   ├── WuXingCompatibility.swift — ความสมพงศ์ธาตุ
+│   ├── ShakeDetector.swift       — ตรวจจับการเขย่า iPhone
 │   ├── HistoryManager.swift
 │   ├── QuotaManager.swift
 │   ├── ShareHelper.swift         — share ผลลัพธ์
@@ -75,7 +102,7 @@ NumerologyTH/
 │   ├── LuckyNumberView.swift       — เลขนำโชค
 │   ├── HistoryView.swift
 │   ├── PaywallView.swift
-│   └── Components/                 — GradeTag, ModeCard, PairRow, ScoreGauge, ElementUnlockCard, PhoneResultCard
+│   └── Components/                 — GradeTag, ModeCard, PairRow, ScoreGauge, ElementUnlockCard, PhoneResultCard, SlotNumberView
 ├── Extensions/           — Color+Theme, String+Thai
 └── Resources/
     ├── Assets.xcassets/  — AppIcon, HomeBG, Element images
@@ -96,10 +123,15 @@ NumerologyTH/
 - ผลรวม 10 หลัก → คะแนน + ความหมายผู้ถือครอง
 - เกรด: A+ มงคลสูงมาก, A มงคล, B ดี, C ทั่วไป, D เหนื่อย
 
-## Bazi / ธาตุห้า (Lo Shu)
+## Bazi Engine (v2.5+)
 - `ChineseElement` enum: น้ำ💧 ดิน🌍 ไม้🌿 ไฟ🔥 ทอง⚙️
-- Digit mapping: 1=น้ำ, 2=ดิน, 3=ไม้, 4=ไฟ, 5=ดิน, 6=ทอง, 7=ทอง, 8=ไม้, 9=ไฟ, 0=น้ำ
-- `analyzeElements()` → dominant element + count breakdown
+- 4 เสาหลัก: ปี/เดือน/วัน/ยาม — ทุกเสาใช้ Heavenly Stem
+- เจ้าชะตา (日主) = Day Stem เสมอ
+- Month Stem: สูตร 五虎遁 (yearStem % 5)
+- Hour Stem: สูตร 五鼠遁 (dayStemIdx % 5)
+- Verified: sinsae.net (Boss 06/03/1972 11:00 = 壬子/癸卯/丙申/甲午)
+- Phone element: Lo Shu digit mapping (1=น้ำ, 2=ดิน, 3=ไม้, etc.)
+- BaziStore: เก็บ birthDate/birthTime → recompute เมื่อต้องการ
 
 ## UI Theme
 - บังคับ Light Mode
