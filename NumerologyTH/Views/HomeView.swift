@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(NavigationRouter.self) private var router
     @State private var navigateToPhone = false
     @State private var navigateToFortune = false
     @State private var navigateToBazi = false
@@ -116,6 +117,13 @@ struct HomeView: View {
         .navigationDestination(isPresented: $navigateToFortune) {
             FortuneMenuView()
         }
+        .onChange(of: router.popToRoot) {
+            if router.popToRoot {
+                navigateToPhone = false
+                navigateToBazi = false
+                navigateToFortune = false
+            }
+        }
     }
 }
 
@@ -123,6 +131,7 @@ struct HomeView: View {
     NavigationStack {
         HomeView()
     }
+    .environment(NavigationRouter())
     .environment(PurchaseViewModel())
     .modelContainer(for: AnalysisSession.self, inMemory: true)
 }

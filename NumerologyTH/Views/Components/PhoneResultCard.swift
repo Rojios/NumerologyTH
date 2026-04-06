@@ -22,6 +22,12 @@ struct PhoneResultCard: View {
             VStack(spacing: 0) {
                 Spacer().frame(height: 12)
 
+                Text("แม่หมอเหมียว")
+                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .foregroundStyle(.purple)
+
+                Spacer().frame(height: 8)
+
                 // หมายเลข masked
                 Text(maskedPhone)
                     .font(.system(size: 22, weight: .bold, design: .monospaced))
@@ -48,14 +54,6 @@ struct PhoneResultCard: View {
                     .font(.system(size: 13))
                     .foregroundStyle(.black.opacity(0.6))
                     .lineSpacing(3)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                Spacer().frame(height: 16)
-
-                // ประโยคปิด
-                Text("อ่านความลับหมายเลขคุณเพิ่มเติมที่ \"แม่หมอเหมียว\" App Store")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundStyle(.black.opacity(0.5))
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 Spacer()

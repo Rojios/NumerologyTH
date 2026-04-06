@@ -85,6 +85,7 @@ struct PhoneInputView: View {
 /// หน้าแสดงผล — BG พาสเทล
 struct PhoneResultPage: View {
     let vm: PhoneAnalysisViewModel
+    @Environment(NavigationRouter.self) private var router
 
     var body: some View {
         ScrollView {
@@ -115,6 +116,13 @@ struct PhoneResultPage: View {
         .navigationTitle("ผลทำนาย \(vm.phoneInput)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    router.goHome()
+                } label: {
+                    Image(systemName: "house.fill")
+                }
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     sharePhoneResult()

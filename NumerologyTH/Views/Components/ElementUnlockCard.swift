@@ -20,6 +20,12 @@ struct ElementUnlockCard: View {
             VStack(spacing: 0) {
                 Spacer().frame(height: 12)
 
+                Text("แม่หมอเหมียว")
+                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .foregroundStyle(.purple)
+
+                Spacer().frame(height: 8)
+
                 // วันเดือนปีเกิด — ตัวใหญ่สีดำ
                 Text(birthDateText)
                     .font(.system(size: 22, weight: .bold))
@@ -49,14 +55,6 @@ struct ElementUnlockCard: View {
                     .font(.system(size: 13))
                     .foregroundStyle(.black.opacity(0.6))
                     .lineSpacing(3)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                Spacer().frame(height: 16)
-
-                // ประโยคปิด
-                Text("พบความลับธาตุของคุณจาก \"แม่หมอเหมียว\" App Store")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundStyle(.black.opacity(0.5))
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 Spacer()

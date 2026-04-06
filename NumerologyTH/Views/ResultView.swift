@@ -13,7 +13,6 @@ struct ResultView: View {
     var elements: AnalysisEngine.ElementResult?
 
     @State private var showPairDetails = false
-    @State private var navigateToBaziResult = false
 
     /// คำประเมินตามคะแนน
     private var verdict: (text: String, grade: String, color: Color) {
@@ -238,40 +237,13 @@ struct ResultView: View {
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
 
-                    if BaziStore.shared.hasSavedResult {
-                        // เคยเปิดธาตุแล้ว → ไป BaziResultView ตรง พร้อม compatibility
-                        Button {
-                            navigateToBaziResult = true
-                        } label: {
-                            HStack(spacing: 8) {
-                                Image(systemName: "heart.circle.fill")
-                                    .font(.title3)
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("ดูความสมพงศ์กับมือถือ")
-                                        .font(.subheadline.bold())
-                                    Text("เปรียบเทียบธาตุประจำตัวกับธาตุเลขหมาย")
-                                        .font(.caption)
-                                        .opacity(0.85)
-                                }
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .font(.caption.bold())
-                            }
-                            .foregroundStyle(.white)
-                            .padding()
-                            .background(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
-                            )
-                        }
-                        .navigationDestination(isPresented: $navigateToBaziResult) {
-                            if let baziResult = BaziStore.shared.loadResult() {
-                                BaziResultView(
-                                    result: baziResult,
-                                    phoneDominantElement: elements.dominant
-                                )
-                            }
-                        }
+                    if let baziResult = BaziStore.shared.loadResult() {
+                        // เคยเปิดธาตุแล้ว → แสดง compatibility inline เลย
+                        let compat = WuXingCompatibility.phoneVsPerson(
+                            phoneDominant: elements.dominant,
+                            personElement: baziResult.dominantElement
+                        )
+                        phoneCompatibilitySection(compat)
                     } else {
                         // ยังไม่เคยเปิดธาตุ → ไป BaziInputView
                         NavigationLink {
@@ -334,6 +306,114 @@ struct ResultView: View {
                 }
                 .padding(.top, 8)
             }
+        }
+    }
+
+    // MARK: - Phone Compatibility (inline)
+
+    @ViewBuilder
+    private func phoneCompatibilitySection(_ compat: PhoneCompatibilityResult) -> some View {
+        VStack(spacing: 16) {
+            HStack(spacing: 6) {
+                Image(systemName: "heart.circle.fill")
+                    .foregroundStyle(.purple)
+                Text("ความสมพงศ์กับเบอร์มือถือ")
+                    .font(.headline)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            // Score
+            VStack(spacing: 8) {
+                Text(compat.tier.emoji)
+                    .font(.system(size: 40))
+                Text("\(compat.score)/100")
+                    .font(.system(size: 36, weight: .bold))
+                    .foregroundStyle(compatTierColor(compat.tier))
+                Text(compat.tier.rawValue)
+                    .font(.headline)
+                    .foregroundStyle(compatTierColor(compat.tier))
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.white.opacity(0.8))
+            )
+
+            // ธาตุ vs ธาตุ
+            HStack(spacing: 20) {
+                VStack(spacing: 4) {
+                    Text("ธาตุประจำตัว")
+                        .font(.caption)
+                        .foregroundStyle(.black.opacity(0.5))
+                    Text(compat.personElement.emoji)
+                        .font(.system(size: 32))
+                    Text(compat.personElement.name)
+                        .font(.subheadline.bold())
+                }
+
+                VStack(spacing: 4) {
+                    Text(compat.relationship.shortLabel)
+                        .font(.caption2)
+                        .foregroundStyle(.black.opacity(0.5))
+                    Image(systemName: "arrow.left.arrow.right")
+                        .font(.title2)
+                        .foregroundStyle(compatTierColor(compat.tier))
+                }
+
+                VStack(spacing: 4) {
+                    Text("ธาตุเบอร์")
+                        .font(.caption)
+                        .foregroundStyle(.black.opacity(0.5))
+                    Text(compat.phoneDominantElement.emoji)
+                        .font(.system(size: 32))
+                    Text(compat.phoneDominantElement.name)
+                        .font(.subheadline.bold())
+                }
+            }
+            .frame(maxWidth: .infinity)
+
+            // คำอธิบาย
+            Text(compat.summary)
+                .font(.subheadline)
+                .foregroundStyle(.black.opacity(0.7))
+                .lineSpacing(4)
+
+            // คำแม่หมอเหมียว
+            VStack(alignment: .leading, spacing: 6) {
+                HStack(spacing: 4) {
+                    Image(systemName: "cat.fill")
+                        .foregroundStyle(.purple)
+                    Text("แม่หมอเหมียวว่า...")
+                        .font(.caption.bold())
+                        .foregroundStyle(.purple)
+                }
+                Text(compat.meowQuote)
+                    .font(.subheadline)
+                    .foregroundStyle(.black.opacity(0.7))
+                    .lineSpacing(4)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.appLavenderLight)
+            )
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.appPastelPink.opacity(0.4))
+        )
+    }
+
+    private func compatTierColor(_ tier: CompatibilityTier) -> Color {
+        switch tier {
+        case .excellent: .green
+        case .good:      .yellow
+        case .neutral:   .blue
+        case .tense:     .orange
+        case .difficult: .red
         }
     }
 

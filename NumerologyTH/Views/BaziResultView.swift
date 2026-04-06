@@ -4,6 +4,7 @@ struct BaziResultView: View {
     let result: BaziResult
     var phoneDominantElement: AnalysisEngine.ChineseElement?
     @State private var navigateToPhone = false
+    @Environment(NavigationRouter.self) private var router
 
     /// Compatibility result (คำนวณเมื่อมี phoneDominantElement)
     private var compatibility: PhoneCompatibilityResult? {
@@ -246,6 +247,15 @@ struct BaziResultView: View {
         )
         .navigationTitle("รหัสธาตุประจำตัว")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    router.goHome()
+                } label: {
+                    Image(systemName: "house.fill")
+                }
+            }
+        }
         .navigationDestination(isPresented: $navigateToPhone) {
             PhoneInputView()
         }
