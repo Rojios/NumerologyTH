@@ -13,6 +13,7 @@ struct ResultView: View {
     var elements: AnalysisEngine.ElementResult?
 
     @State private var showPairDetails = false
+    @State private var navigateToBaziResult = false
 
     /// คำประเมินตามคะแนน
     private var verdict: (text: String, grade: String, color: Color) {
@@ -237,44 +238,80 @@ struct ResultView: View {
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
 
-                    // ลิงก์ตรวจสมพงศ์
-                    NavigationLink {
-                        BaziInputView(phoneDominantElement: elements.dominant)
-                    } label: {
-                        HStack(spacing: 8) {
-                            Image(systemName: "sparkles")
-                                .font(.title3)
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("เปิดรหัสธาตุประจำตัวคุณ")
-                                    .font(.subheadline.bold())
-                                Text("เพื่อดูความเข้ากันได้ระหว่างคุณกับเลขหมาย")
-                                    .font(.caption)
-                                    .opacity(0.85)
+                    if BaziStore.shared.hasSavedResult {
+                        // เคยเปิดธาตุแล้ว → ไป BaziResultView ตรง พร้อม compatibility
+                        Button {
+                            navigateToBaziResult = true
+                        } label: {
+                            HStack(spacing: 8) {
+                                Image(systemName: "heart.circle.fill")
+                                    .font(.title3)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("ดูความสมพงศ์กับมือถือ")
+                                        .font(.subheadline.bold())
+                                    Text("เปรียบเทียบธาตุประจำตัวกับธาตุเลขหมาย")
+                                        .font(.caption)
+                                        .opacity(0.85)
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption.bold())
                             }
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .font(.caption.bold())
+                            .foregroundStyle(.white)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
+                            )
                         }
-                        .foregroundStyle(.white)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
-                        )
-                    }
+                        .navigationDestination(isPresented: $navigateToBaziResult) {
+                            if let baziResult = BaziStore.shared.loadResult() {
+                                BaziResultView(
+                                    result: baziResult,
+                                    phoneDominantElement: elements.dominant
+                                )
+                            }
+                        }
+                    } else {
+                        // ยังไม่เคยเปิดธาตุ → ไป BaziInputView
+                        NavigationLink {
+                            BaziInputView(phoneDominantElement: elements.dominant)
+                        } label: {
+                            HStack(spacing: 8) {
+                                Image(systemName: "sparkles")
+                                    .font(.title3)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("เปิดรหัสธาตุประจำตัวคุณ")
+                                        .font(.subheadline.bold())
+                                    Text("เพื่อดูความเข้ากันได้ระหว่างคุณกับเลขหมาย")
+                                        .font(.caption)
+                                        .opacity(0.85)
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption.bold())
+                            }
+                            .foregroundStyle(.white)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
+                            )
+                        }
 
-                    // ลิงก์ตัวอย่าง compatibility
-                    NavigationLink {
-                        CompatibilityPreviewView(phoneDominantElement: elements.dominant)
-                    } label: {
-                        HStack(spacing: 6) {
-                            Image(systemName: "eye")
-                                .font(.subheadline)
-                            Text("ดูตัวอย่างคำทำนายจากการเปิดรหัสธาตุ")
-                                .font(.subheadline)
+                        // ลิงก์ตัวอย่าง compatibility
+                        NavigationLink {
+                            CompatibilityPreviewView(phoneDominantElement: elements.dominant)
+                        } label: {
+                            HStack(spacing: 6) {
+                                Image(systemName: "eye")
+                                    .font(.subheadline)
+                                Text("ดูตัวอย่างคำทำนายจากการเปิดรหัสธาตุ")
+                                    .font(.subheadline)
+                            }
+                            .foregroundStyle(Color(red: 0.85, green: 0.55, blue: 0.40))
+                            .frame(maxWidth: .infinity)
                         }
-                        .foregroundStyle(Color(red: 0.85, green: 0.55, blue: 0.40))
-                        .frame(maxWidth: .infinity)
                     }
                 }
             }

@@ -1,10 +1,14 @@
 import SwiftUI
+import UIKit
 
 struct FortuneMenuView: View {
     @State private var drawnStick: FortuneStick?
     @State private var showFortune = false
+    @State private var isShaking = false
+    @State private var shakeAngle: Double = 0
 
     private let sticks = KnowledgeBaseLoader.shared.fortuneSticks.sticks
+    private let haptic = UIImpactFeedbackGenerator(style: .heavy)
 
     var body: some View {
         ZStack {
@@ -25,35 +29,47 @@ struct FortuneMenuView: View {
                         if drawnStick == nil {
                             // ปุ่มเขย่า — วงกลมใหญ่
                             Button {
-                                drawnStick = sticks.randomElement()
-                                showFortune = false
+                                shakeAndDraw()
                             } label: {
                                 ZStack {
                                     Circle()
                                         .fill(Color.appPastelPink)
-                                        .frame(width: 200, height: 200)
+                                        .frame(width: 180, height: 180)
                                         .shadow(color: .purple.opacity(0.3), radius: 12, y: 4)
 
                                     Text("SHAKE")
-                                        .font(.system(size: 36, weight: .heavy, design: .rounded))
+                                        .font(.system(size: 32, weight: .heavy, design: .rounded))
                                         .foregroundStyle(.white)
                                 }
                             }
+                            .rotationEffect(.degrees(shakeAngle))
+                            .disabled(isShaking)
+
+                            HStack(spacing: 5) {
+                                Image(systemName: "iphone.radiowaves.left.and.right")
+                                    .font(.body)
+                                Text("เขย่ามือถือ หรือ กดปุ่มด้านบน")
+                                    .font(.body.weight(.medium))
+                            }
+                            .foregroundStyle(.white.opacity(0.8))
+                            .padding(.top, 6)
 
                             Text("คำทำนายมี 28 ใบ ตามศาสตร์จีนดั้งเดิม")
-                                .font(.caption)
+                                .font(.subheadline)
                                 .foregroundStyle(.white.opacity(0.7))
-                                .padding(.top, 4)
+                                .padding(.top, 2)
                         }
 
                         // ผลเซียมซี — แทนที่ปุ่ม
                         if let stick = drawnStick {
                             // เลขใหญ่ด้านบน
                             VStack(spacing: 8) {
-                                Text(String(format: "%02d", stick.id))
-                                    .font(.system(size: 80, weight: .bold, design: .rounded))
-                                    .foregroundStyle(.white)
-                                    .shadow(color: .purple.opacity(0.4), radius: 8)
+                                SlotNumberView(
+                                    targetNumber: stick.id,
+                                    fontSize: 80,
+                                    color: .white
+                                )
+                                .shadow(color: .purple.opacity(0.4), radius: 8)
                                 Text(stick.name)
                                     .font(.headline)
                                     .foregroundStyle(.white.opacity(0.9))
@@ -83,8 +99,7 @@ struct FortuneMenuView: View {
 
                                     // ปุ่มเสี่ยงใหม่
                                     Button {
-                                        drawnStick = sticks.randomElement()
-                                        showFortune = false
+                                        shakeAndDraw()
                                     } label: {
                                         HStack {
                                             Image(systemName: "wand.and.stars")
@@ -118,6 +133,29 @@ struct FortuneMenuView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .onShake {
+            guard !isShaking else { return }
+            shakeAndDraw()
+        }
+    }
+
+    /// เขย่า animation → haptic → สุ่มเซียมซี
+    private func shakeAndDraw() {
+        isShaking = true
+        showFortune = false
+
+        withAnimation(.easeInOut(duration: 0.08).repeatCount(5, autoreverses: true)) {
+            shakeAngle = 8
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeOut(duration: 0.1)) {
+                shakeAngle = 0
+            }
+            haptic.impactOccurred()
+            drawnStick = sticks.randomElement()
+            isShaking = false
+        }
     }
 
     // MARK: - Fortune Detail

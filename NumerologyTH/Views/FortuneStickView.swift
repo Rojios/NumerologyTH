@@ -1,11 +1,14 @@
 import SwiftUI
+import UIKit
 
 struct FortuneStickView: View {
     @State private var drawnStick: FortuneStick?
     @State private var showFortune = false
     @State private var isShaking = false
+    @State private var shakeAngle: Double = 0
 
     private let sticks = KnowledgeBaseLoader.shared.fortuneSticks.sticks
+    private let haptic = UIImpactFeedbackGenerator(style: .heavy)
 
     var body: some View {
         ZStack {
@@ -30,9 +33,11 @@ struct FortuneStickView: View {
                         if let stick = drawnStick {
                             // แสดงเลขที่สุ่มได้
                             VStack(spacing: 8) {
-                                Text(String(format: "%02d", stick.id))
-                                    .font(.system(size: 72, weight: .bold, design: .rounded))
-                                    .foregroundStyle(.white)
+                                SlotNumberView(
+                                    targetNumber: stick.id,
+                                    fontSize: 72,
+                                    color: .white
+                                )
 
                                 Text(stick.name)
                                     .font(.headline)
@@ -77,6 +82,16 @@ struct FortuneStickView: View {
                             .foregroundStyle(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
+                        .disabled(isShaking)
+
+                        // Hint — เขย่ามือถือได้
+                        HStack(spacing: 4) {
+                            Image(systemName: "iphone.radiowaves.left.and.right")
+                                .font(.caption2)
+                            Text("เขย่ามือถือ หรือ กดปุ่มด้านบน")
+                                .font(.caption2)
+                        }
+                        .foregroundStyle(.white.opacity(0.6))
                     }
                     .padding(20)
                     .background(
@@ -84,6 +99,7 @@ struct FortuneStickView: View {
                             .fill(.ultraThinMaterial)
                     )
                     .padding()
+                    .rotationEffect(.degrees(shakeAngle))
 
                     Text("โปรแกรมนี้มีวัตถุประสงค์เพื่อความบันเทิง")
                         .font(.caption2)
@@ -94,11 +110,35 @@ struct FortuneStickView: View {
         }
         .navigationTitle("เสี่ยงเซียมซี")
         .navigationBarTitleDisplayMode(.inline)
+        .onShake {
+            guard !isShaking else { return }
+            shakeAndDraw()
+        }
     }
 
     private func drawStick() {
         showFortune = false
         drawnStick = sticks.randomElement()
+    }
+
+    /// เขย่า animation → haptic → สุ่มเซียมซี
+    private func shakeAndDraw() {
+        isShaking = true
+        showFortune = false
+
+        // Shake animation — สั่นซ้ายขวา
+        withAnimation(.easeInOut(duration: 0.08).repeatCount(5, autoreverses: true)) {
+            shakeAngle = 8
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeOut(duration: 0.1)) {
+                shakeAngle = 0
+            }
+            haptic.impactOccurred()
+            drawnStick = sticks.randomElement()
+            isShaking = false
+        }
     }
 
     // MARK: - Fortune Detail

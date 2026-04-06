@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var navigateToPhone = false
     @State private var navigateToFortune = false
+    @State private var navigateToBazi = false
 
     var body: some View {
         ZStack {
@@ -29,6 +30,32 @@ struct HomeView: View {
                                 Text("เปิดความลับหมายเลขมือถือ")
                                     .font(.headline)
                                 Text("วิเคราะห์คู่เลข คะแนน 1,000")
+                                    .font(.caption)
+                                    .opacity(0.8)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption.bold())
+                        }
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color(red: 1.0, green: 0.75, blue: 0.82))
+                        )
+                    }
+
+                    // เปิดรหัสธาตุประจำตัว
+                    Button {
+                        navigateToBazi = true
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "flame.fill")
+                                .font(.title2)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("เปิดรหัสธาตุประจำตัว")
+                                    .font(.headline)
+                                Text("วิเคราะห์ธาตุดิน น้ำ ไม้ ไฟ ทอง")
                                     .font(.caption)
                                     .opacity(0.8)
                             }
@@ -82,6 +109,9 @@ struct HomeView: View {
         .navigationBarHidden(true)
         .navigationDestination(isPresented: $navigateToPhone) {
             PhoneInputView()
+        }
+        .navigationDestination(isPresented: $navigateToBazi) {
+            BaziInputView()
         }
         .navigationDestination(isPresented: $navigateToFortune) {
             FortuneMenuView()

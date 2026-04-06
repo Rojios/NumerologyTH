@@ -3,6 +3,7 @@ import SwiftUI
 struct BaziResultView: View {
     let result: BaziResult
     var phoneDominantElement: AnalysisEngine.ChineseElement?
+    @State private var navigateToPhone = false
 
     /// Compatibility result (คำนวณเมื่อมี phoneDominantElement)
     private var compatibility: PhoneCompatibilityResult? {
@@ -239,6 +240,33 @@ struct BaziResultView: View {
                 if let compat = compatibility {
                     compatibilitySection(compat)
                 }
+
+                // MARK: - Cross-link ไปทำนายมือถือ (เมื่อเข้าจากหน้าแรก)
+                if phoneDominantElement == nil {
+                    Button {
+                        navigateToPhone = true
+                    } label: {
+                        HStack(spacing: 10) {
+                            Image(systemName: "phone.fill")
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("ทำนายหมายเลขมือถือ")
+                                    .font(.headline)
+                                Text("ดูความสมพงศ์ระหว่างเบอร์กับธาตุของคุณ")
+                                    .font(.caption)
+                                    .opacity(0.8)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption.bold())
+                        }
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
+                        )
+                    }
+                }
             }
             .padding()
         }
@@ -256,6 +284,9 @@ struct BaziResultView: View {
         )
         .navigationTitle("รหัสธาตุประจำตัว")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(isPresented: $navigateToPhone) {
+            PhoneInputView()
+        }
     }
 
     // MARK: - Compatibility View

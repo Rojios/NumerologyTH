@@ -53,9 +53,12 @@
 		FS11FS11FS11FS11FS11FS11 /* FortuneStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FS12FS12FS12FS12FS12FS12 /* FortuneStickView.swift */; };
 		LN11LN11LN11LN11LN11LN11 /* LuckyNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = LN12LN12LN12LN12LN12LN12 /* LuckyNumberView.swift */; };
 		FK11FK11FK11FK11FK11FK11 /* fortune_sticks.json in Resources */ = {isa = PBXBuildFile; fileRef = FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */; };
+		SD11SD11SD11SD11SD11SD11 /* ShakeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = SD12SD12SD12SD12SD12SD12 /* ShakeDetector.swift */; };
 		SH11SH11SH11SH11SH11SH11 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */; };
 		PC11PC11PC11PC11PC11PC11 /* PhoneResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = PC12PC12PC12PC12PC12PC12 /* PhoneResultCard.swift */; };
 		EU11EU11EU11EU11EU11EU11 /* ElementUnlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EU12EU12EU12EU12EU12EU12 /* ElementUnlockCard.swift */; };
+		SN11SN11SN11SN11SN11SN11 /* SlotNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SN12SN12SN12SN12SN12SN12 /* SlotNumberView.swift */; };
+		BS11BS11BS11BS11BS11BS11 /* BaziStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +107,7 @@
 		EEA1CB9FA454DD1AE3E08114 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F8874053CAC96D3E690AF869 /* ScoreGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreGaugeView.swift; sourceTree = "<group>"; };
 		BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziEngine.swift; sourceTree = "<group>"; };
+		BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziStore.swift; sourceTree = "<group>"; };
 		BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziInputView.swift; sourceTree = "<group>"; };
 		BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziResultView.swift; sourceTree = "<group>"; };
 		CP12CP12CP12CP12CP12CP12 /* CompatibilityPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityPreviewView.swift; sourceTree = "<group>"; };
@@ -118,9 +122,11 @@
 		FS12FS12FS12FS12FS12FS12 /* FortuneStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneStickView.swift; sourceTree = "<group>"; };
 		LN12LN12LN12LN12LN12LN12 /* LuckyNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyNumberView.swift; sourceTree = "<group>"; };
 		FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortune_sticks.json; sourceTree = "<group>"; };
+		SD12SD12SD12SD12SD12SD12 /* ShakeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeDetector.swift; sourceTree = "<group>"; };
 		SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
 		PC12PC12PC12PC12PC12PC12 /* PhoneResultCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneResultCard.swift; sourceTree = "<group>"; };
 		EU12EU12EU12EU12EU12EU12 /* ElementUnlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementUnlockCard.swift; sourceTree = "<group>"; };
+		SN12SN12SN12SN12SN12SN12 /* SlotNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotNumberView.swift; sourceTree = "<group>"; };
 		CDCD5678CDCD5678CDCD5678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +152,7 @@
 				F8874053CAC96D3E690AF869 /* ScoreGaugeView.swift */,
 				PC12PC12PC12PC12PC12PC12 /* PhoneResultCard.swift */,
 				EU12EU12EU12EU12EU12EU12 /* ElementUnlockCard.swift */,
+				SN12SN12SN12SN12SN12SN12 /* SlotNumberView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -270,11 +277,13 @@
 			children = (
 				9F98D0125391BAF6A144000D /* AnalysisEngine.swift */,
 				BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */,
+				BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */,
 				E2991E5429C4F279F8A79680 /* HistoryManager.swift */,
 				WX12WX12WX12WX12WX12WX12 /* WuXingCompatibility.swift */,
 				77D046AA928EA76B45BFC9F6 /* QuotaManager.swift */,
 				D924533C44812897DBF9B581 /* ShareManager.swift */,
 				836D4707F46521D933D104F3 /* StoreKitManager.swift */,
+				SD12SD12SD12SD12SD12SD12 /* ShakeDetector.swift */,
 				SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */,
 			);
 			path = Services;
@@ -384,6 +393,7 @@
 				26D5B67B01898815BDCA8135 /* AnalysisEngine.swift in Sources */,
 				C8D81E92E41D335608FAF1FB /* AnalysisSession.swift in Sources */,
 				BA21BA21BA21BA21BA21BA21 /* BaziEngine.swift in Sources */,
+				BS11BS11BS11BS11BS11BS11 /* BaziStore.swift in Sources */,
 				BA31BA31BA31BA31BA31BA31 /* BaziInputView.swift in Sources */,
 				BA41BA41BA41BA41BA41BA41 /* BaziResultView.swift in Sources */,
 				CP11CP11CP11CP11CP11CP11 /* CompatibilityPreviewView.swift in Sources */,
@@ -416,9 +426,11 @@
 				FM11FM11FM11FM11FM11FM11 /* FortuneMenuView.swift in Sources */,
 				FS11FS11FS11FS11FS11FS11 /* FortuneStickView.swift in Sources */,
 				LN11LN11LN11LN11LN11LN11 /* LuckyNumberView.swift in Sources */,
+				SD11SD11SD11SD11SD11SD11 /* ShakeDetector.swift in Sources */,
 				SH11SH11SH11SH11SH11SH11 /* ShareHelper.swift in Sources */,
 				PC11PC11PC11PC11PC11PC11 /* PhoneResultCard.swift in Sources */,
 				EU11EU11EU11EU11EU11EU11 /* ElementUnlockCard.swift in Sources */,
+				SN11SN11SN11SN11SN11SN11 /* SlotNumberView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

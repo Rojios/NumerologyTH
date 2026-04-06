@@ -63,6 +63,7 @@ struct BaziInputView: View {
 
                     Button {
                         baziResult = BaziEngine.analyze(birthDate: birthDate, birthTime: birthTime)
+                        BaziStore.shared.save(birthDate: birthDate, birthTime: birthTime)
                         showResult = true
                     } label: {
                         HStack {
@@ -81,6 +82,18 @@ struct BaziInputView: View {
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, alignment: .center)
+
+                    if BaziStore.shared.hasSavedResult {
+                        Button(role: .destructive) {
+                            BaziStore.shared.clear()
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "trash")
+                                Text("ล้างประวัติรหัสธาตุ")
+                            }
+                            .font(.caption)
+                        }
+                    }
                 }
                 .padding(20)
                 .background(
