@@ -11,24 +11,29 @@ struct PaywallView: View {
 
                 // Hero
                 VStack(spacing: 12) {
-                    Text("☕")
+                    Text("🔮")
                         .font(.system(size: 64))
-                    Text("เลี้ยงกาแฟ ฿99")
-                        .font(.title.bold())
-                    Text("ปลดล็อกรายงานเต็ม — จ่ายครั้งเดียว ใช้ตลอดชีพ")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
+                    Text("เปิดรหัสธาตุประจำตัว")
+                        .font(.title2.bold())
+
+                    if let product = purchaseVM.product {
+                        Text("฿\(product.displayPrice) — จ่ายครั้งเดียว ใช้ตลอดชีพ")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Text("฿99 — จ่ายครั้งเดียว ใช้ตลอดชีพ")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
                 }
 
-                // Features comparison
-                VStack(alignment: .leading, spacing: 12) {
-                    featureRow("คะแนนรวม + เกรด", free: true, paid: true)
-                    featureRow("คู่แรก — รายละเอียดเต็ม", free: true, paid: true)
-                    featureRow("คู่ที่เหลือ — เกรด + ความหมาย", free: false, paid: true)
-                    featureRow("ใช้งานไม่จำกัด", free: false, paid: true)
-                    featureRow("ประวัติการวิเคราะห์", free: false, paid: true)
-                    featureRow("iCloud sync ข้าม device", free: false, paid: true)
+                // Features
+                VStack(alignment: .leading, spacing: 14) {
+                    featureItem("sparkles", "วิเคราะห์ธาตุ 4 เสาหลัก (ปี/เดือน/วัน/ยาม)")
+                    featureItem("arrow.triangle.2.circlepath", "เปลี่ยนวันเกิดได้ไม่จำกัด")
+                    featureItem("person.2.fill", "ดูดวงให้เพื่อน/ครอบครัว")
+                    featureItem("wand.and.stars", "ความสมพงศ์ธาตุ กับเบอร์มือถือ")
+                    featureItem("calendar", "ดวงรายปี + ปีชงนักษัตร")
                 }
                 .padding()
                 .background(
@@ -48,16 +53,19 @@ struct PaywallView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding()
                         } else {
-                            Text("ปลดล็อก ฿99")
-                                .font(.headline)
-                                .frame(maxWidth: .infinity)
-                                .padding()
+                            HStack {
+                                Image(systemName: "lock.open.fill")
+                                Text("ปลดล็อก")
+                            }
+                            .font(.headline)
+                            .frame(maxWidth: .infinity)
+                            .padding()
                         }
                     }
-                    .background(Color.orange)
+                    .background(Color(red: 0.85, green: 0.55, blue: 0.40))
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
-                    .disabled(purchaseVM.isLoading)
+                    .disabled(purchaseVM.isLoading || purchaseVM.product == nil)
 
                     Button("กู้คืนการซื้อ") {
                         Task { await purchaseVM.restore() }
@@ -89,17 +97,13 @@ struct PaywallView: View {
         }
     }
 
-    private func featureRow(_ title: String, free: Bool, paid: Bool) -> some View {
-        HStack {
+    private func featureItem(_ icon: String, _ title: String) -> some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .foregroundStyle(Color(red: 0.85, green: 0.55, blue: 0.40))
+                .frame(width: 24)
             Text(title)
                 .font(.subheadline)
-            Spacer()
-            Image(systemName: free ? "checkmark.circle.fill" : "xmark.circle")
-                .foregroundStyle(free ? .green : .gray)
-                .frame(width: 44)
-            Image(systemName: paid ? "checkmark.circle.fill" : "xmark.circle")
-                .foregroundStyle(paid ? .green : .gray)
-                .frame(width: 44)
         }
     }
 }

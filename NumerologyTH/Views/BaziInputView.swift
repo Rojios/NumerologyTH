@@ -4,9 +4,11 @@ struct BaziInputView: View {
     /// ธาตุเด่นจากเบอร์มือถือ (ส่งมาจาก ResultView, nil ถ้าเข้าจากหน้าแรก)
     var phoneDominantElement: AnalysisEngine.ChineseElement?
 
+    @Environment(PurchaseViewModel.self) private var purchaseVM
     @State private var birthDate = Date()
     @State private var birthTime = Date()
     @State private var showResult = false
+    @State private var showPaywall = false
     @State private var baziResult: BaziResult?
 
     var body: some View {
@@ -62,12 +64,14 @@ struct BaziInputView: View {
                     }
 
                     Button {
-                        baziResult = BaziEngine.analyze(birthDate: birthDate, birthTime: birthTime)
-                        BaziStore.shared.save(birthDate: birthDate, birthTime: birthTime)
-                        showResult = true
+                        if purchaseVM.isUnlocked {
+                            analyzeAndShow()
+                        } else {
+                            showPaywall = true
+                        }
                     } label: {
                         HStack {
-                            Image(systemName: "sparkles")
+                            Image(systemName: purchaseVM.isUnlocked ? "sparkles" : "lock.fill")
                             Text("เปิดรหัสธาตุ")
                         }
                         .font(.headline)
@@ -114,11 +118,26 @@ struct BaziInputView: View {
                 BaziResultView(result: result, phoneDominantElement: phoneDominantElement)
             }
         }
+        .sheet(isPresented: $showPaywall, onDismiss: {
+            // ถ้า unlock สำเร็จหลังปิด paywall → เปิดผลเลย
+            if purchaseVM.isUnlocked {
+                analyzeAndShow()
+            }
+        }) {
+            PaywallView()
+        }
+    }
+
+    private func analyzeAndShow() {
+        baziResult = BaziEngine.analyze(birthDate: birthDate, birthTime: birthTime)
+        BaziStore.shared.save(birthDate: birthDate, birthTime: birthTime)
+        showResult = true
     }
 }
 
 #Preview {
     NavigationStack {
         BaziInputView()
+            .environment(PurchaseViewModel())
     }
 }

@@ -1,0 +1,40 @@
+{
+  "identifier" : "F3A1B2C4-D5E6-7890-ABCD-EF1234567890",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "99",
+      "familyShareable" : false,
+      "internalID" : "1234567890",
+      "localizations" : [
+        {
+          "description" : "ปลดล็อกรหัสธาตุประจำตัว — จ่ายครั้งเดียว ใช้ตลอดชีพ",
+          "displayName" : "เปิดรหัสธาตุ",
+          "locale" : "th"
+        },
+        {
+          "description" : "Unlock Bazi Element — one-time purchase, lifetime access",
+          "displayName" : "Unlock Bazi",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.rojios.numerologyth.unlock",
+      "referenceName" : "Unlock Bazi",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0",
+    "_developerTeamID" : "252T283JF9",
+    "_lastSynchronizedDate" : "2026-04-06T00:00:00Z"
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
