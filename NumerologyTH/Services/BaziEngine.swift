@@ -52,16 +52,40 @@ enum BaziEngine {
         return stemElements[dayStemIdx]
     }
 
-    /// Hour pillar: แปลงชั่วโมงเป็น Earthly Branch (2 ชม. = 1 ยาม)
-    /// 23-01=子(น้ำ), 01-03=丑(ดิน), 03-05=寅(ไม้), 05-07=卯(ไม้),
-    /// 07-09=辰(ดิน), 09-11=巳(ไฟ), 11-13=午(ไฟ), 13-15=未(ดิน),
-    /// 15-17=申(ทอง), 17-19=酉(ทอง), 19-21=戌(ดิน), 21-23=亥(น้ำ)
-    private static func hourElement(from time: Date) -> AnalysisEngine.ChineseElement {
+    /// Month Stem: คำนวณ Heavenly Stem ของเดือนจาก Year Stem + เดือน
+    /// สูตร 五虎遁 (Five Tiger Escape)
+    /// Yin-Yang pairs: 甲己(0), 乙庚(1), 丙辛(2), 丁壬(3), 戊癸(4)
+    private static func monthStemIndex(yearStem: Int, month: Int) -> Int {
+        // Gregorian month → offset จาก 寅(Feb): Feb=0, Mar=1, ..., Jan=11
+        let monthBranchOffset = ((month + 10) % 12)
+        let baseStems = [2, 4, 6, 8, 0]  // 甲/己→丙, 乙/庚→戊, 丙/辛→庚, 丁/壬→壬, 戊/癸→甲
+        let baseStem = baseStems[yearStem % 5]
+        return (baseStem + monthBranchOffset) % 10
+    }
+
+    /// Day Stem Index (ใช้คำนวณ Hour Stem)
+    private static func dayStemIndex(from date: Date) -> Int {
+        let calendar = Calendar(identifier: .gregorian)
+        let comps = calendar.dateComponents([.year, .month, .day], from: date)
+        let y = comps.year!, m = comps.month!, d = comps.day!
+        let a = (14 - m) / 12
+        let yAdj = y + 4800 - a
+        let mAdj = m + 12 * a - 3
+        let jdn = d + (153 * mAdj + 2) / 5 + 365 * yAdj + yAdj / 4 - yAdj / 100 + yAdj / 400 - 32045
+        return (jdn + 9) % 10
+    }
+
+    /// Hour Stem: คำนวณ Heavenly Stem ของยามจาก Day Stem + ชั่วโมง
+    /// สูตร 五鼠遁 (Five Rat Escape)
+    /// Yin-Yang pairs: 甲己(0), 乙庚(1), 丙辛(2), 丁壬(3), 戊癸(4)
+    private static func hourStemElement(from time: Date, dayStemIdx: Int) -> AnalysisEngine.ChineseElement {
         let calendar = Calendar(identifier: .gregorian)
         let hour = calendar.component(.hour, from: time)
-        // แปลงชั่วโมงเป็น branch index (0-11)
-        let branchIdx = ((hour + 1) % 24) / 2
-        return branchElements[branchIdx]
+        let branchIdx = ((hour + 1) % 24) / 2  // 0=子, 1=丑, ...
+        let baseStems = [0, 2, 4, 6, 8]  // 甲/己→甲, 乙/庚→丙, 丙/辛→戊, 丁/壬→庚, 戊/癸→壬
+        let baseStem = baseStems[dayStemIdx % 5]
+        let hourStemIdx = (baseStem + branchIdx) % 10
+        return stemElements[hourStemIdx]
     }
 
     static func analyze(birthDate: Date, birthTime: Date? = nil) -> BaziResult {
@@ -70,19 +94,20 @@ enum BaziEngine {
         let year = comps.year!
         let month = comps.month!
 
-        // Year pillar
+        // Year pillar — Heavenly Stem
         let yearStem = stemIndex(year: year)
         let yearEl = stemElements[yearStem]
 
-        // Month pillar
-        let monthBranchIdx = (month + 1) % 12
-        let monthEl = branchElements[monthBranchIdx]
+        // Month pillar — Heavenly Stem (五虎遁)
+        let monthStem = monthStemIndex(yearStem: yearStem, month: month)
+        let monthEl = stemElements[monthStem]
 
-        // Day pillar
+        // Day pillar — Heavenly Stem (JDN)
         let dayEl = dayElement(from: birthDate)
+        let dayStem = dayStemIndex(from: birthDate)
 
-        // Hour pillar (optional)
-        let hourEl = birthTime.map { hourElement(from: $0) }
+        // Hour pillar — Heavenly Stem (五鼠遁)
+        let hourEl = birthTime.map { hourStemElement(from: $0, dayStemIdx: dayStem) }
 
         // น้ำหนักเสาตามหลัก Bazi (月令 สำคัญสุด)
         // 4 เสา: ปี 10%, เดือน 40%, วัน 30%, ยาม 20%
@@ -103,7 +128,9 @@ enum BaziEngine {
 
         let sorted = weightMap.sorted { $0.value > $1.value }
             .map { (element: $0.key, percentage: $0.value) }
-        let dominant = sorted.first?.element ?? .water
+
+        // ธาตุประจำตัว (เจ้าชะตา/日主) = Day Stem เสมอ ตามหลัก Bazi
+        let dominant = dayEl
 
         // ดึงจาก KB
         let kb = KnowledgeBaseLoader.shared.elementMeanings

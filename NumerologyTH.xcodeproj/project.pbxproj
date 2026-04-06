@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0AEA207583BFFF71F2CE6A49 /* QuotaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D046AA928EA76B45BFC9F6 /* QuotaManager.swift */; };
 		1855A35C4BB29E01CE3EE79A /* PlateAnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2B0A7410B7A173033EA3DD /* PlateAnalysisTests.swift */; };
+		BT11BT11BT11BT11BT11BT11 /* BaziEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BT12BT12BT12BT12BT12BT12 /* BaziEngineTests.swift */; };
 		2083403F894E57F3840DC01D /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632964AF026F00C479A6A586 /* HistoryViewModel.swift */; };
 		26D5B67B01898815BDCA8135 /* AnalysisEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98D0125391BAF6A144000D /* AnalysisEngine.swift */; };
 		2994C2B31401B39C088983A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1CB9FA454DD1AE3E08114 /* ContentView.swift */; };
@@ -93,6 +94,7 @@
 		9F98D0125391BAF6A144000D /* AnalysisEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisEngine.swift; sourceTree = "<group>"; };
 		A6A219A3B5008D6C71D62961 /* ModeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeCardView.swift; sourceTree = "<group>"; };
 		AA2B0A7410B7A173033EA3DD /* PlateAnalysisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateAnalysisTests.swift; sourceTree = "<group>"; };
+		BT12BT12BT12BT12BT12BT12 /* BaziEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziEngineTests.swift; sourceTree = "<group>"; };
 		ABCBD75525E0301DE51ED566 /* NumerologyTH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumerologyTH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFF12E3CB2A18D7D0A4600A /* PlateInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateInputView.swift; sourceTree = "<group>"; };
 		C3E93C471299B480F0B7F915 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 		A05342EE273B0AFB67A585CD /* NumerologyTHTests */ = {
 			isa = PBXGroup;
 			children = (
+				BT12BT12BT12BT12BT12BT12 /* BaziEngineTests.swift */,
 				DEB2C61945C6416595778F76 /* NameAnalysisTests.swift */,
 				8642090B96DD30D4FF8E6C1A /* PhoneAnalysisTests.swift */,
 				AA2B0A7410B7A173033EA3DD /* PlateAnalysisTests.swift */,
@@ -380,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BT11BT11BT11BT11BT11BT11 /* BaziEngineTests.swift in Sources */,
 				ABE5EA6A0481F79E375FBB0E /* NameAnalysisTests.swift in Sources */,
 				323ADF57C888C508A3F79F45 /* PhoneAnalysisTests.swift in Sources */,
 				1855A35C4BB29E01CE3EE79A /* PlateAnalysisTests.swift in Sources */,

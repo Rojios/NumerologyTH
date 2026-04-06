@@ -77,44 +77,6 @@ struct BaziResultView: View {
                         .fill(Color(red: 1.0, green: 0.95, blue: 0.90))
                 )
 
-                // สัดส่วนธาตุ (ถ่วงน้ำหนักตามเสา)
-                VStack(spacing: 12) {
-                    Text("สัดส่วนธาตุ")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                    Text("น้ำหนัก: เดือน 40% › วัน 30% › ยาม 20% › ปี 10%")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                    ForEach(result.percentages, id: \.element) { item in
-                        if item.percentage > 0 {
-                            HStack {
-                                Text(item.element.emoji)
-                                Text(item.element.name)
-                                    .frame(width: 40, alignment: .leading)
-
-                                GeometryReader { geo in
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .fill(elementColor(item.element))
-                                        .frame(width: geo.size.width * CGFloat(item.percentage) / 100)
-                                }
-                                .frame(height: 20)
-
-                                Text("\(Int(round(item.percentage)))%")
-                                    .font(.caption.bold())
-                                    .frame(width: 36, alignment: .trailing)
-                            }
-                        }
-                    }
-                }
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.appLavenderLight)
-                )
-
                 // คำอธิบาย — ชมพูพาสเทล
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(spacing: 6) {
@@ -220,22 +182,6 @@ struct BaziResultView: View {
                     )
                 }
 
-                // MARK: - Share Button
-                Button {
-                    shareElement()
-                } label: {
-                    HStack {
-                        Image(systemName: "square.and.arrow.up")
-                        Text("แชร์ธาตุของฉัน")
-                    }
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.appPastelPink)
-                    .foregroundStyle(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                }
-
                 // MARK: - Compatibility Section
                 if let compat = compatibility {
                     compatibilitySection(compat)
@@ -249,7 +195,7 @@ struct BaziResultView: View {
                         HStack(spacing: 10) {
                             Image(systemName: "phone.fill")
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("ทำนายหมายเลขมือถือ")
+                                Text("เปิดรหัสธาตุของหมายเลขมือถือ")
                                     .font(.headline)
                                 Text("ดูความสมพงศ์ระหว่างเบอร์กับธาตุของคุณ")
                                     .font(.caption)
@@ -266,6 +212,22 @@ struct BaziResultView: View {
                                 .fill(Color(red: 0.85, green: 0.55, blue: 0.40))
                         )
                     }
+                }
+
+                // MARK: - Share Button (ล่างสุด)
+                Button {
+                    shareElement()
+                } label: {
+                    HStack {
+                        Image(systemName: "square.and.arrow.up")
+                        Text("แชร์ธาตุของฉัน")
+                    }
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.appPastelPink)
+                    .foregroundStyle(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             }
             .padding()

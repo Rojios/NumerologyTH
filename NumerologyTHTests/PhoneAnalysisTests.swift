@@ -39,7 +39,7 @@ struct PhoneAnalysisTests {
     func fullAnalysis() {
         let result = AnalysisEngine.shared.analyzePhone("0815456599")
         #expect(result != nil)
-        #expect(result!.pairResults.count == 6)
+        #expect(result!.pairs.count == 6)
         #expect(!result!.grade.isEmpty)
     }
 }
