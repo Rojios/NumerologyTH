@@ -212,6 +212,25 @@ enum BaziEngine {
     static let thaiAnimals = ["ชวด", "ฉลู", "ขาล", "เถาะ", "มะโรง", "มะเส็ง",
                                "มะเมีย", "มะแม", "วอก", "ระกา", "จอ", "กุน"]
 
+    /// ธาตุ Heavenly Stem ของเดือนปัจจุบัน
+    static func currentMonthStemElement() -> AnalysisEngine.ChineseElement {
+        let cal = Calendar(identifier: .gregorian)
+        let comps = cal.dateComponents([.year, .month], from: Date())
+        let yearStem = stemIndex(year: comps.year!)
+        let msi = monthStemIndex(yearStem: yearStem, month: comps.month!)
+        return stemElements[msi]
+    }
+
+    /// ชื่อเดือนไทย
+    static let thaiMonths = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                              "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"]
+
+    /// ชื่อเดือนไทยของเดือนปัจจุบัน
+    static func currentThaiMonth() -> String {
+        let month = Calendar(identifier: .gregorian).component(.month, from: Date())
+        return thaiMonths[month - 1]
+    }
+
     /// ชื่อนักษัตรของปี
     static func yearAnimalName(year: Int) -> String {
         let branchIdx = yearBranchIndex(year: year)

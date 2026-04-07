@@ -72,6 +72,7 @@ struct PaywallView: View {
                         featureRow("flame.fill", "รหัสธาตุประจำตัว + รหัสธาตุมือถือ", "ไม่จำกัด")
                         featureRow("heart.fill", "ความสมพงศ์ธาตุประจำตัวและธาตุหมายเลข", "", badge: "ใหม่")
                         featureRow("cat.fill", "ดวงรายปี + ปีชงนักษัตร", "")
+                        featureRow("calendar.badge.clock", "ดวงรายเดือนจากพลังรหัสธาตุ", "", badge: "ใหม่")
                         featureRow("person.2.fill", "ดูดวงให้เพื่อน/ครอบครัว", "")
                     }
                     .padding(.horizontal)

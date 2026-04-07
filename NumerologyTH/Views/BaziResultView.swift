@@ -192,6 +192,9 @@ struct BaziResultView: View {
                 // MARK: - Annual Forecast Section
                 annualForecastSection()
 
+                // MARK: - Monthly Forecast Section
+                monthlyForecastSection()
+
                 // MARK: - Cross-link ไปทำนายมือถือ (เมื่อยังไม่มีข้อมูลเบอร์)
                 if compatibility == nil {
                     Button {
@@ -277,33 +280,47 @@ struct BaziResultView: View {
         )
 
         let currentYear = Calendar(identifier: .gregorian).component(.year, from: Date())
-        let animalName = BaziEngine.yearAnimalName(year: currentYear)
-
+        let currentAnimalName = BaziEngine.yearAnimalName(year: currentYear)
         let thaiYear = currentYear + 543
+
+        // ปีเกิดเจ้าของ
+        let birthYear = Calendar(identifier: .gregorian).component(.year, from: result.birthDate)
+        let birthAnimalName = BaziEngine.yearAnimalName(year: birthYear)
 
         VStack(alignment: .leading, spacing: 12) {
             // Header
             HStack(spacing: 6) {
-                Text("🐴")
                 Text(yearElement.emoji)
-                Text("ปี\(animalName)\(yearElement.name) \(String(thaiYear))")
+                Text("ดวงรายปี \(String(thaiYear))")
                     .font(.headline)
             }
 
-            // Sub-header: ปีนี้
+            // ข้อมูลเจ้าของ + ปีนี้
             VStack(alignment: .leading, spacing: 10) {
+                // เจ้าของ
                 HStack(spacing: 4) {
-                    Text(yearElement.emoji)
-                    Text("รหัสธาตุประจำปี : \(yearElement.name)")
+                    Text(result.yearElement.emoji)
+                    Text("รหัสธาตุและปีนักษัตรคุณ : \(birthAnimalName)-\(result.yearElement.name)")
                         .font(.subheadline.bold())
                 }
 
+                Divider()
+
+                // ธาตุประจำปีนี้
                 HStack(spacing: 4) {
-                    Text("🐴")
-                    Text("ปีนักษัตร : \(animalName)")
+                    Text(yearElement.emoji)
+                    Text("รหัสธาตุประจำปีนี้ : \(yearElement.name)")
                         .font(.subheadline)
                 }
 
+                // ปีนักษัตรปีนี้
+                HStack(spacing: 4) {
+                    Text("🐴")
+                    Text("ปีนักษัตรปีนี้ : \(currentAnimalName)")
+                        .font(.subheadline)
+                }
+
+                // ปีชง
                 HStack(spacing: 4) {
                     if isClash {
                         Text("⚠️")
@@ -336,6 +353,72 @@ struct BaziResultView: View {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.appPastelPink.opacity(0.5))
         )
+    }
+
+    // MARK: - Monthly Forecast
+
+    @ViewBuilder
+    private func monthlyForecastSection() -> some View {
+        let monthElement = BaziEngine.currentMonthStemElement()
+        let thaiMonth = BaziEngine.currentThaiMonth()
+        let currentYear = Calendar(identifier: .gregorian).component(.year, from: Date())
+        let thaiYear = currentYear + 543
+
+        if let entry = KnowledgeBaseLoader.shared.monthlyForecast.forecast(
+            personalElement: result.dominantElement,
+            monthElement: monthElement
+        ) {
+            VStack(alignment: .leading, spacing: 12) {
+                // Header
+                HStack(spacing: 6) {
+                    Text(monthElement.emoji)
+                    Text("\(thaiMonth) \(String(thaiYear)) — \(entry.theme)")
+                        .font(.headline)
+                }
+
+                // ข้อมูลธาตุเดือน
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 4) {
+                        Text(monthElement.emoji)
+                        Text("ธาตุประจำเดือน : \(monthElement.name)")
+                            .font(.subheadline.bold())
+                    }
+                    HStack(spacing: 4) {
+                        Text("⚡")
+                        Text("ความสัมพันธ์ : \(entry.interaction)")
+                            .font(.subheadline)
+                    }
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(.white.opacity(0.8))
+                )
+
+                // Intro
+                Text(entry.intro)
+                    .font(.subheadline)
+                    .foregroundStyle(.black.opacity(0.7))
+                    .lineSpacing(5)
+
+                // Body
+                Text(entry.body)
+                    .font(.subheadline)
+                    .foregroundStyle(.black.opacity(0.7))
+                    .lineSpacing(5)
+
+                // Closing emoji
+                Text(entry.closingEmoji)
+                    .font(.title2)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.appLavender.opacity(0.4))
+            )
+        }
     }
 
     // MARK: - Compatibility View

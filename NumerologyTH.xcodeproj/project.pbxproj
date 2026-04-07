@@ -55,6 +55,7 @@
 		LN11LN11LN11LN11LN11LN11 /* LuckyNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = LN12LN12LN12LN12LN12LN12 /* LuckyNumberView.swift */; };
 		FK11FK11FK11FK11FK11FK11 /* fortune_sticks.json in Resources */ = {isa = PBXBuildFile; fileRef = FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */; };
 		AAD41890F38647C19A94669F /* fortune_sticks_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 979FE40B73BD4D0595A1A49C /* fortune_sticks_v2.json */; };
+		D1DF0D1A68D8431899597E94 /* monthly_forecast.json in Resources */ = {isa = PBXBuildFile; fileRef = 34B8BD9C1780440DB58EBCF3 /* monthly_forecast.json */; };
 		SD11SD11SD11SD11SD11SD11 /* ShakeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = SD12SD12SD12SD12SD12SD12 /* ShakeDetector.swift */; };
 		SH11SH11SH11SH11SH11SH11 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */; };
 		PC11PC11PC11PC11PC11PC11 /* PhoneResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = PC12PC12PC12PC12PC12PC12 /* PhoneResultCard.swift */; };
@@ -132,6 +133,7 @@
 		LN12LN12LN12LN12LN12LN12 /* LuckyNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyNumberView.swift; sourceTree = "<group>"; };
 		FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortune_sticks.json; sourceTree = "<group>"; };
 		979FE40B73BD4D0595A1A49C /* fortune_sticks_v2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortune_sticks_v2.json; sourceTree = "<group>"; };
+		34B8BD9C1780440DB58EBCF3 /* monthly_forecast.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = monthly_forecast.json; sourceTree = "<group>"; };
 		SD12SD12SD12SD12SD12SD12 /* ShakeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeDetector.swift; sourceTree = "<group>"; };
 		SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
 		PC12PC12PC12PC12PC12PC12 /* PhoneResultCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneResultCard.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				EM12EM12EM12EM12EM12EM12 /* element_meanings.json */,
 				FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */,
 				979FE40B73BD4D0595A1A49C /* fortune_sticks_v2.json */,
+				34B8BD9C1780440DB58EBCF3 /* monthly_forecast.json */,
 				4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */,
 				1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */,
 				2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */,
@@ -386,6 +389,7 @@
 				EM11EM11EM11EM11EM11EM11 /* element_meanings.json in Resources */,
 				FK11FK11FK11FK11FK11FK11 /* fortune_sticks.json in Resources */,
 				AAD41890F38647C19A94669F /* fortune_sticks_v2.json in Resources */,
+				D1DF0D1A68D8431899597E94 /* monthly_forecast.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

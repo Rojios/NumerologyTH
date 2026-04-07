@@ -150,6 +150,40 @@ struct FortuneStickKB: Codable {
     }
 }
 
+// MARK: - Monthly Forecast (ดวงรายเดือน)
+
+struct MonthlyForecastEntry: Codable {
+    let id: String
+    let personalElement: String
+    let monthElement: String
+    let interaction: String
+    let theme: String
+    let intro: String
+    let body: String
+    let closingEmoji: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case personalElement = "personal_element"
+        case monthElement = "month_element"
+        case interaction, theme, intro, body
+        case closingEmoji = "closing_emoji"
+    }
+}
+
+struct MonthlyForecastKB: Codable {
+    let version: String
+    let description: String
+    let entries: [MonthlyForecastEntry]
+
+    /// Lookup: ธาตุประจำตัว + ธาตุเดือน → entry
+    func forecast(personalElement: AnalysisEngine.ChineseElement,
+                  monthElement: AnalysisEngine.ChineseElement) -> MonthlyForecastEntry? {
+        let key = "\(personalElement.kbKey)_\(monthElement.kbKey)"
+        return entries.first { $0.id == key }
+    }
+}
+
 // MARK: - KB Loader
 
 final class KnowledgeBaseLoader {
@@ -162,6 +196,7 @@ final class KnowledgeBaseLoader {
     lazy var careerBonus: CareerBonusKB = load("career_bonus")
     lazy var elementMeanings: ElementMeaningsKB = load("element_meanings")
     lazy var fortuneSticks: FortuneStickKB = load("fortune_sticks_v2")
+    lazy var monthlyForecast: MonthlyForecastKB = load("monthly_forecast")
 
     private func load<T: Decodable>(_ name: String) -> T {
         guard let url = Bundle.main.url(forResource: name, withExtension: "json"),

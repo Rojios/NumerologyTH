@@ -159,6 +159,17 @@ final class AnalysisEngine {
             }
         }
 
+        /// key สำหรับ lookup ใน KB JSON
+        var kbKey: String {
+            switch self {
+            case .water: "water"
+            case .earth: "earth"
+            case .wood: "wood"
+            case .metal: "metal"
+            case .fire: "fire"
+            }
+        }
+
         // MARK: Wu Xing Cycle — วงจรธาตุห้า
 
         /// ธาตุที่ตัวนี้กำเนิด (ไม้→ไฟ→ดิน→ทอง→น้ำ→ไม้)

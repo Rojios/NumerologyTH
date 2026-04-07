@@ -8,6 +8,22 @@ final class BaziStore {
     private let defaults = UserDefaults.standard
     private let birthDateKey = "bazi_birthDate"
     private let birthTimeKey = "bazi_birthTime"
+    private let rememberKey = "bazi_rememberEnabled"
+
+    /// จำวันเกิดไว้หรือไม่
+    var rememberEnabled: Bool {
+        get { defaults.bool(forKey: rememberKey) }
+        set { defaults.set(newValue, forKey: rememberKey) }
+    }
+
+    /// ดึงวันเกิด + เวลาเกิดที่เก็บไว้
+    func loadDates() -> (Date, Date)? {
+        guard let birthDate = defaults.object(forKey: birthDateKey) as? Date,
+              let birthTime = defaults.object(forKey: birthTimeKey) as? Date else {
+            return nil
+        }
+        return (birthDate, birthTime)
+    }
 
     /// บันทึกวันเกิด + เวลาเกิดที่เคยวิเคราะห์
     func save(birthDate: Date, birthTime: Date) {

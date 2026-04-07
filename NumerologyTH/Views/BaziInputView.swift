@@ -10,6 +10,7 @@ struct BaziInputView: View {
     @State private var showResult = false
     @State private var showPaywall = false
     @State private var baziResult: BaziResult?
+    @State private var rememberBirthday = BaziStore.shared.rememberEnabled
 
     var body: some View {
         ZStack {
@@ -63,6 +64,20 @@ struct BaziInputView: View {
 
                     }
 
+                    // จำวันเกิด
+                    Toggle(isOn: $rememberBirthday) {
+                        Text("จำวันเดือนปีเกิดและเวลานี้ไว้")
+                            .font(.subheadline)
+                    }
+                    .toggleStyle(.switch)
+                    .tint(Color(red: 0.85, green: 0.55, blue: 0.40))
+                    .onChange(of: rememberBirthday) {
+                        BaziStore.shared.rememberEnabled = rememberBirthday
+                        if !rememberBirthday {
+                            BaziStore.shared.clear()
+                        }
+                    }
+
                     Button {
                         if purchaseVM.isUnlocked {
                             analyzeAndShow()
@@ -96,17 +111,10 @@ struct BaziInputView: View {
                         .frame(maxWidth: .infinity)
                     }
 
-                    if BaziStore.shared.hasSavedResult {
-                        Button(role: .destructive) {
-                            BaziStore.shared.clear()
-                        } label: {
-                            HStack(spacing: 4) {
-                                Image(systemName: "trash")
-                                Text("ล้างประวัติรหัสธาตุ")
-                            }
-                            .font(.caption)
-                        }
-                    }
+                    Text("จำเป็นต้องรู้เวลาเกิดเพื่อความแม่นยำ")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
                 .padding(20)
                 .background(
@@ -119,6 +127,13 @@ struct BaziInputView: View {
                     .font(.caption2)
                     .foregroundStyle(.white.opacity(0.7))
                     .padding(.bottom, 16)
+            }
+        }
+        .onAppear {
+            if BaziStore.shared.rememberEnabled, BaziStore.shared.hasSavedResult,
+               let (date, time) = BaziStore.shared.loadDates() {
+                birthDate = date
+                birthTime = time
             }
         }
         .navigationBarTitleDisplayMode(.inline)

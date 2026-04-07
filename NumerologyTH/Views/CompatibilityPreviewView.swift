@@ -294,6 +294,9 @@ struct CompatibilityPreviewView: View {
             )
             // Annual Forecast — ดวงรายปี
             mockAnnualForecast(result: result)
+
+            // Monthly Forecast — ดวงรายเดือน
+            mockMonthlyForecast(result: result)
         }
         .padding()
     }
@@ -305,7 +308,12 @@ struct CompatibilityPreviewView: View {
         let yearElement = BaziEngine.currentYearStemElement()
         let currentYear = Calendar(identifier: .gregorian).component(.year, from: Date())
         let thaiYear = currentYear + 543
-        let animalName = BaziEngine.yearAnimalName(year: currentYear)
+        let currentAnimalName = BaziEngine.yearAnimalName(year: currentYear)
+
+        // mock: ปีเกิดเจ้าของ
+        let birthYear = Calendar(identifier: .gregorian).component(.year, from: result.birthDate)
+        let birthAnimalName = BaziEngine.yearAnimalName(year: birthYear)
+
         // ใช้ isClash = false เพื่อแสดงตัวอย่างที่ดูดี
         let forecast = AnnualForecastKB.forecast(
             dayMasterElement: result.dominantElement,
@@ -316,22 +324,30 @@ struct CompatibilityPreviewView: View {
         VStack(alignment: .leading, spacing: 12) {
             // Header
             HStack(spacing: 6) {
-                Text("🐴")
                 Text(yearElement.emoji)
-                Text("ปี\(animalName)\(yearElement.name) \(String(thaiYear))")
+                Text("ดวงรายปี \(String(thaiYear))")
                     .font(.headline)
             }
 
             // กรอบขาว
             VStack(alignment: .leading, spacing: 10) {
+                // เจ้าของ
+                HStack(spacing: 4) {
+                    Text(result.yearElement.emoji)
+                    Text("รหัสธาตุและปีนักษัตรคุณ : \(birthAnimalName)-\(result.yearElement.name)")
+                        .font(.subheadline.bold())
+                }
+
+                Divider()
+
                 HStack(spacing: 4) {
                     Text(yearElement.emoji)
-                    Text("รหัสธาตุประจำปี : \(yearElement.name)")
-                        .font(.subheadline.bold())
+                    Text("รหัสธาตุประจำปีนี้ : \(yearElement.name)")
+                        .font(.subheadline)
                 }
                 HStack(spacing: 4) {
                     Text("🐴")
-                    Text("ปีนักษัตร : \(animalName)")
+                    Text("ปีนักษัตรปีนี้ : \(currentAnimalName)")
                         .font(.subheadline)
                 }
                 HStack(spacing: 4) {
@@ -359,6 +375,67 @@ struct CompatibilityPreviewView: View {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.appPastelPink.opacity(0.5))
         )
+    }
+
+    // MARK: - Monthly Forecast (mock)
+
+    @ViewBuilder
+    private func mockMonthlyForecast(result: BaziResult) -> some View {
+        let monthElement = BaziEngine.currentMonthStemElement()
+        let thaiMonth = BaziEngine.currentThaiMonth()
+        let currentYear = Calendar(identifier: .gregorian).component(.year, from: Date())
+        let thaiYear = currentYear + 543
+
+        if let entry = KnowledgeBaseLoader.shared.monthlyForecast.forecast(
+            personalElement: result.dominantElement,
+            monthElement: monthElement
+        ) {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 6) {
+                    Text(monthElement.emoji)
+                    Text("\(thaiMonth) \(String(thaiYear)) — \(entry.theme)")
+                        .font(.headline)
+                }
+
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 4) {
+                        Text(monthElement.emoji)
+                        Text("ธาตุประจำเดือน : \(monthElement.name)")
+                            .font(.subheadline.bold())
+                    }
+                    HStack(spacing: 4) {
+                        Text("⚡")
+                        Text("ความสัมพันธ์ : \(entry.interaction)")
+                            .font(.subheadline)
+                    }
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(.white.opacity(0.8))
+                )
+
+                Text(entry.intro)
+                    .font(.subheadline)
+                    .foregroundStyle(.black.opacity(0.7))
+                    .lineSpacing(5)
+
+                Text(entry.body)
+                    .font(.subheadline)
+                    .foregroundStyle(.black.opacity(0.7))
+                    .lineSpacing(5)
+
+                Text(entry.closingEmoji)
+                    .font(.title2)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.appLavender.opacity(0.4))
+            )
+        }
     }
 
     // MARK: - Helpers
