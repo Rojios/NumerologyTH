@@ -6,6 +6,7 @@ struct PhoneInputView: View {
     @Environment(PurchaseViewModel.self) private var purchaseVM
     @Environment(\.modelContext) private var modelContext
     @State private var showResult = false
+    @State private var rememberPhone = PhoneStore.shared.rememberEnabled
 
     var body: some View {
         ZStack {
@@ -34,6 +35,20 @@ struct PhoneInputView: View {
                             Text(error)
                                 .font(.caption)
                                 .foregroundStyle(.red)
+                        }
+                    }
+
+                    // จำเบอร์
+                    Toggle(isOn: $rememberPhone) {
+                        Text("จำหมายเลขมือถือนี้ไว้")
+                            .font(.subheadline)
+                    }
+                    .toggleStyle(.switch)
+                    .tint(Color.appLavender)
+                    .onChange(of: rememberPhone) {
+                        PhoneStore.shared.rememberEnabled = rememberPhone
+                        if !rememberPhone {
+                            PhoneStore.shared.clear()
                         }
                     }
 
@@ -73,6 +88,12 @@ struct PhoneInputView: View {
                     .font(.caption2)
                     .foregroundStyle(.white.opacity(0.7))
                     .padding(.bottom, 16)
+            }
+        }
+        .onAppear {
+            if PhoneStore.shared.rememberEnabled, let phone = PhoneStore.shared.loadPhone() {
+                vm.phoneInput = phone
+                vm.validate()
             }
         }
         .navigationBarTitleDisplayMode(.inline)

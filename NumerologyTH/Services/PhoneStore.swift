@@ -8,6 +8,13 @@ final class PhoneStore {
     private let defaults = UserDefaults.standard
     private let phoneKey = "phone_number"
     private let elementKey = "phone_dominant_element"
+    private let rememberKey = "phone_rememberEnabled"
+
+    /// จำเบอร์ไว้หรือไม่
+    var rememberEnabled: Bool {
+        get { defaults.bool(forKey: rememberKey) }
+        set { defaults.set(newValue, forKey: rememberKey) }
+    }
 
     /// บันทึกเบอร์ + ธาตุเด่น
     func save(phone: String, dominant: AnalysisEngine.ChineseElement) {
