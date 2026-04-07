@@ -161,7 +161,7 @@ final class KnowledgeBaseLoader {
     lazy var numberMeanings: NumberMeaningsKB = load("number_meanings")
     lazy var careerBonus: CareerBonusKB = load("career_bonus")
     lazy var elementMeanings: ElementMeaningsKB = load("element_meanings")
-    lazy var fortuneSticks: FortuneStickKB = load("fortune_sticks")
+    lazy var fortuneSticks: FortuneStickKB = load("fortune_sticks_v2")
 
     private func load<T: Decodable>(_ name: String) -> T {
         guard let url = Bundle.main.url(forResource: name, withExtension: "json"),

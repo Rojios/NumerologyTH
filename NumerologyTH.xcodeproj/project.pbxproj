@@ -51,9 +51,10 @@
 		E5E5E5E5E5E5E5E5E5E5E5E5 /* career_bonus.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */; };
 		EM11EM11EM11EM11EM11EM11 /* element_meanings.json in Resources */ = {isa = PBXBuildFile; fileRef = EM12EM12EM12EM12EM12EM12 /* element_meanings.json */; };
 		FM11FM11FM11FM11FM11FM11 /* FortuneMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FM12FM12FM12FM12FM12FM12 /* FortuneMenuView.swift */; };
-		FS11FS11FS11FS11FS11FS11 /* FortuneStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FS12FS12FS12FS12FS12FS12 /* FortuneStickView.swift */; };
+		BDA04471E6874D1EA07584AE /* FortuneStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37E9DDC8D1A4A408660C0E9 /* FortuneStickView.swift */; };
 		LN11LN11LN11LN11LN11LN11 /* LuckyNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = LN12LN12LN12LN12LN12LN12 /* LuckyNumberView.swift */; };
 		FK11FK11FK11FK11FK11FK11 /* fortune_sticks.json in Resources */ = {isa = PBXBuildFile; fileRef = FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */; };
+		AAD41890F38647C19A94669F /* fortune_sticks_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = 979FE40B73BD4D0595A1A49C /* fortune_sticks_v2.json */; };
 		SD11SD11SD11SD11SD11SD11 /* ShakeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = SD12SD12SD12SD12SD12SD12 /* ShakeDetector.swift */; };
 		SH11SH11SH11SH11SH11SH11 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */; };
 		PC11PC11PC11PC11PC11PC11 /* PhoneResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = PC12PC12PC12PC12PC12PC12 /* PhoneResultCard.swift */; };
@@ -62,6 +63,7 @@
 		BS11BS11BS11BS11BS11BS11 /* BaziStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */; };
 		AF11AF11AF11AF11AF11AF11 /* AnnualForecastKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AF12AF12AF12AF12AF12 /* AnnualForecastKB.swift */; };
 		PS11PS11PS11PS11PS11PS11 /* PhoneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = PS12PS12PS12PS12PS12PS12 /* PhoneStore.swift */; };
+		5B1E20D01F284E8FB39DD090 /* FortuneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A7C4DEFBF4E2A917681B8 /* FortuneStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,7 @@
 		BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziStore.swift; sourceTree = "<group>"; };
 		AF12AF12AF12AF12AF12AF12 /* AnnualForecastKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualForecastKB.swift; sourceTree = "<group>"; };
 		PS12PS12PS12PS12PS12PS12 /* PhoneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneStore.swift; sourceTree = "<group>"; };
+		CC4A7C4DEFBF4E2A917681B8 /* FortuneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneStore.swift; sourceTree = "<group>"; };
 		BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziInputView.swift; sourceTree = "<group>"; };
 		BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziResultView.swift; sourceTree = "<group>"; };
 		CP12CP12CP12CP12CP12CP12 /* CompatibilityPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityPreviewView.swift; sourceTree = "<group>"; };
@@ -125,9 +128,10 @@
 		5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = career_bonus.json; sourceTree = "<group>"; };
 		EM12EM12EM12EM12EM12EM12 /* element_meanings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = element_meanings.json; sourceTree = "<group>"; };
 		FM12FM12FM12FM12FM12FM12 /* FortuneMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneMenuView.swift; sourceTree = "<group>"; };
-		FS12FS12FS12FS12FS12FS12 /* FortuneStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneStickView.swift; sourceTree = "<group>"; };
+		F37E9DDC8D1A4A408660C0E9 /* FortuneStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneStickView.swift; sourceTree = "<group>"; };
 		LN12LN12LN12LN12LN12LN12 /* LuckyNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyNumberView.swift; sourceTree = "<group>"; };
 		FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortune_sticks.json; sourceTree = "<group>"; };
+		979FE40B73BD4D0595A1A49C /* fortune_sticks_v2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortune_sticks_v2.json; sourceTree = "<group>"; };
 		SD12SD12SD12SD12SD12SD12 /* ShakeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeDetector.swift; sourceTree = "<group>"; };
 		SH12SH12SH12SH12SH12SH12 /* ShareHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
 		PC12PC12PC12PC12PC12PC12 /* PhoneResultCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneResultCard.swift; sourceTree = "<group>"; };
@@ -201,7 +205,7 @@
 				CC1515C076507CB3CBDE3C82 /* PhoneInputView.swift */,
 				ACFF12E3CB2A18D7D0A4600A /* PlateInputView.swift */,
 				FM12FM12FM12FM12FM12FM12 /* FortuneMenuView.swift */,
-				FS12FS12FS12FS12FS12FS12 /* FortuneStickView.swift */,
+				F37E9DDC8D1A4A408660C0E9 /* FortuneStickView.swift */,
 				LN12LN12LN12LN12LN12LN12 /* LuckyNumberView.swift */,
 				C442DACE1C3485DF5BA36CD8 /* ResultView.swift */,
 				2054A840479DC290C5C49246 /* Components */,
@@ -242,6 +246,7 @@
 				5E5E5E5E5E5E5E5E5E5E5E5E /* career_bonus.json */,
 				EM12EM12EM12EM12EM12EM12 /* element_meanings.json */,
 				FK12FK12FK12FK12FK12FK12 /* fortune_sticks.json */,
+				979FE40B73BD4D0595A1A49C /* fortune_sticks_v2.json */,
 				4D4D4D4D4D4D4D4D4D4D4D4D /* number_meanings.json */,
 				1A1A1A1A1A1A1A1A1A1A1A1A /* pair_grades.json */,
 				2B2B2B2B2B2B2B2B2B2B2B2B /* sum_scores.json */,
@@ -286,6 +291,7 @@
 				BA22BA22BA22BA22BA22BA22 /* BaziEngine.swift */,
 				BS12BS12BS12BS12BS12BS12 /* BaziStore.swift */,
 				PS12PS12PS12PS12PS12PS12 /* PhoneStore.swift */,
+				CC4A7C4DEFBF4E2A917681B8 /* FortuneStore.swift */,
 				E2991E5429C4F279F8A79680 /* HistoryManager.swift */,
 				WX12WX12WX12WX12WX12WX12 /* WuXingCompatibility.swift */,
 				77D046AA928EA76B45BFC9F6 /* QuotaManager.swift */,
@@ -379,6 +385,7 @@
 				E5E5E5E5E5E5E5E5E5E5E5E5 /* career_bonus.json in Resources */,
 				EM11EM11EM11EM11EM11EM11 /* element_meanings.json in Resources */,
 				FK11FK11FK11FK11FK11FK11 /* fortune_sticks.json in Resources */,
+				AAD41890F38647C19A94669F /* fortune_sticks_v2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +412,7 @@
 				BA21BA21BA21BA21BA21BA21 /* BaziEngine.swift in Sources */,
 				BS11BS11BS11BS11BS11BS11 /* BaziStore.swift in Sources */,
 				PS11PS11PS11PS11PS11PS11 /* PhoneStore.swift in Sources */,
+				5B1E20D01F284E8FB39DD090 /* FortuneStore.swift in Sources */,
 				BA31BA31BA31BA31BA31BA31 /* BaziInputView.swift in Sources */,
 				BA41BA41BA41BA41BA41BA41 /* BaziResultView.swift in Sources */,
 				CP11CP11CP11CP11CP11CP11 /* CompatibilityPreviewView.swift in Sources */,
@@ -435,7 +443,7 @@
 				822E9B52B4CD437300B8C598 /* String+Thai.swift in Sources */,
 				WX11WX11WX11WX11WX11WX11 /* WuXingCompatibility.swift in Sources */,
 				FM11FM11FM11FM11FM11FM11 /* FortuneMenuView.swift in Sources */,
-				FS11FS11FS11FS11FS11FS11 /* FortuneStickView.swift in Sources */,
+				BDA04471E6874D1EA07584AE /* FortuneStickView.swift in Sources */,
 				LN11LN11LN11LN11LN11LN11 /* LuckyNumberView.swift in Sources */,
 				SD11SD11SD11SD11SD11SD11 /* ShakeDetector.swift in Sources */,
 				SH11SH11SH11SH11SH11SH11 /* ShareHelper.swift in Sources */,
