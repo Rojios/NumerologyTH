@@ -112,12 +112,12 @@ struct HomeView: View {
         .overlay(alignment: .topTrailing) {
             Button { showAbout = true } label: {
                 Image(systemName: "info.circle")
-                    .font(.title3)
+                    .font(.title2.bold())
                     .foregroundStyle(.white)
-                    .padding(10)
+                    .padding(6)
                     .background(
                         Capsule()
-                            .fill(Color(red: 0.75, green: 0.68, blue: 0.88))
+                            .fill(Color(red: 1.0, green: 0.75, blue: 0.82))
                     )
             }
             .padding(.top, 10)
