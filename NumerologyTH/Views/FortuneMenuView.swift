@@ -190,7 +190,7 @@ struct FortuneMenuView: View {
                 .frame(maxWidth: .infinity)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
 
-            Text("วันนี้ไม่รับใบเซียมซี")
+            Text("ใบเซียมซีของวันนี้ถูกเผาไปแล้ว")
                 .font(.title3.bold())
                 .foregroundStyle(.white)
 

@@ -5,6 +5,7 @@ struct HomeView: View {
     @State private var navigateToPhone = false
     @State private var navigateToFortune = false
     @State private var navigateToBazi = false
+    @State private var showAbout = false
 
     var body: some View {
         ZStack {
@@ -108,6 +109,23 @@ struct HomeView: View {
             }
         }
         .navigationBarHidden(true)
+        .overlay(alignment: .topTrailing) {
+            Button { showAbout = true } label: {
+                Image(systemName: "info.circle")
+                    .font(.title3)
+                    .foregroundStyle(.white)
+                    .padding(10)
+                    .background(
+                        Capsule()
+                            .fill(Color(red: 0.75, green: 0.68, blue: 0.88))
+                    )
+            }
+            .padding(.top, 10)
+            .padding(.trailing, 16)
+        }
+        .sheet(isPresented: $showAbout) {
+            AboutView()
+        }
         .navigationDestination(isPresented: $navigateToPhone) {
             PhoneInputView()
         }

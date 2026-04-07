@@ -65,6 +65,7 @@
 		AF11AF11AF11AF11AF11AF11 /* AnnualForecastKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AF12AF12AF12AF12AF12 /* AnnualForecastKB.swift */; };
 		PS11PS11PS11PS11PS11PS11 /* PhoneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = PS12PS12PS12PS12PS12PS12 /* PhoneStore.swift */; };
 		5B1E20D01F284E8FB39DD090 /* FortuneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A7C4DEFBF4E2A917681B8 /* FortuneStore.swift */; };
+		758BA2B73A0A4D1B965C31C0 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47268B96FCA3477CB785A816 /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		AF12AF12AF12AF12AF12AF12 /* AnnualForecastKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualForecastKB.swift; sourceTree = "<group>"; };
 		PS12PS12PS12PS12PS12PS12 /* PhoneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneStore.swift; sourceTree = "<group>"; };
 		CC4A7C4DEFBF4E2A917681B8 /* FortuneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneStore.swift; sourceTree = "<group>"; };
+		47268B96FCA3477CB785A816 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziInputView.swift; sourceTree = "<group>"; };
 		BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaziResultView.swift; sourceTree = "<group>"; };
 		CP12CP12CP12CP12CP12CP12 /* CompatibilityPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityPreviewView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		433E494E0DBAC2172D0D88EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				47268B96FCA3477CB785A816 /* AboutView.swift */,
 				BA32BA32BA32BA32BA32BA32 /* BaziInputView.swift */,
 				BA42BA42BA42BA42BA42BA42 /* BaziResultView.swift */,
 				CP12CP12CP12CP12CP12CP12 /* CompatibilityPreviewView.swift */,
@@ -416,6 +419,7 @@
 				BA21BA21BA21BA21BA21BA21 /* BaziEngine.swift in Sources */,
 				BS11BS11BS11BS11BS11BS11 /* BaziStore.swift in Sources */,
 				PS11PS11PS11PS11PS11PS11 /* PhoneStore.swift in Sources */,
+				758BA2B73A0A4D1B965C31C0 /* AboutView.swift in Sources */,
 				5B1E20D01F284E8FB39DD090 /* FortuneStore.swift in Sources */,
 				BA31BA31BA31BA31BA31BA31 /* BaziInputView.swift in Sources */,
 				BA41BA41BA41BA41BA41BA41 /* BaziResultView.swift in Sources */,
