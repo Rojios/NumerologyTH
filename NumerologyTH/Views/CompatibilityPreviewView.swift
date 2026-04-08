@@ -364,17 +364,62 @@ struct CompatibilityPreviewView: View {
                     .fill(.white.opacity(0.8))
             )
 
-            // บทความ
-            Text(forecast)
-                .font(.subheadline)
-                .foregroundStyle(.black.opacity(0.7))
-                .lineSpacing(5)
+            // บทความ — แยก paragraph + ใส่ icon
+            forecastArticle(forecast)
         }
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.appPastelPink.opacity(0.5))
         )
+    }
+
+    /// แยก article เป็น paragraphs + ใส่ icon ให้ 4 หัวข้อหลัก
+    @ViewBuilder
+    private func forecastArticle(_ text: String) -> some View {
+        let paragraphs = text.components(separatedBy: "\n\n")
+        VStack(alignment: .leading, spacing: 14) {
+            ForEach(Array(paragraphs.enumerated()), id: \.offset) { _, para in
+                let trimmed = para.trimmingCharacters(in: .whitespacesAndNewlines)
+                if let (icon, color, title, body) = parseCategory(trimmed) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        HStack(spacing: 6) {
+                            Image(systemName: icon)
+                                .foregroundStyle(color)
+                            Text(title)
+                                .font(.subheadline.bold())
+                        }
+                        Text(body)
+                            .font(.subheadline)
+                            .foregroundStyle(.black.opacity(0.7))
+                            .lineSpacing(5)
+                    }
+                } else {
+                    Text(trimmed)
+                        .font(.subheadline)
+                        .foregroundStyle(.black.opacity(0.7))
+                        .lineSpacing(5)
+                }
+            }
+        }
+    }
+
+    private func parseCategory(_ text: String) -> (String, Color, String, String)? {
+        let darkPink = Color(red: 0.85, green: 0.20, blue: 0.65)
+        let categories: [(prefix: String, icon: String, color: Color, title: String)] = [
+            ("ด้านการงาน", "briefcase.fill", darkPink, "การงาน"),
+            ("ด้านการเงิน", "dollarsign.circle.fill", darkPink, "การเงิน"),
+            ("ด้านความรัก", "heart.fill", darkPink, "ความรัก"),
+            ("ด้านสุขภาพ", "stethoscope", darkPink, "สุขภาพ"),
+        ]
+        for cat in categories {
+            if text.hasPrefix(cat.prefix) {
+                let body = String(text.dropFirst(cat.prefix.count))
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                return (cat.icon, cat.color, cat.title, body)
+            }
+        }
+        return nil
     }
 
     // MARK: - Monthly Forecast (mock)
