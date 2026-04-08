@@ -2,10 +2,13 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(NavigationRouter.self) private var router
-    @State private var navigateToPhone = false
-    @State private var navigateToFortune = false
-    @State private var navigateToBazi = false
     @State private var showAbout = false
+
+    /// ใช้ binding จาก parent (ContentView → FeatureTabView) ผ่าน selectedTab
+    private func switchTab(_ tab: Int) {
+        // ใช้ NotificationCenter ส่ง tab index ไป ContentView
+        NotificationCenter.default.post(name: .switchTab, object: tab)
+    }
 
     var body: some View {
         ZStack {
@@ -23,7 +26,7 @@ struct HomeView: View {
 
                 VStack(spacing: 12) {
                     Button {
-                        navigateToPhone = true
+                        switchTab(1)
                     } label: {
                         HStack(spacing: 12) {
                             Image(systemName: "phone.fill")
@@ -42,14 +45,28 @@ struct HomeView: View {
                         .foregroundStyle(.white)
                         .padding()
                         .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color(red: 1.0, green: 0.75, blue: 0.82))
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [
+                                                Color(red: 1.0, green: 0.78, blue: 0.85),
+                                                Color(red: 0.92, green: 0.65, blue: 0.75)
+                                            ],
+                                            startPoint: .topTrailing,
+                                            endPoint: .bottomLeading
+                                        )
+                                    )
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(.white.opacity(0.3), lineWidth: 1)
+                            }
                         )
+                        .shadow(color: Color(red: 1.0, green: 0.70, blue: 0.80).opacity(0.5), radius: 12, x: 0, y: 0)
+                        .shadow(color: Color(red: 0.85, green: 0.55, blue: 0.65).opacity(0.3), radius: 6, x: 0, y: 4)
                     }
 
-                    // เปิดรหัสธาตุประจำตัว
                     Button {
-                        navigateToBazi = true
+                        switchTab(2)
                     } label: {
                         HStack(spacing: 12) {
                             Image(systemName: "flame.fill")
@@ -68,14 +85,28 @@ struct HomeView: View {
                         .foregroundStyle(.white)
                         .padding()
                         .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color(red: 1.0, green: 0.75, blue: 0.82))
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [
+                                                Color(red: 1.0, green: 0.78, blue: 0.85),
+                                                Color(red: 0.92, green: 0.65, blue: 0.75)
+                                            ],
+                                            startPoint: .topTrailing,
+                                            endPoint: .bottomLeading
+                                        )
+                                    )
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(.white.opacity(0.3), lineWidth: 1)
+                            }
                         )
+                        .shadow(color: Color(red: 1.0, green: 0.70, blue: 0.80).opacity(0.5), radius: 12, x: 0, y: 0)
+                        .shadow(color: Color(red: 0.85, green: 0.55, blue: 0.65).opacity(0.3), radius: 6, x: 0, y: 4)
                     }
 
-                    // เซียมซีประจำวัน
                     Button {
-                        navigateToFortune = true
+                        switchTab(3)
                     } label: {
                         HStack(spacing: 12) {
                             Image(systemName: "wand.and.stars")
@@ -94,9 +125,24 @@ struct HomeView: View {
                         .foregroundStyle(.white)
                         .padding()
                         .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color(red: 1.0, green: 0.75, blue: 0.82))
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [
+                                                Color(red: 1.0, green: 0.78, blue: 0.85),
+                                                Color(red: 0.92, green: 0.65, blue: 0.75)
+                                            ],
+                                            startPoint: .topTrailing,
+                                            endPoint: .bottomLeading
+                                        )
+                                    )
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(.white.opacity(0.3), lineWidth: 1)
+                            }
                         )
+                        .shadow(color: Color(red: 1.0, green: 0.70, blue: 0.80).opacity(0.5), radius: 12, x: 0, y: 0)
+                        .shadow(color: Color(red: 0.85, green: 0.55, blue: 0.65).opacity(0.3), radius: 6, x: 0, y: 4)
                     }
                 }
                 .padding(.horizontal)
@@ -108,7 +154,6 @@ struct HomeView: View {
                     .padding(.bottom, 16)
             }
         }
-        .navigationBarHidden(true)
         .overlay(alignment: .topTrailing) {
             Button { showAbout = true } label: {
                 Image(systemName: "info.circle")
@@ -126,23 +171,13 @@ struct HomeView: View {
         .sheet(isPresented: $showAbout) {
             AboutView()
         }
-        .navigationDestination(isPresented: $navigateToPhone) {
-            PhoneInputView()
-        }
-        .navigationDestination(isPresented: $navigateToBazi) {
-            BaziInputView()
-        }
-        .navigationDestination(isPresented: $navigateToFortune) {
-            FortuneMenuView()
-        }
-        .onChange(of: router.popToRoot) {
-            if router.popToRoot {
-                navigateToPhone = false
-                navigateToBazi = false
-                navigateToFortune = false
-            }
-        }
     }
+}
+
+// MARK: - Notification for tab switching
+
+extension Notification.Name {
+    static let switchTab = Notification.Name("switchTab")
 }
 
 #Preview {

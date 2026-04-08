@@ -142,13 +142,6 @@ struct PhoneResultPage: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    router.goHome()
-                } label: {
-                    Image(systemName: "house.fill")
-                }
-            }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     sharePhoneResult()

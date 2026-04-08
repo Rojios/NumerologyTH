@@ -3,12 +3,16 @@ import SwiftUI
 struct ContentView: View {
     @Environment(PurchaseViewModel.self) private var purchaseVM
     @State private var router = NavigationRouter()
+    @State private var selectedTab = 0
 
     var body: some View {
-        NavigationStack {
-            HomeView()
-        }
-        .environment(router)
+        FeatureTabView(selectedTab: $selectedTab)
+            .environment(router)
+            .onReceive(NotificationCenter.default.publisher(for: .switchTab)) { notif in
+                if let tab = notif.object as? Int {
+                    selectedTab = tab
+                }
+            }
     }
 }
 
@@ -20,7 +24,6 @@ final class NavigationRouter {
 
     func goHome() {
         popToRoot = true
-        // Reset หลัง animation เสร็จ
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.popToRoot = false
         }

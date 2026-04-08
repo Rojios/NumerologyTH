@@ -10,6 +10,7 @@ struct FortuneMenuView: View {
     @State private var showOverlay = false
     @State private var overlayMessage: String?
     @State private var hasBurnedToday = false
+    @State private var glowPulse = false
 
     private let store = FortuneStore.shared
     private let sticks = KnowledgeBaseLoader.shared.fortuneSticks.sticks
@@ -62,6 +63,12 @@ struct FortuneMenuView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            // Reset กลับหน้า SHAKE ทุกครั้ง — เช็คสถานะตอนกด shake
+            drawnStick = nil
+            showFortune = false
+            hasBurnedToday = false
+        }
         .onShake {
             guard !isShaking, drawnStick == nil else { return }
             shakeAndDraw()
@@ -76,6 +83,13 @@ struct FortuneMenuView: View {
                 shakeAndDraw()
             } label: {
                 ZStack {
+                    // Glow ring
+                    Circle()
+                        .fill(Color.appPastelPink.opacity(0.3))
+                        .frame(width: 210, height: 210)
+                        .scaleEffect(glowPulse ? 1.15 : 1.0)
+                        .opacity(glowPulse ? 0.0 : 0.6)
+
                     Circle()
                         .fill(Color.appPastelPink)
                         .frame(width: 180, height: 180)
@@ -88,6 +102,11 @@ struct FortuneMenuView: View {
             }
             .rotationEffect(.degrees(shakeAngle))
             .disabled(isShaking)
+            .onAppear {
+                withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: false)) {
+                    glowPulse = true
+                }
+            }
 
             HStack(spacing: 5) {
                 Image(systemName: "iphone.radiowaves.left.and.right")
@@ -363,6 +382,7 @@ struct FortuneMenuView: View {
                     overlayMessage = nil
                 }
                 drawnStick = existing
+                showFortune = true
             }
             return
         }
